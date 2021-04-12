@@ -12,10 +12,10 @@ items:
   name: foo
   source:
     id: foo
-    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+    path: D:Github\python2yaml\docfx_yaml\tests\example\format\numpy\foo.py
     remote:
       branch: develop
-      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      path: D:Github\python2yaml\docfx_yaml\tests\example\format\numpy\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 0
   summary: Docstring of <xref:format.numpy.foo> module.
@@ -28,10 +28,10 @@ items:
   name: function
   source:
     id: function
-    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+    path: D:Github\python2yaml\docfx_yaml\tests\example\format\numpy\foo.py
     remote:
       branch: develop
-      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      path: D:Github\python2yaml\docfx_yaml\tests\example\format\numpy\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 10
   syntax:

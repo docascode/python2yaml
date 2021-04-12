@@ -14,6 +14,7 @@ from sphinx.util import ensuredir
 from sphinx.errors import ExtensionError
 from sphinx.util.nodes import make_refnode
 from settings import API_ROOT
+from utils import transform_node, transform_string
 
 from functools import partial
 from itertools import zip_longest
@@ -69,7 +70,7 @@ def build_init(app):
     # patch_docfields(app)
 
     # app.docfx_transform_node = partial(transform_node, app)
-    # app.docfx_transform_string = partial(transform_string, app)
+    app.docfx_transform_string = partial(transform_string, app)
 
 def _fullname(obj):
     """
@@ -147,6 +148,55 @@ def _get_cls_module(_type, name):
     else:
         return (None, None)
     return (cls, module)
+
+def _refact_example_in_module_summary(lines):
+    new_lines = []
+    block_lines = []
+    example_block_flag = False
+    for line in lines:
+        if line.startswith('.. admonition:: Example'):
+            example_block_flag = True
+            line = '### Example\n\n'
+            new_lines.append(line)
+        elif example_block_flag and len(line) != 0 and not line.startswith('   '):
+            example_block_flag = False
+            new_lines.append(''.join(block_lines))
+            new_lines.append(line)
+            block_lines[:] = []
+        elif example_block_flag:
+            if line == '   ':  # origianl line is blank line ('\n').
+                line = '\n'  # after outer ['\n'.join] operation,
+                             # this '\n' will be appended to previous line then. BINGO!
+            elif line.startswith('   '):
+                # will be indented by 4 spaces according to yml block syntax.
+                # https://learnxinyminutes.com/docs/yaml/
+                line = ' ' + line + '\n'
+            block_lines.append(line)
+
+        else:
+            new_lines.append(line)
+    return new_lines
+
+def _resolve_reference_in_module_summary(lines):
+    new_lines = []
+    for line in lines:
+        matched_objs = list(re.finditer(REF_PATTERN, line))
+        new_line = line
+        for matched_obj in matched_objs:
+            start = matched_obj.start()
+            end = matched_obj.end()
+            matched_str = line[start:end]
+            if '<' in matched_str and '>' in matched_str:
+                # match string like ':func:`***<***>`'
+                index = matched_str.index('<')
+                ref_name = matched_str[index+1:-2]
+            else:
+                # match string like ':func:`~***`' or ':func:`***`'
+                index = matched_str.index('~') if '~' in matched_str else matched_str.index('`')
+                ref_name = matched_str[index+1:-1]
+            new_line = new_line.replace(matched_str, '<xref:{}>'.format(ref_name))
+        new_lines.append(new_line)
+    return new_lines
 
 def _create_datam(app, cls, module, name, _type, obj, lines=None):
     """
@@ -248,11 +298,10 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
 
     # Only add summary to parts of the code that we don't get it from the monkeypatch
     if _type == MODULE:
-        pass
-        # lines = _resolve_reference_in_module_summary(lines)
-        # summary = app.docfx_transform_string('\n'.join(_refact_example_in_module_summary(lines)))
-        # if summary:
-        #     datam['summary'] = summary.strip(" \n\r\r")
+        lines = _resolve_reference_in_module_summary(lines)
+        summary = app.docfx_transform_string('\n'.join(_refact_example_in_module_summary(lines)))
+        if summary:
+            datam['summary'] = summary.strip(" \n\r\r")
 
     if args or sig:
         datam['syntax'] = {}

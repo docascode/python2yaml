@@ -1,0 +1,23 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children: []
+  class: format.google.foo.FooException.InternalFoo
+  fullName: format.google.foo.FooException.InternalFoo
+  inheritance:
+  - type: builtins.object
+  langs:
+  - python
+  module: format.google.foo.FooException
+  name: InternalFoo
+  source:
+    id: InternalFoo
+    path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 163
+  type: class
+  uid: format.google.foo.FooException.InternalFoo
+references: []

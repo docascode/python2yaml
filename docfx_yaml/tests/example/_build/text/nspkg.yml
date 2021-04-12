@@ -1,0 +1,24 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - nspkg.pkg_resources
+  - nspkg.pkgutil
+  fullName: nspkg
+  kind: import
+  langs:
+  - python
+  module: nspkg
+  name: nspkg
+  source:
+    id: nspkg
+    path: D:Github\python2yaml\docfx_yaml\tests\example\nspkg\__init__.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\tests\example\nspkg\__init__.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 0
+  summary: Package used for namespace package test.
+  type: package
+  uid: nspkg
+references: []

@@ -4,8 +4,6 @@ from docutils.nodes import Node
 from io import open
 from os import path
 from sphinx.builders import Builder
-from sphinx.locale import __
-from sphinx.util import logging
 from sphinx.util.osutil import ensuredir, os_path
 from directives import RemarksDirective, TodoDirective
 from nodes import remarks
@@ -13,13 +11,9 @@ from extension import build_init
 from extension import process_docstring
 from extension import build_finished
 
-logger = logging.getLogger(__name__)
-
-
 class YamlBuilder(Builder):
     name = 'yaml'
     format = 'yaml'
-    epilog = __('The yaml files are in %(outdir)s.')
 
     out_suffix = '.yml'
     allow_parallel = False

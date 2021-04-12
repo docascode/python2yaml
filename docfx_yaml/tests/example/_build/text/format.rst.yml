@@ -2,6 +2,9 @@
 api_name: []
 items:
 - children:
+  - format.rst.directives
+  - format.rst.enum
+  - format.rst.foo
   - format.rst.module_function
   fullName: format.rst
   kind: import
@@ -11,10 +14,10 @@ items:
   name: rst
   source:
     id: rst
-    path: D:Github\python2yaml\docfx_yaml\src\format\rst\__init__.py
+    path: D:Github\python2yaml\docfx_yaml\tests\example\format\rst\__init__.py
     remote:
       branch: develop
-      path: D:Github\python2yaml\docfx_yaml\src\format\rst\__init__.py
+      path: D:Github\python2yaml\docfx_yaml\tests\example\format\rst\__init__.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 0
   summary: Docstring of package <xref:format.rst>.
@@ -27,10 +30,10 @@ items:
   name: module_function
   source:
     id: module_function
-    path: D:Github\python2yaml\docfx_yaml\src\format\rst\__init__.py
+    path: D:Github\python2yaml\docfx_yaml\tests\example\format\rst\__init__.py
     remote:
       branch: develop
-      path: D:Github\python2yaml\docfx_yaml\src\format\rst\__init__.py
+      path: D:Github\python2yaml\docfx_yaml\tests\example\format\rst\__init__.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 6
   type: function
