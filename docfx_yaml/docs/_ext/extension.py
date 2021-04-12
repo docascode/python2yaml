@@ -2,6 +2,11 @@ import os
 import inspect
 import re
 
+try:
+    from subprocess import getoutput
+except ImportError:
+    from commands import getoutput
+
 from yaml import safe_dump as dump
 
 from sphinx.util.console import darkgreen, bold
@@ -45,7 +50,7 @@ def build_init(app):
     # This store the uid-type mapping info
     app.env.docfx_info_uid_types = {}
 
-    # remote = getoutput('git remote -v')
+    remote = getoutput('git remote -v')
 
     try:
         app.env.docfx_remote = remote.split('\t')[1].split(' ')[0]
@@ -407,8 +412,7 @@ def build_finished(app, exception):
 
 
     normalized_outdir = os.path.normpath(os.path.join(
-        app.builder.outdir,  # Output Directory for Builder
-        API_ROOT,
+        app.builder.outdir  # Output Directory for Builder
     ))
     ensuredir(normalized_outdir)
 
@@ -432,7 +436,118 @@ def build_finished(app, exception):
 
             # Merge module data with class data
             for obj in yaml_data:
-                pass
+                arg_params = obj.get('syntax', {}).get('parameters', [])
+                if(len(arg_params) > 0 and 'id' in arg_params[0] and arg_params[0]['id'] == 'self'):
+                    # Support having `self` as an arg param, but not documented
+                    arg_params = arg_params[1:]
+                    obj['syntax']['parameters'] = arg_params
+                if obj['uid'] in app.env.docfx_info_field_data and \
+                    obj['type'] == app.env.docfx_info_field_data[obj['uid']]['type']:
+                    # Avoid entities with same uid and diff type.
+                    del(app.env.docfx_info_field_data[obj['uid']]['type']) # Delete `type` temporarily
+                    if 'syntax' not in obj:
+                        obj['syntax'] = {}
+                    merged_params = []
+                    if 'parameters' in app.env.docfx_info_field_data[obj['uid']]:
+                        doc_params = app.env.docfx_info_field_data[obj['uid']].get('parameters', [])
+                        if arg_params and doc_params:
+                            if len(arg_params) - len(doc_params) > 0:
+                                app.warn(
+                                    "Documented params don't match size of params:"
+                                    " {}".format(obj['uid']))
+                            # Zip 2 param lists until the long one is exhausted
+                            for args, docs in zip_longest(arg_params, doc_params, fillvalue={}):
+                                if len(args) == 0:
+                                    merged_params.append(docs)
+                                else:
+                                    args.update(docs)
+                                    merged_params.append(args)
+                    obj['syntax'].update(app.env.docfx_info_field_data[obj['uid']])
+                    if merged_params:
+                        obj['syntax']['parameters'] = merged_params
+
+                    if 'parameters' in obj['syntax'] and obj['type'] == 'method':
+                        for args in obj['syntax']['parameters']:
+                            if 'defaultValue' not in args:
+                                args['isRequired'] = True
+
+                    # Raise up summary
+                    if 'summary' in obj['syntax'] and obj['syntax']['summary']:
+                        obj['summary'] = obj['syntax'].pop('summary').strip(" \n\r\r")
+
+                    # Raise up remarks
+                    if 'remarks' in obj['syntax'] and obj['syntax']['remarks']:
+                        obj['remarks'] = obj['syntax'].pop('remarks')
+
+                    # Raise up seealso
+                    if 'seealso' in obj['syntax'] and obj['syntax']['seealso']:
+                        obj['seealsoContent'] = obj['syntax'].pop('seealso')
+
+                    # Raise up example
+                    if 'example' in obj['syntax'] and obj['syntax']['example']:
+                        obj.setdefault('example', []).append(obj['syntax'].pop('example'))
+
+                    # Raise up exceptions
+                    if 'exceptions' in obj['syntax'] and obj['syntax']['exceptions']:
+                        obj['exceptions'] = obj['syntax'].pop('exceptions')
+
+                    # Raise up references
+                    if 'references' in obj['syntax'] and obj['syntax']['references']:
+                        obj.setdefault('references', []).extend(obj['syntax'].pop('references'))
+
+                    # add content of temp list 'added_attribute' to children and yaml_data
+                    if 'added_attribute' in obj['syntax'] and obj['syntax']['added_attribute']:
+                        added_attribute = obj['syntax'].pop('added_attribute')
+                        for attrData in added_attribute:
+                            existed_Data = next((n for n in yaml_data if n['uid'] == attrData['uid']), None)
+                            if existed_Data:
+                                # Update data for already existed one which has attribute comment in source file
+                                existed_Data.update(attrData)
+                            else:
+                                obj.get('children', []).append(attrData['uid'])
+                                yaml_data.append(attrData)
+                                if 'class' in attrData:
+                                    # Get parent for attrData of Non enum class
+                                    parent = attrData['class']
+                                else:
+                                    # Get parent for attrData of enum class
+                                    parent = attrData['parent']
+                                obj['references'].append(_create_reference(attrData, parent))
+                    app.env.docfx_info_field_data[obj['uid']]['type'] = obj['type'] # Revert `type` for other objects to use
+
+                if 'references' in obj:
+                    # Ensure that references have no duplicate ref
+                    ref_uids = [r['uid'] for r in references]
+                    for ref_obj in obj['references']:
+                        if ref_obj['uid'] not in ref_uids:
+                            references.append(ref_obj)
+                    obj.pop('references')
+
+                if obj['type'] == 'module':
+                    convert_module_to_package_if_needed(obj)
+
+                if obj['type'] == 'method':
+                    obj['namewithoutparameters'] = obj['source']['id']
+
+                # To distinguish distribution package and import package
+                if obj.get('type', '') == 'package' and obj.get('kind', '') != 'distribution':
+                    obj['kind'] = 'import'
+
+                try:
+                    if remove_inheritance_for_notfound_class:
+                        if 'inheritance' in obj:
+                            python_sdk_name = obj['uid'].split('.')[0]
+                            obj['inheritance'] = [n for n in obj['inheritance'] if not n['type'].startswith(python_sdk_name) or
+                                                  n['type'] in app.env.docfx_info_uid_types]
+                            if not obj['inheritance']:
+                                obj.pop('inheritance')
+
+                except NameError:
+                    pass
+
+                if 'source' in obj and (not obj['source']['remote']['repo'] or \
+                    obj['source']['remote']['repo'] == 'https://apidrop.visualstudio.com/Content%20CI/_git/ReferenceAutomation'):
+                        del(obj['source'])
 
             # Output file
             if uid.lower() in file_name_set:

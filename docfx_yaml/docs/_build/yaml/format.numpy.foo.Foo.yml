@@ -23,15 +23,14 @@ items:
   - python
   module: format.numpy.foo
   name: Foo
-  references: []
   source:
     id: Foo
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 27
   type: class
   uid: format.numpy.foo.Foo
 - class: format.numpy.foo.Foo
@@ -44,9 +43,9 @@ items:
     id: attr
     path: null
     remote:
-      branch: null
+      branch: develop
       path: null
-      repo: null
+      repo: https://github.com/docascode/python2yaml.git
     startLine: null
   type: attribute
   uid: format.numpy.foo.Foo.attr
@@ -56,14 +55,15 @@ items:
   - python
   module: format.numpy.foo
   name: class_method
+  namewithoutparameters: class_method
   source:
     id: class_method
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 63
   syntax:
     parameters:
     - id: cls
@@ -76,17 +76,17 @@ items:
   - python
   module: format.numpy.foo
   name: method
+  namewithoutparameters: method
   source:
     id: method
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 82
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method
 - class: format.numpy.foo.Foo
@@ -95,17 +95,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_code
+  namewithoutparameters: method_code
   source:
     id: method_code
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 152
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_code
 - class: format.numpy.foo.Foo
@@ -114,17 +114,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_example
+  namewithoutparameters: method_example
   source:
     id: method_example
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 167
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_example
 - class: format.numpy.foo.Foo
@@ -133,17 +133,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_exception
+  namewithoutparameters: method_exception
   source:
     id: method_exception
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 104
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_exception
 - class: format.numpy.foo.Foo
@@ -152,17 +152,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_external_link
+  namewithoutparameters: method_external_link
   source:
     id: method_external_link
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 115
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_external_link
 - class: format.numpy.foo.Foo
@@ -171,17 +171,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_multiline
+  namewithoutparameters: method_multiline
   source:
     id: method_multiline
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 97
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_multiline
 - class: format.numpy.foo.Foo
@@ -190,17 +190,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_note
+  namewithoutparameters: method_note
   source:
     id: method_note
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 133
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_note
 - class: format.numpy.foo.Foo
@@ -209,17 +209,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_return
+  namewithoutparameters: method_return
   source:
     id: method_return
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 87
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_return
 - class: format.numpy.foo.Foo
@@ -228,17 +228,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_seealso
+  namewithoutparameters: method_seealso
   source:
     id: method_seealso
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 124
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_seealso
 - class: format.numpy.foo.Foo
@@ -247,17 +247,17 @@ items:
   - python
   module: format.numpy.foo
   name: method_warning
+  namewithoutparameters: method_warning
   source:
     id: method_warning
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 143
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.numpy.foo.Foo.method_warning
 - class: format.numpy.foo.Foo
@@ -266,14 +266,15 @@ items:
   - python
   module: format.numpy.foo
   name: static_method
+  namewithoutparameters: static_method
   source:
     id: static_method
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 76
   type: method
   uid: format.numpy.foo.Foo.static_method
 references: []

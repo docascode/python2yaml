@@ -14,15 +14,14 @@ items:
   - python
   module: format.numpy.foo
   name: FooException
-  references: []
   source:
     id: FooException
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 181
   type: class
   uid: format.numpy.foo.FooException
 references: []

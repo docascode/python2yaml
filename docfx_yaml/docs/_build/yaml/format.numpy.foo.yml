@@ -10,15 +10,14 @@ items:
   - python
   module: format.numpy.foo
   name: foo
-  references: []
   source:
     id: foo
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 0
   type: module
   uid: format.numpy.foo
 - fullName: format.numpy.foo.function
@@ -28,12 +27,12 @@ items:
   name: function
   source:
     id: function
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\numpy\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 10
   syntax:
     parameters:
     - id: arg1

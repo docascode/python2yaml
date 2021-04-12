@@ -14,15 +14,14 @@ items:
   - python
   module: format.rst.enum
   name: EnumFoo
-  references: []
   source:
     id: EnumFoo
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\rst\enum.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\rst\enum.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 5
   type: class
   uid: format.rst.enum.EnumFoo
 - class: format.rst.enum.EnumFoo
@@ -35,9 +34,9 @@ items:
     id: VALUE0
     path: null
     remote:
-      branch: null
+      branch: develop
       path: null
-      repo: null
+      repo: https://github.com/docascode/python2yaml.git
     startLine: null
   type: attribute
   uid: format.rst.enum.EnumFoo.VALUE0
@@ -51,9 +50,9 @@ items:
     id: VALUE1
     path: null
     remote:
-      branch: null
+      branch: develop
       path: null
-      repo: null
+      repo: https://github.com/docascode/python2yaml.git
     startLine: null
   type: attribute
   uid: format.rst.enum.EnumFoo.VALUE1

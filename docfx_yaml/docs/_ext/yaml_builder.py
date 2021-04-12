@@ -72,3 +72,4 @@ def setup(app):
     app.connect('build-finished', build_finished)
 
     app.add_config_value('autodoc_functions', False, 'env')
+    app.add_config_value('folder', '', 'html')

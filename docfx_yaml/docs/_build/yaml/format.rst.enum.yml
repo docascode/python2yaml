@@ -8,15 +8,14 @@ items:
   - python
   module: format.rst.enum
   name: enum
-  references: []
   source:
     id: enum
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\rst\enum.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\rst\enum.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 0
   type: module
   uid: format.rst.enum
 references: []

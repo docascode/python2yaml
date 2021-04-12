@@ -12,15 +12,14 @@ items:
   - python
   module: format.rst.directives
   name: DirectivesFoo
-  references: []
   source:
     id: DirectivesFoo
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\rst\directives.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\rst\directives.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 20
   type: class
   uid: format.rst.directives.DirectivesFoo
 - class: format.rst.directives.DirectivesFoo
@@ -29,17 +28,17 @@ items:
   - python
   module: format.rst.directives
   name: method_remarks
+  namewithoutparameters: method_remarks
   source:
     id: method_remarks
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\rst\directives.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\rst\directives.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 66
   syntax:
-    parameters:
-    - id: self
+    parameters: []
   type: method
   uid: format.rst.directives.DirectivesFoo.method_remarks
 - class: format.rst.directives.DirectivesFoo
@@ -52,9 +51,9 @@ items:
     id: var_remarks
     path: null
     remote:
-      branch: null
+      branch: develop
       path: null
-      repo: null
+      repo: https://github.com/docascode/python2yaml.git
     startLine: null
   type: attribute
   uid: format.rst.directives.DirectivesFoo.var_remarks

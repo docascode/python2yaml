@@ -9,15 +9,14 @@ items:
   - python
   module: format.rst.directives
   name: directives
-  references: []
   source:
     id: directives
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\rst\directives.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\rst\directives.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 0
   type: module
   uid: format.rst.directives
 - fullName: format.rst.directives.func
@@ -27,12 +26,12 @@ items:
   name: func
   source:
     id: func
-    path: null
+    path: D:Github\python2yaml\docfx_yaml\src\format\rst\directives.py
     remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
+      branch: develop
+      path: D:Github\python2yaml\docfx_yaml\src\format\rst\directives.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 13
   type: function
   uid: format.rst.directives.func
 references: []

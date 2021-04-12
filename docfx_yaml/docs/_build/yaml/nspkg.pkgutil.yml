@@ -4,19 +4,11 @@ items:
 - children:
   - nspkg.pkgutil.pkgutil_foo
   fullName: nspkg.pkgutil
+  kind: import
   langs:
   - python
   module: nspkg.pkgutil
   name: pkgutil
-  references: []
-  source:
-    id: pkgutil
-    path: null
-    remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
-  type: module
+  type: package
   uid: nspkg.pkgutil
 references: []

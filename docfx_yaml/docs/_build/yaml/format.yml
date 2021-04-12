@@ -6,19 +6,11 @@ items:
   - format.numpy
   - format.rst
   fullName: format
+  kind: import
   langs:
   - python
   module: format
   name: format
-  references: []
-  source:
-    id: format
-    path: null
-    remote:
-      branch: null
-      path: null
-      repo: null
-    startLine: null
-  type: module
+  type: package
   uid: format
 references: []
