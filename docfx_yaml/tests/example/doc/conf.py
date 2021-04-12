@@ -9,8 +9,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 source_suffix = '.rst'
 master_doc = 'index'
 project = u'example'
-copyright = u'2018, Microsoft'
-author = u'Yiding Tian'
+copyright = u'2021, Microsoft'
+author = u'Yan Xie'
 version = '0.1'
 release = '0.1'
 language = None

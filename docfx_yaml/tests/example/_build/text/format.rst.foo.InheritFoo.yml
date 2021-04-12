@@ -23,6 +23,9 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\rst\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 185
+  summary: 'Docstring of :class:`format.rst.foo.InheritFoo`.
+
+    This class inherit from two classes: :class:`format.rst.foo.Foo` and :class:`format.rst.foo`.'
   type: class
   uid: format.rst.foo.InheritFoo
 references: []

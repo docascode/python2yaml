@@ -34,6 +34,25 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\numpy\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 10
+  summary: 'Docstring of :func:`format.numpy.foo.function` function.
+
+
+
+    :param arg1: Parameter arg1 of :func:`format.numpy.foo.function`.
+
+    :type arg1: int
+
+    :param arg2: Parameter arg2 of :func:`format.numpy.foo.function`.
+
+    :type arg2: float
+
+    :param arg3: Parameter arg3 of :func:`format.numpy.foo.function`.
+
+    :type arg3: boolean
+
+    :param arg4: Parameter arg4 of :func:`format.numpy.foo.function`.
+
+    :type arg4: str'
   syntax:
     parameters:
     - id: arg1

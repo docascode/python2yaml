@@ -50,7 +50,7 @@ class YamlBuilder(Builder):
         pass
 
     def write_doc(self, docname, doctree):
-        print(docname)
+        pass
 
     def finish(self):
         pass

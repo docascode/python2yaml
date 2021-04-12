@@ -18,6 +18,9 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\numpy\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 186
+  summary: 'Docstring of internal class :class:`format.numpy.foo.FooException.InternalFoo`.
+
+    This class is an internal class of :class:`format.numpy.foo.FooException`.'
   type: class
   uid: format.numpy.foo.FooException.InternalFoo
 references: []

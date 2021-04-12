@@ -303,6 +303,13 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
         if summary:
             datam['summary'] = summary.strip(" \n\r\r")
 
+    ### Test add summary for class, function, exception, etc
+    if _type in [CLASS, FUNCTION, EXCEPTION, METHOD]:
+        summary = app.docfx_transform_string('\n'.join(lines))
+        if summary:
+            datam['summary'] = summary.strip(" \n\r\r")
+
+
     if args or sig:
         datam['syntax'] = {}
         if args:

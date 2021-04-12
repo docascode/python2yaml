@@ -18,6 +18,9 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 163
+  summary: 'Docstring of internal class :class:`format.google.foo.FooException.InternalFoo`.
+
+    This class is an internal class of :class:`format.google.foo.FooException`.'
   type: class
   uid: format.google.foo.FooException.InternalFoo
 references: []

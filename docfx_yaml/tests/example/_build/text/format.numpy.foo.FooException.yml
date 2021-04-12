@@ -22,6 +22,9 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\numpy\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 181
+  summary: 'Docstring of :class:`format.numpy.foo.FooException`.
+
+    Another class of :mod:`format.numpy.foo` module.'
   type: class
   uid: format.numpy.foo.FooException
 references: []

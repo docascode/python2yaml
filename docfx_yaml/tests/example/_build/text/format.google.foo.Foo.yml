@@ -31,6 +31,12 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 22
+  summary: "Docstring of :class:`format.google.foo.Foo` class in google format.\n\n\
+    \n.. attribute:: attr\n\n\n   Docstring of :any:`format.google.foo.Foo.attr` from\
+    \ class docstring.\n\n\n   :type: :class:`~format.rst.enum.EnumFoo`\n\n\n:param\
+    \ init_arg1: Parameter init_arg1 from class docstring.\n:type init_arg1: float\n\
+    :param init_arg2: Parameter init_arg2 from class docstring.\n:type init_arg2:\
+    \ list[int]"
   type: class
   uid: format.google.foo.Foo
 - class: format.google.foo.Foo
@@ -64,6 +70,17 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 50
+  summary: 'Docstring of :meth:`format.google.foo.Foo.class_method` @classmethod.
+
+
+
+    :param cls: Class object of :class:`format.google.foo.Foo`.
+
+    :type cls: class
+
+    :param arg1: Parameter arg1 of :meth:`format.google.foo.Foo.class_method`.
+
+    :type arg1: str'
   syntax:
     parameters:
     - id: cls
@@ -85,6 +102,7 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 66
+  summary: Docstring of normal class method :meth:`format.google.foo.Foo.method`.
   syntax:
     parameters: []
   type: method
@@ -104,6 +122,9 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 130
+  summary: "Docstring of :meth:`format.google.foo.Foo.method_code`.\n\n\n.. code-block::\
+    \ python\n\n\n    >>> import numpy as np\n    >>> a = np.ndarray([1,2,3,4,5])\n\
+    \n\nAnother way of code block::\n\n\n    >>> import numpy as np\n    >>> b = np.random.random(10)"
   syntax:
     parameters: []
   type: method
@@ -123,6 +144,23 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 145
+  summary: 'Docstring of :meth:`format.google.foo.Foo.method_example`.
+
+
+
+    .. rubric:: Example
+
+
+
+    This is example content.
+
+    Should support multi-line.
+
+    Can also include file:
+
+
+
+    .. literalinclude:: ../format/rst/enum.py'
   syntax:
     parameters: []
   type: method
@@ -142,6 +180,13 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 86
+  summary: 'Docstring of :meth:`format.google.foo.Foo.method_exception`.
+
+
+
+    :raises format.rst.foo.FooException: This function raises
+
+    :raises exception.:'
   syntax:
     parameters: []
   type: method
@@ -161,6 +206,15 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 95
+  summary: 'Docstring of :meth:`format.google.foo.Foo.method_external_link`.
+
+    Inline link should be transformed to markdown: `Link Text <http://inline.external.link>`_.
+
+    And seperated link will fail: `Seprated Link`_
+
+
+
+    .. _Seprated Link: http://seperated.external.link'
   syntax:
     parameters: []
   type: method
@@ -180,6 +234,11 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 79
+  summary: 'Docstring of :meth:`format.google.foo.Foo.method_multiline`.
+
+    This docstring has multiple lines of contents.
+
+    And this should work perfectly.'
   syntax:
     parameters: []
   type: method
@@ -199,6 +258,8 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 113
+  summary: "Docstring of :meth:`format.google.foo.Foo.method_note`.\n\n\n.. note::\n\
+    \n\n   This is content of note.\n   Another line of note contents."
   syntax:
     parameters: []
   type: method
@@ -218,6 +279,13 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 71
+  summary: 'Docstring of :meth:`format.google.foo.Foo.method_return`.
+
+
+
+    :returns: This method returns a value.
+
+    :rtype: bool'
   syntax:
     parameters: []
   type: method
@@ -237,6 +305,8 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 104
+  summary: "Docstring of :meth:`format.google.foo.Foo.method_seealso`.\n\n\n.. seealso::\n\
+    \n\n   Seealso contents.\n   Multi-line should be supported."
   syntax:
     parameters: []
   type: method
@@ -256,6 +326,11 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 122
+  summary: 'Docstring of :meth:`format.google.foo.Foo.method_warning`.
+
+
+
+    .. warning:: This is content of warning.'
   syntax:
     parameters: []
   type: method
@@ -275,6 +350,7 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\google\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 60
+  summary: Docstring of :meth:`format.google.foo.Foo.static_method` @staticmethod.
   type: method
   uid: format.google.foo.Foo.static_method
 references: []

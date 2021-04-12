@@ -35,6 +35,17 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\rst\foo.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 12
+  summary: 'Docstring of :func:`format.rst.foo.function` function.
+
+
+
+    :param int arg1: Parameter arg1 of :func:`~format.rst.foo.function`.
+
+    :param float arg2: Parameter arg2 of :func:`~format.rst.foo.function`.
+
+    :param boolean arg3: Parameter arg3 of :func:`~format.rst.foo.function`.
+
+    :param str arg4: Parameter arg4 of :func:`~format.rst.foo.function`.'
   syntax:
     parameters:
     - id: arg1

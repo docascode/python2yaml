@@ -36,6 +36,7 @@ items:
       path: D:Github\python2yaml\docfx_yaml\tests\example\format\rst\__init__.py
       repo: https://github.com/docascode/python2yaml.git
     startLine: 6
+  summary: Docstring of module function :func:`format.rst.module_function`.
   type: function
   uid: format.rst.module_function
 references: []
