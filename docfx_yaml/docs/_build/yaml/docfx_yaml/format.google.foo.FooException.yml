@@ -1,0 +1,28 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children: []
+  class: format.google.foo.FooException
+  fullName: format.google.foo.FooException
+  inheritance:
+  - inheritance:
+    - inheritance:
+      - type: builtins.object
+      type: builtins.BaseException
+    type: builtins.Exception
+  langs:
+  - python
+  module: format.google.foo
+  name: FooException
+  references: []
+  source:
+    id: FooException
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: class
+  uid: format.google.foo.FooException
+references: []

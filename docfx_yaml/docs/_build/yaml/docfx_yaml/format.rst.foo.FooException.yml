@@ -1,0 +1,28 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children: []
+  class: format.rst.foo.FooException
+  fullName: format.rst.foo.FooException
+  inheritance:
+  - inheritance:
+    - inheritance:
+      - type: builtins.object
+      type: builtins.BaseException
+    type: builtins.Exception
+  langs:
+  - python
+  module: format.rst.foo
+  name: FooException
+  references: []
+  source:
+    id: FooException
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: class
+  uid: format.rst.foo.FooException
+references: []

@@ -1,0 +1,24 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children: []
+  class: format.rst.foo.FooException.InternalFoo
+  fullName: format.rst.foo.FooException.InternalFoo
+  inheritance:
+  - type: builtins.object
+  langs:
+  - python
+  module: format.rst.foo.FooException
+  name: InternalFoo
+  references: []
+  source:
+    id: InternalFoo
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: class
+  uid: format.rst.foo.FooException.InternalFoo
+references: []

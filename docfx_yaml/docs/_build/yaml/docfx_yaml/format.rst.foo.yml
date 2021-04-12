@@ -1,0 +1,46 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.rst.foo.Foo
+  - format.rst.foo.FooException
+  - format.rst.foo.InheritFoo
+  - format.rst.foo.function
+  fullName: format.rst.foo
+  langs:
+  - python
+  module: format.rst.foo
+  name: foo
+  references: []
+  source:
+    id: foo
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: module
+  uid: format.rst.foo
+- fullName: format.rst.foo.function
+  langs:
+  - python
+  module: format.rst.foo
+  name: function
+  source:
+    id: function
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: arg1
+    - id: arg2
+    - id: arg3
+    - id: arg4
+  type: function
+  uid: format.rst.foo.function
+references: []

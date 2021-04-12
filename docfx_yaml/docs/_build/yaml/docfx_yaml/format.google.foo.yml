@@ -1,0 +1,45 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.google.foo.Foo
+  - format.google.foo.FooException
+  - format.google.foo.function
+  fullName: format.google.foo
+  langs:
+  - python
+  module: format.google.foo
+  name: foo
+  references: []
+  source:
+    id: foo
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: module
+  uid: format.google.foo
+- fullName: format.google.foo.function
+  langs:
+  - python
+  module: format.google.foo
+  name: function
+  source:
+    id: function
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: arg1
+    - id: arg2
+    - id: arg3
+    - id: arg4
+  type: function
+  uid: format.google.foo.function
+references: []

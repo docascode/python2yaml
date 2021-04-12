@@ -1,0 +1,22 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.numpy.foo
+  fullName: format.numpy
+  langs:
+  - python
+  module: format.numpy
+  name: numpy
+  references: []
+  source:
+    id: numpy
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: module
+  uid: format.numpy
+references: []

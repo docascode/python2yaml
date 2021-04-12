@@ -1,0 +1,23 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - nspkg.pkg_resources
+  - nspkg.pkgutil
+  fullName: nspkg
+  langs:
+  - python
+  module: nspkg
+  name: nspkg
+  references: []
+  source:
+    id: nspkg
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: module
+  uid: nspkg
+references: []

@@ -1,0 +1,279 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.numpy.foo.Foo.attr
+  - format.numpy.foo.Foo.class_method
+  - format.numpy.foo.Foo.method
+  - format.numpy.foo.Foo.method_code
+  - format.numpy.foo.Foo.method_example
+  - format.numpy.foo.Foo.method_exception
+  - format.numpy.foo.Foo.method_external_link
+  - format.numpy.foo.Foo.method_multiline
+  - format.numpy.foo.Foo.method_note
+  - format.numpy.foo.Foo.method_return
+  - format.numpy.foo.Foo.method_seealso
+  - format.numpy.foo.Foo.method_warning
+  - format.numpy.foo.Foo.static_method
+  class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo
+  inheritance:
+  - type: builtins.object
+  langs:
+  - python
+  module: format.numpy.foo
+  name: Foo
+  references: []
+  source:
+    id: Foo
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: class
+  uid: format.numpy.foo.Foo
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.attr
+  langs:
+  - python
+  module: format.numpy.foo
+  name: attr
+  source:
+    id: attr
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: attribute
+  uid: format.numpy.foo.Foo.attr
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.class_method
+  langs:
+  - python
+  module: format.numpy.foo
+  name: class_method
+  source:
+    id: class_method
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: cls
+    - id: arg1
+  type: method
+  uid: format.numpy.foo.Foo.class_method
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method
+  source:
+    id: method
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_code
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_code
+  source:
+    id: method_code
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_code
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_example
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_example
+  source:
+    id: method_example
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_example
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_exception
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_exception
+  source:
+    id: method_exception
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_exception
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_external_link
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_external_link
+  source:
+    id: method_external_link
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_external_link
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_multiline
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_multiline
+  source:
+    id: method_multiline
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_multiline
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_note
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_note
+  source:
+    id: method_note
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_note
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_return
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_return
+  source:
+    id: method_return
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_return
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_seealso
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_seealso
+  source:
+    id: method_seealso
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_seealso
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.method_warning
+  langs:
+  - python
+  module: format.numpy.foo
+  name: method_warning
+  source:
+    id: method_warning
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.numpy.foo.Foo.method_warning
+- class: format.numpy.foo.Foo
+  fullName: format.numpy.foo.Foo.static_method
+  langs:
+  - python
+  module: format.numpy.foo
+  name: static_method
+  source:
+    id: static_method
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: method
+  uid: format.numpy.foo.Foo.static_method
+references: []

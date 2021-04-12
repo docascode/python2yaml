@@ -1,0 +1,60 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.rst.enum.EnumFoo.VALUE0
+  - format.rst.enum.EnumFoo.VALUE1
+  class: format.rst.enum.EnumFoo
+  fullName: format.rst.enum.EnumFoo
+  inheritance:
+  - inheritance:
+    - type: builtins.object
+    type: enum.Enum
+  langs:
+  - python
+  module: format.rst.enum
+  name: EnumFoo
+  references: []
+  source:
+    id: EnumFoo
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: class
+  uid: format.rst.enum.EnumFoo
+- class: format.rst.enum.EnumFoo
+  fullName: format.rst.enum.EnumFoo.VALUE0
+  langs:
+  - python
+  module: format.rst.enum
+  name: VALUE0
+  source:
+    id: VALUE0
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: attribute
+  uid: format.rst.enum.EnumFoo.VALUE0
+- class: format.rst.enum.EnumFoo
+  fullName: format.rst.enum.EnumFoo.VALUE1
+  langs:
+  - python
+  module: format.rst.enum
+  name: VALUE1
+  source:
+    id: VALUE1
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: attribute
+  uid: format.rst.enum.EnumFoo.VALUE1
+references: []

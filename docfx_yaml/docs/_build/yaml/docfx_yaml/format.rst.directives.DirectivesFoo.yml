@@ -1,0 +1,61 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.rst.directives.DirectivesFoo.method_remarks
+  - format.rst.directives.DirectivesFoo.var_remarks
+  class: format.rst.directives.DirectivesFoo
+  fullName: format.rst.directives.DirectivesFoo
+  inheritance:
+  - type: builtins.object
+  langs:
+  - python
+  module: format.rst.directives
+  name: DirectivesFoo
+  references: []
+  source:
+    id: DirectivesFoo
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: class
+  uid: format.rst.directives.DirectivesFoo
+- class: format.rst.directives.DirectivesFoo
+  fullName: format.rst.directives.DirectivesFoo.method_remarks
+  langs:
+  - python
+  module: format.rst.directives
+  name: method_remarks
+  source:
+    id: method_remarks
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  syntax:
+    parameters:
+    - id: self
+  type: method
+  uid: format.rst.directives.DirectivesFoo.method_remarks
+- class: format.rst.directives.DirectivesFoo
+  fullName: format.rst.directives.DirectivesFoo.var_remarks
+  langs:
+  - python
+  module: format.rst.directives
+  name: var_remarks
+  source:
+    id: var_remarks
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: attribute
+  uid: format.rst.directives.DirectivesFoo.var_remarks
+references: []

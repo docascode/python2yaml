@@ -1,0 +1,24 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children: []
+  class: format.numpy.foo.FooException.InternalFoo
+  fullName: format.numpy.foo.FooException.InternalFoo
+  inheritance:
+  - type: builtins.object
+  langs:
+  - python
+  module: format.numpy.foo.FooException
+  name: InternalFoo
+  references: []
+  source:
+    id: InternalFoo
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: class
+  uid: format.numpy.foo.FooException.InternalFoo
+references: []

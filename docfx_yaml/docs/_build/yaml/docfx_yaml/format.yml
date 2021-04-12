@@ -1,0 +1,24 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.google
+  - format.numpy
+  - format.rst
+  fullName: format
+  langs:
+  - python
+  module: format
+  name: format
+  references: []
+  source:
+    id: format
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: module
+  uid: format
+references: []

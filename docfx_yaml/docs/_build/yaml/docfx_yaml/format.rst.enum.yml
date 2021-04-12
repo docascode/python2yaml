@@ -1,0 +1,22 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.rst.enum.EnumFoo
+  fullName: format.rst.enum
+  langs:
+  - python
+  module: format.rst.enum
+  name: enum
+  references: []
+  source:
+    id: enum
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: module
+  uid: format.rst.enum
+references: []

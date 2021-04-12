@@ -1,0 +1,38 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.rst.directives.DirectivesFoo
+  - format.rst.directives.func
+  fullName: format.rst.directives
+  langs:
+  - python
+  module: format.rst.directives
+  name: directives
+  references: []
+  source:
+    id: directives
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: module
+  uid: format.rst.directives
+- fullName: format.rst.directives.func
+  langs:
+  - python
+  module: format.rst.directives
+  name: func
+  source:
+    id: func
+    path: null
+    remote:
+      branch: null
+      path: null
+      repo: null
+    startLine: null
+  type: function
+  uid: format.rst.directives.func
+references: []
