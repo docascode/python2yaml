@@ -1,0 +1,405 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.attr
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.class_method
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_code
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_default_value
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_default_value_comma
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_example
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_exception
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_external_link
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_multiline
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_note
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_return
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_seealso
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.method_warning
+  - nspkg.pkg_resources.pkg_resources_foo.Foo.static_method
+  class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo
+  inheritance:
+  - type: builtins.object
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: Foo
+  source:
+    id: Foo
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 23
+  summary: 'Docstring of :class:`format.rst.foo.Foo` class in rst format.
+
+
+
+    :var attr: Docstring of :class:`format.rst.foo.Foo.attr` from class docstring.
+
+    :vartype attr: ~format.rst.enum.EnumFoo
+
+
+
+    :param init_arg1: Parameter init_arg1 from class docstring.
+
+    :type init_arg1: float
+
+    :param list[int] init_arg2: Parameter init_arg2 from class docstring.'
+  type: class
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.attr
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: attr
+  source:
+    id: attr
+    path: null
+    remote:
+      branch: develop
+      path: null
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: null
+  type: attribute
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.attr
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.class_method
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: class_method
+  namewithoutparameters: class_method
+  source:
+    id: class_method
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 51
+  summary: 'Docstring of :class:`format.rst.foo.Foo.class_method` @classmethod.
+
+
+
+    :param cls: Class object of :class:`format.rst.foo.Foo`.
+
+    :type cls: class
+
+    :param str arg1: Parameter arg1 of :meth:`format.rst.foo.Foo.class_method`.'
+  syntax:
+    parameters:
+    - id: cls
+    - id: arg1
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.class_method
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method
+  namewithoutparameters: method
+  source:
+    id: method
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 67
+  summary: Docstring of normal class method :meth:`format.rst.foo.Foo.method`.
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_code
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_code
+  namewithoutparameters: method_code
+  source:
+    id: method_code
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 131
+  summary: "Docstring of :meth:`format.rst.foo.Foo.method_code`.\n\n\n.. code-block::\
+    \ python\n\n\n    >>> import numpy as np\n    >>> a = np.ndarray([1,2,3,4,5])\n\
+    \n\nAnother way of code block::\n\n\n    import numpy as np\n    b = np.random.random(10)"
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_code
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_default_value
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_default_value
+  namewithoutparameters: method_default_value
+  source:
+    id: method_default_value
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 158
+  summary: 'Docstring of :meth:`format.rst.foo.Foo.method_default_value`.
+
+
+
+    :param str arg1: Parameter arg1 of :meth:`format.rst.foo.Foo.method_default_value`,
+    default value is ''default string''.
+
+    :param object arg2: Paremeter arg2 of :meth:`format.rst.foo.Foo.method_default_value`
+    default value is None.'
+  syntax:
+    parameters:
+    - defaultValue: default string
+      id: arg1
+    - defaultValue: None
+      id: arg2
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_default_value
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_default_value_comma
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_default_value_comma
+  namewithoutparameters: method_default_value_comma
+  source:
+    id: method_default_value_comma
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 166
+  summary: 'Docstring of :meth:`format.rst.foo.Foo.method_default_value_comma`.
+
+    The default value of method parameter contains comma thus will fail to parse.
+
+
+
+    :param tuple arg1: Parameter arg1 of :meth:`format.rst.foo.Foo.method_default_value_comma`,
+    default value is (1,2,3).'
+  syntax:
+    parameters:
+    - defaultValue: (1, 2, 3)
+      id: arg1
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_default_value_comma
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_example
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_example
+  namewithoutparameters: method_example
+  source:
+    id: method_example
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 146
+  summary: "Docstring of :meth:`format.rst.foo.Foo.method_example`.\n\n\n.. admonition::\n\
+    \    This is Example content.\n    Should support multi-line.\n    Can also include\
+    \ file:\n\n\n    .. literalinclude:: ../format/rst/enum.py"
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_example
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_exception
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_exception
+  namewithoutparameters: method_exception
+  source:
+    id: method_exception
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 87
+  summary: "Docstring of :meth:`format.rst.foo.Foo.method_exception`.\n\n\n:raises:\
+    \ :class:`format.rst.foo.FooException` This function raises\n    exception."
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_exception
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_external_link
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_external_link
+  namewithoutparameters: method_external_link
+  source:
+    id: method_external_link
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 95
+  summary: 'Docstring of :meth:`format.rst.foo.Foo.method_external_link`.
+
+    Inline link should be transformed to markdown: `Link Text <http://inline.external.link>`_.
+
+    And seperated link will fail: `Seperated Link`_
+
+
+
+    .. _Seperated Link: http://seperated.external.link'
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_external_link
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_multiline
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_multiline
+  namewithoutparameters: method_multiline
+  source:
+    id: method_multiline
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 80
+  summary: 'Docstring of :meth:`format.rst.foo.Foo.method_multiline`.
+
+    This docstring has multiple lines of contents.
+
+    And this should work perfectly.'
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_multiline
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_note
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_note
+  namewithoutparameters: method_note
+  source:
+    id: method_note
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 114
+  summary: "Docstring of :meth:`format.rst.foo.Foo.method_note`.\n\n\n.. note::\n\
+    \    This is content of note.\n    Another line of note contents."
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_note
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_return
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_return
+  namewithoutparameters: method_return
+  source:
+    id: method_return
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 72
+  summary: 'Docstring of :meth:`format.rst.foo.Foo.method_return`.
+
+
+
+    :return: This method returns a value.
+
+    :rtype: boolean'
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_return
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_seealso
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_seealso
+  namewithoutparameters: method_seealso
+  source:
+    id: method_seealso
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 104
+  summary: "Docstring of :meth:`format.rst.foo.Foo.method_seealso`.\n\n\n.. seealso::\n\
+    \    Seealso contents.\n    Multi-line should be supported.\n    And reference\
+    \ to :class:`format.rst.foo.Foo` should be okay."
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_seealso
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.method_warning
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: method_warning
+  namewithoutparameters: method_warning
+  source:
+    id: method_warning
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 123
+  summary: "Docstring of :meth:`format.rst.foo.Foo.method_warning`.\n\n\n.. warning::\n\
+    \    This is content of warning."
+  syntax:
+    parameters: []
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.method_warning
+- class: nspkg.pkg_resources.pkg_resources_foo.Foo
+  fullName: nspkg.pkg_resources.pkg_resources_foo.Foo.static_method
+  langs:
+  - python
+  module: nspkg.pkg_resources.pkg_resources_foo
+  name: static_method
+  namewithoutparameters: static_method
+  source:
+    id: static_method
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 61
+  summary: Docstring of :meth:`format.rst.foo.Foo.static_method` @staticmethod.
+  type: method
+  uid: nspkg.pkg_resources.pkg_resources_foo.Foo.static_method
+references: []

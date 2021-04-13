@@ -1,0 +1,30 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children: []
+  class: format.google.foo.FooException
+  fullName: format.google.foo.FooException
+  inheritance:
+  - inheritance:
+    - inheritance:
+      - type: builtins.object
+      type: builtins.BaseException
+    type: builtins.Exception
+  langs:
+  - python
+  module: format.google.foo
+  name: FooException
+  source:
+    id: FooException
+    path: D:Github\python2yaml\tests\example\format\google\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\google\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 158
+  summary: 'Docstring of :class:`format.google.foo.FooException`.
+
+    Another class of :mod:`format.google.foo` module.'
+  type: class
+  uid: format.google.foo.FooException
+references: []
