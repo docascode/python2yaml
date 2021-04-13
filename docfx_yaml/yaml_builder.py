@@ -8,8 +8,8 @@ from sphinx.util.osutil import ensuredir, os_path
 from directives import RemarksDirective, TodoDirective
 from nodes import remarks
 from extension import build_init
-from extension import process_docstring
-from extension import build_finished
+from extension import process_docstring, process_signature, build_finished
+from transform import transform_yaml
 
 class YamlBuilder(Builder):
     name = 'yaml'
@@ -50,7 +50,7 @@ class YamlBuilder(Builder):
         pass
 
     def write_doc(self, docname, doctree):
-        pass
+        transform_yaml(self.app, docname, doctree)
 
     def finish(self):
         pass
@@ -63,6 +63,7 @@ def setup(app):
 
     app.connect('builder-inited', build_init)
     app.connect('autodoc-process-docstring', process_docstring)
+    app.connect('autodoc-process-signature', process_signature)
     app.connect('build-finished', build_finished)
 
     app.add_config_value('autodoc_functions', False, 'env')

@@ -69,7 +69,7 @@ def build_init(app):
 
     # patch_docfields(app)
 
-    # app.docfx_transform_node = partial(transform_node, app)
+    app.docfx_transform_node = partial(transform_node, app)
     app.docfx_transform_string = partial(transform_string, app)
 
 def _fullname(obj):
@@ -303,13 +303,6 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
         if summary:
             datam['summary'] = summary.strip(" \n\r\r")
 
-    ### Test add summary for class, function, exception, etc
-    if _type in [CLASS, FUNCTION, EXCEPTION, METHOD]:
-        summary = app.docfx_transform_string('\n'.join(lines))
-        if summary:
-            datam['summary'] = summary.strip(" \n\r\r")
-
-
     if args or sig:
         datam['syntax'] = {}
         if args:
@@ -326,6 +319,12 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
         datam['name'] = app.env.docfx_signature_funcs_methods.get(name, datam['name'])
 
     return datam
+
+def process_signature(app, _type, name, obj, options, signature, return_annotation):
+    if signature:
+        short_name = name.split('.')[-1]
+        signature = short_name + signature
+        app.env.docfx_signature_funcs_methods[name] = signature
 
 def insert_inheritance(app, _type, obj, datam):
 
@@ -469,6 +468,7 @@ def build_finished(app, exception):
 
     normalized_outdir = os.path.normpath(os.path.join(
         app.builder.outdir  # Output Directory for Builder
+        #API_ROOT
     ))
     ensuredir(normalized_outdir)
 
@@ -568,7 +568,7 @@ def build_finished(app, exception):
                                 else:
                                     # Get parent for attrData of enum class
                                     parent = attrData['parent']
-                                obj['references'].append(_create_reference(attrData, parent))
+                                # obj['references'].append(_create_reference(attrData, parent))
                     app.env.docfx_info_field_data[obj['uid']]['type'] = obj['type'] # Revert `type` for other objects to use
 
                 if 'references' in obj:
