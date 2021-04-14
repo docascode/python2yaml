@@ -1,0 +1,436 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.rst.foo.Foo.attr
+  - format.rst.foo.Foo.class_method
+  - format.rst.foo.Foo.method
+  - format.rst.foo.Foo.method_code
+  - format.rst.foo.Foo.method_default_value
+  - format.rst.foo.Foo.method_default_value_comma
+  - format.rst.foo.Foo.method_example
+  - format.rst.foo.Foo.method_exception
+  - format.rst.foo.Foo.method_external_link
+  - format.rst.foo.Foo.method_multiline
+  - format.rst.foo.Foo.method_note
+  - format.rst.foo.Foo.method_return
+  - format.rst.foo.Foo.method_seealso
+  - format.rst.foo.Foo.method_warning
+  - format.rst.foo.Foo.static_method
+  class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo
+  inheritance:
+  - type: builtins.object
+  langs:
+  - python
+  module: format.rst.foo
+  name: Foo
+  source:
+    id: Foo
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 23
+  summary: Docstring of <xref:format.rst.foo.Foo> class in rst format.
+  syntax:
+    content: Foo(init_arg1, init_arg2)
+    parameters:
+    - description: Parameter init_arg1 from class docstring.
+      id: init_arg1
+      type: float
+    - description: Parameter init_arg2 from class docstring.
+      id: init_arg2
+      type: list
+  type: class
+  uid: format.rst.foo.Foo
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.attr
+  langs:
+  - python
+  module: format.rst.foo
+  name: attr
+  source:
+    id: attr
+    path: null
+    remote:
+      branch: develop
+      path: null
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: null
+  summary: Docstring of <xref:format.rst.foo.Foo.attr> from attrbute docstring.
+  syntax:
+    content: attr = 1
+  type: attribute
+  uid: format.rst.foo.Foo.attr
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.class_method
+  langs:
+  - python
+  module: format.rst.foo
+  name: class_method(arg1)
+  namewithoutparameters: class_method
+  source:
+    id: class_method
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 51
+  summary: Docstring of <xref:format.rst.foo.Foo.class_method> @classmethod.
+  syntax:
+    content: class_method(arg1)
+    parameters:
+    - description: Class object of <xref:format.rst.foo.Foo>.
+      id: cls
+      isRequired: true
+    - description: Parameter arg1 of <xref:format.rst.foo.Foo.class_method>.
+      id: arg1
+      isRequired: true
+      type: str
+  type: method
+  uid: format.rst.foo.Foo.class_method
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method
+  langs:
+  - python
+  module: format.rst.foo
+  name: method()
+  namewithoutparameters: method
+  source:
+    id: method
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 67
+  summary: Docstring of normal class method <xref:format.rst.foo.Foo.method>.
+  syntax:
+    content: method()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_code
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_code()
+  namewithoutparameters: method_code
+  source:
+    id: method_code
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 131
+  summary: "Docstring of <xref:format.rst.foo.Foo.method_code>.\n\n<!-- literal_block\
+    \ {\"ids\": [], \"classes\": [], \"names\": [], \"dupnames\": [], \"backrefs\"\
+    : [], \"xml:space\": \"preserve\", \"force\": false, \"language\": \"python\"\
+    , \"highlight_args\": {}, \"linenos\": false} -->\n\n````python\n\n   >>> import\
+    \ numpy as np\n   >>> a = np.ndarray([1,2,3,4,5])\n   ````\n\nAnother way of code\
+    \ block:\n\n<!-- literal_block {\"ids\": [], \"classes\": [], \"names\": [], \"\
+    dupnames\": [], \"backrefs\": [], \"xml:space\": \"preserve\", \"language\": \"\
+    default\", \"force\": false, \"linenos\": false} -->\n\n````default\n\n   import\
+    \ numpy as np\n   b = np.random.random(10)\n   ````"
+  syntax:
+    content: method_code()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method_code
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_default_value
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_default_value(arg1='default string', arg2=None)
+  namewithoutparameters: method_default_value
+  source:
+    id: method_default_value
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 158
+  summary: Docstring of <xref:format.rst.foo.Foo.method_default_value>.
+  syntax:
+    content: method_default_value(arg1='default string', arg2=None)
+    parameters:
+    - defaultValue: default string
+      description: "Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value>,\
+        \ default value is \u2018default string\u2019."
+      id: arg1
+      type: str
+    - defaultValue: None
+      description: Paremeter arg2 of <xref:format.rst.foo.Foo.method_default_value>
+        default value is None.
+      id: arg2
+      type: object
+  type: method
+  uid: format.rst.foo.Foo.method_default_value
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_default_value_comma
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_default_value_comma(arg1=(1, 2, 3))
+  namewithoutparameters: method_default_value_comma
+  source:
+    id: method_default_value_comma
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 166
+  summary: 'Docstring of <xref:format.rst.foo.Foo.method_default_value_comma>.
+
+    The default value of method parameter contains comma thus will fail to parse.'
+  syntax:
+    content: method_default_value_comma(arg1=(1, 2, 3))
+    parameters:
+    - defaultValue: (1, 2, 3)
+      description: Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value_comma>,
+        default value is (1,2,3).
+      id: arg1
+      type: tuple
+  type: method
+  uid: format.rst.foo.Foo.method_default_value_comma
+- class: format.rst.foo.Foo
+  example:
+  - "<!--[!code-default[Main](at\\rst\\enum.py )]-->\n\n<!-- literal_block {\"ids\"\
+    : [], \"classes\": [], \"names\": [], \"dupnames\": [], \"backrefs\": [], \"source\"\
+    : \"D:\\\\Github\\\\python2yaml\\\\tests\\\\example\\\\format\\\\rst\\\\enum.py\"\
+    , \"xml:space\": \"preserve\", \"force\": false, \"highlight_args\": {\"linenostart\"\
+    : 1}, \"language\": \"default\", \"linenos\": false} -->\n\n````default\n\n  \
+    \ # coding: utf-8\n\n   from enum import Enum\n\n   class EnumFoo(Enum):\n   \
+    \    \"\"\" Docstring of :class:`format.rst.enum.EnumFoo` class.\n       \"\"\"\
+    \n\n       VALUE0 = 0 #: Inline docstring of VALUE0\n       VALUE1 = 1 #: Inlune\
+    \ docstring of VALUE1\n\n   ````\n"
+  fullName: format.rst.foo.Foo.method_example
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_example()
+  namewithoutparameters: method_example
+  source:
+    id: method_example
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 146
+  summary: Docstring of <xref:format.rst.foo.Foo.method_example>.
+  syntax:
+    content: method_example()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method_example
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_exception
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_exception()
+  namewithoutparameters: method_exception
+  source:
+    id: method_exception
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 87
+  summary: Docstring of <xref:format.rst.foo.Foo.method_exception>.
+  syntax:
+    content: method_exception()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method_exception
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_external_link
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_external_link()
+  namewithoutparameters: method_external_link
+  source:
+    id: method_external_link
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 95
+  summary: 'Docstring of <xref:format.rst.foo.Foo.method_external_link>.
+
+    Inline link should be transformed to markdown: [Link Text](http://inline.external.link).
+
+    And seperated link will fail: [Seperated Link](http://seperated.external.link)'
+  syntax:
+    content: method_external_link()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method_external_link
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_multiline
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_multiline()
+  namewithoutparameters: method_multiline
+  source:
+    id: method_multiline
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 80
+  summary: 'Docstring of <xref:format.rst.foo.Foo.method_multiline>.
+
+    This docstring has multiple lines of contents.
+
+    And this should work perfectly.'
+  syntax:
+    content: method_multiline()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method_multiline
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_note
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_note()
+  namewithoutparameters: method_note
+  source:
+    id: method_note
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 114
+  summary: 'Docstring of <xref:format.rst.foo.Foo.method_note>.
+
+
+
+    > [!NOTE]
+
+    > This is content of note.
+
+    >
+
+    > Another line of note contents.
+
+    >'
+  syntax:
+    content: method_note()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method_note
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_return
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_return()
+  namewithoutparameters: method_return
+  source:
+    id: method_return
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 72
+  summary: Docstring of <xref:format.rst.foo.Foo.method_return>.
+  syntax:
+    content: method_return()
+    parameters: []
+    return:
+      description: This method returns a value.
+      type:
+      - boolean
+  type: method
+  uid: format.rst.foo.Foo.method_return
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_seealso
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_seealso()
+  namewithoutparameters: method_seealso
+  seealsoContent: "  Seealso contents.\n  Multi-line should be supported.\n  And reference\
+    \ to <xref:format.rst.foo.Foo> should be okay.\n"
+  source:
+    id: method_seealso
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 104
+  summary: Docstring of <xref:format.rst.foo.Foo.method_seealso>.
+  syntax:
+    content: method_seealso()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method_seealso
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.method_warning
+  langs:
+  - python
+  module: format.rst.foo
+  name: method_warning()
+  namewithoutparameters: method_warning
+  source:
+    id: method_warning
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 123
+  summary: 'Docstring of <xref:format.rst.foo.Foo.method_warning>.
+
+
+
+    > [!WARNING]
+
+    > This is content of warning.
+
+    >'
+  syntax:
+    content: method_warning()
+    parameters: []
+  type: method
+  uid: format.rst.foo.Foo.method_warning
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.static_method
+  langs:
+  - python
+  module: format.rst.foo
+  name: static_method()
+  namewithoutparameters: static_method
+  source:
+    id: static_method
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 61
+  summary: Docstring of <xref:format.rst.foo.Foo.static_method> @staticmethod.
+  syntax:
+    content: static_method()
+  type: method
+  uid: format.rst.foo.Foo.static_method
+references: []

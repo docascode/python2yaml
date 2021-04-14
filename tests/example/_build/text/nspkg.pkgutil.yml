@@ -1,0 +1,22 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - nspkg.pkgutil.pkgutil_foo
+  fullName: nspkg.pkgutil
+  kind: import
+  langs:
+  - python
+  module: nspkg.pkgutil
+  name: pkgutil
+  source:
+    id: pkgutil
+    path: D:Github\python2yaml\tests\example\nspkg\pkgutil\__init__.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\nspkg\pkgutil\__init__.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 0
+  type: package
+  uid: nspkg.pkgutil
+references: []

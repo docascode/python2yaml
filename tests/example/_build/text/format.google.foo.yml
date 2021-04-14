@@ -1,0 +1,54 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.google.foo.Foo
+  - format.google.foo.FooException
+  - format.google.foo.function
+  fullName: format.google.foo
+  langs:
+  - python
+  module: format.google.foo
+  name: foo
+  source:
+    id: foo
+    path: D:Github\python2yaml\tests\example\format\google\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\google\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 0
+  summary: Docstring of <xref:format.google.foo> module.
+  type: module
+  uid: format.google.foo
+- fullName: format.google.foo.function
+  langs:
+  - python
+  module: format.google.foo
+  name: function(arg1, arg2, arg3, arg4)
+  source:
+    id: function
+    path: D:Github\python2yaml\tests\example\format\google\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\google\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 10
+  summary: Docstring of <xref:format.google.foo.function> function.
+  syntax:
+    content: function(arg1, arg2, arg3, arg4)
+    parameters:
+    - description: Parameter arg1 of <xref:format.google.foo.function>.
+      id: arg1
+      type: int
+    - description: Parameter arg2 of <xref:format.google.foo.function>.
+      id: arg2
+      type: float
+    - description: Parameter arg3 of <xref:format.google.foo.function>.
+      id: arg3
+    - description: Parameter arg4 of <xref:format.google.foo.function>.
+      id: arg4
+      type: str
+  type: function
+  uid: format.google.foo.function
+references: []

@@ -1,0 +1,55 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.rst.foo.Foo
+  - format.rst.foo.FooException
+  - format.rst.foo.InheritFoo
+  - format.rst.foo.function
+  fullName: format.rst.foo
+  langs:
+  - python
+  module: format.rst.foo
+  name: foo
+  source:
+    id: foo
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 0
+  summary: Docstring of <xref:format.rst.foo> module.
+  type: module
+  uid: format.rst.foo
+- fullName: format.rst.foo.function
+  langs:
+  - python
+  module: format.rst.foo
+  name: function(arg1, arg2, arg3, arg4)
+  source:
+    id: function
+    path: D:Github\python2yaml\tests\example\format\rst\foo.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\foo.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 12
+  summary: Docstring of <xref:format.rst.foo.function> function.
+  syntax:
+    content: function(arg1, arg2, arg3, arg4)
+    parameters:
+    - description: Parameter arg1 of <xref:format.rst.foo.function>.
+      id: arg1
+      type: int
+    - description: Parameter arg2 of <xref:format.rst.foo.function>.
+      id: arg2
+      type: float
+    - description: Parameter arg3 of <xref:format.rst.foo.function>.
+      id: arg3
+    - description: Parameter arg4 of <xref:format.rst.foo.function>.
+      id: arg4
+      type: str
+  type: function
+  uid: format.rst.foo.function
+references: []

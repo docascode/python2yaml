@@ -1,96 +1,209 @@
+import re
 from docutils import nodes
 from sphinx.util.docfields import _is_single_paragraph
 from sphinx import addnodes
 from sphinx.addnodes import desc, desc_signature
 from nodes import remarks
 
-def type_mapping(type_name):
-    mapping = {
-        "staticmethod": "method",
-        "classmethod": "method",
-        "exception": "class"
-    }
-
-    return mapping[type_name] if type_name in mapping else type_name
-
-def _get_desc_data(node):
-    assert node.tagname == 'desc'
-    if node.attributes['domain'] != 'py':
-        print(
-            'Skipping Domain Object (%s)' % node.attributes['domain']
-        )
-        return None, None
-
-    try:
-        module = node[0].attributes['module']
-        full_name = node[0].attributes['fullname'].split('.')[-1]
-    except KeyError as e:
-        print("[docfx_yaml] There maybe some syntax error in docstring near: " + node.astext())
-        raise e
-
-    try:
-        uid = node[0].attributes['ids'][0]
-    except Exception:
-        uid = '{module}.{full_name}'.format(module=module, full_name=full_name)
-        print('Non-standard id: %s' % uid)
-    return full_name, uid
-
-def _get_full_data(node):
-    data = {}
-    parent_desc = node.parent.parent
-    name, uid = _get_desc_data(parent_desc)
-
-    if not name:
-        return
-
-    for field in node:
-        fieldname, fieldbody = field
-        try:
-            # split into field type and argument
-            fieldtype, _ = fieldname.astext().split(None, 1)
-        except ValueError:
-            # maybe an argument-less field type?
-            fieldtype = fieldname.astext()
-
-        # collect the content, trying not to keep unnecessary paragraphs
-        if _is_single_paragraph(fieldbody):
-            content = fieldbody.children[0].children
-        else:
-            content = fieldbody.children
-
-        data.setdefault(uid, {})
-
-        if fieldtype == 'Returns':
-            for child in content:
-                ret_data = child.astext()
-                data[uid].setdefault(fieldtype, []).append(ret_data)
-
-        if fieldtype == 'Raises':
-            for child in content:
-                ret_data = child.astext()
-                data[uid].setdefault(fieldtype, []).append(ret_data)
-
-        if fieldtype == 'Parameters':
-            for field, node_list in content:
-                _id = field
-                _description = node_list[0]
-    return data
-
-def _is_desc_of_enum_class(node):
-    assert node.tagname == 'desc_content'
-    if node[0] and node[0].tagname == 'paragraph' and node[0].astext() == 'Bases: enum.Enum':
-        return True
-
-    return False
+TYPE_SEP_PATTERN = '(\[|\]|, |\(|\))'
+PARAMETER_NAME = "[*][*](.*?)[*][*]"
+PARAMETER_TYPE = "[[](.*?)[]]"
+PARAMETER_DESCRIPTION = "[–][ ](.*)"
 
 def transform_yaml(app, docname, doctree):
+
+    transform_node = app.docfx_transform_node
+
+    def make_param(_id, _description, _type=None):
+        ret = {
+            'id': _id,
+            'description': _description.strip(" \n\r\t"),
+        }
+        if _type:
+            ret['type'] = _type
+        return ret
+
+    def transform_para(para_field):
+        if isinstance(para_field, nodes.paragraph):
+            return transform_node(para_field)
+        else:
+            return para_field.astext()
+    
+    def type_mapping(type_name):
+        mapping = {
+            "staticmethod": "method",
+            "classmethod": "method",
+            "exception": "class"
+        }
+
+        return mapping[type_name] if type_name in mapping else type_name
+
+    def _get_desc_data(node):
+        assert node.tagname == 'desc'
+        if node.attributes['domain'] != 'py':
+            print(
+                'Skipping Domain Object (%s)' % node.attributes['domain']
+            )
+            return None, None
+
+        try:
+            module = node[0].attributes['module']
+            full_name = node[0].attributes['fullname'].split('.')[-1]
+        except KeyError as e:
+            print("[docfx_yaml] There maybe some syntax error in docstring near: " + node.astext())
+            raise e
+
+        try:
+            uid = node[0].attributes['ids'][0]
+        except Exception:
+            uid = '{module}.{full_name}'.format(module=module, full_name=full_name)
+            print('Non-standard id: %s' % uid)
+        return full_name, uid
+
+    def _is_desc_of_enum_class(node):
+        assert node.tagname == 'desc_content'
+        if node[0] and node[0].tagname == 'paragraph' and node[0].astext() == 'Bases: enum.Enum':
+            return True
+
+        return False
+
+    def resolve_type(data_type):
+        # Remove @ ~ and \n for cross reference in parameter/return value type to apply to docfx correctly
+        data_type = re.sub('[@~\n]', '', data_type)
+
+        # Add references for docfx to resolve ref if type contains TYPE_SEP_PATTERN
+        _spec_list = []
+        _spec_fullnames = re.split(TYPE_SEP_PATTERN, data_type)
+
+        _added_reference = {}
+        if len(_spec_fullnames) > 1:
+            _added_reference_name = ''
+            for _spec_fullname in _spec_fullnames:
+                if _spec_fullname != '':
+                    _spec = {}
+                    _spec['name'] = _spec_fullname.split('.')[-1]
+                    _spec['fullName'] = _spec_fullname
+                    if re.match(TYPE_SEP_PATTERN, _spec_fullname) is None:
+                        _spec['uid'] = _spec_fullname
+                    _spec_list.append(_spec)
+                    _added_reference_name += _spec['name']
+
+            _added_reference = {
+                'uid': data_type,
+                'name': _added_reference_name,
+                'fullName': data_type,
+                'spec.python': _spec_list
+            }
+
+        return data_type, _added_reference
+
+
+    def _get_full_data(node):
+        data = {
+            'parameters': [],
+            'variables': [],
+            'exceptions': [],
+            'return': {},
+            'references': [],
+        }
+
+        for field in node:
+            fieldname, fieldbody = field
+            try:
+                # split into field type and argument
+                fieldtype, _ = fieldname.astext().split(None, 1)
+            except ValueError:
+                # maybe an argument-less field type?
+                fieldtype = fieldname.astext()
+
+            # collect the content, trying not to keep unnecessary paragraphs
+            if _is_single_paragraph(fieldbody):
+                content = fieldbody
+            else:
+                content = fieldbody.children
+
+            if fieldtype == 'Returns':
+                returnvalue_ret = transform_node(content[0])
+                if returnvalue_ret:
+                    data['return']['description'] = returnvalue_ret.strip(" \n\r\t")
+                    # data[uid].setdefault(fieldtype, []).append(ret_data)
+            
+            if fieldtype == 'Return':
+                for returntype_node in content:
+                    returntype_ret = transform_node(returntype_node)
+                    if returntype_ret:
+                        for returntype in re.split('[ \n]or[ \n]', returntype_ret):
+                            returntype, _added_reference = resolve_type(returntype)
+                            if _added_reference:
+                                if len(data['references']) == 0:
+                                    data['references'].append(_added_reference)
+                                elif any(r['uid'] != _added_reference['uid'] for r in data['references']):
+                                    data['references'].append(_added_reference)
+
+                            data['return'].setdefault('type', []).append(returntype)
+                    # data[uid].setdefault(fieldtype, []).append(ret_data)
+            
+            if fieldtype == 'Parameters':
+                if _is_single_paragraph(fieldbody):
+                    ret_data = transform_para(content[0])
+                    _id_pattern = re.compile(PARAMETER_NAME)
+                    _type_pattern = re.compile(PARAMETER_TYPE)
+                    _description_pattern = re.compile(PARAMETER_DESCRIPTION)
+                    if len(re.findall(_id_pattern, ret_data)) > 0:
+                        _id = re.findall(_id_pattern, ret_data)[0]
+                    else:
+                        _id = None
+                    if len(re.findall(_type_pattern, ret_data)) > 0:
+                        _type = re.findall(_type_pattern, ret_data)[0]
+                    else:
+                        _type = None
+                    if len(re.findall(_description_pattern, ret_data)) > 0:
+                        _description = re.findall(_description_pattern, ret_data)[0]
+                    else:
+                        _description = None
+                    _data = make_param(_id, _description, _type)
+                    data['parameters'].append(_data)
+                else:
+                    for child in content[0]:
+                        ret_data = transform_para(child[0])
+                        _id_pattern = re.compile(PARAMETER_NAME)
+                        _type_pattern = re.compile(PARAMETER_TYPE)
+                        _description_pattern = re.compile(PARAMETER_DESCRIPTION)
+                        if len(re.findall(_id_pattern, ret_data)) > 0:
+                            _id = re.findall(_id_pattern, ret_data)[0]
+                        else:
+                            _id = None
+                        if len(re.findall(_type_pattern, ret_data)) > 0:
+                            _type = re.findall(_type_pattern, ret_data)[0]
+                        else:
+                            _type = None
+                        if len(re.findall(_description_pattern, ret_data)) > 0:
+                            _description = re.findall(_description_pattern, ret_data)[0]
+                        else:
+                            _description = None
+                        _data = make_param(_id, _description, _type)
+                        
+                        data['parameters'].append(_data)
+                    # data[uid].setdefault(fieldtype, []).append(ret_data)
+            
+            if fieldtype == 'Variables':
+                for child in content:
+                    ret_data = child.astext()
+                    # data[uid].setdefault(fieldtype, []).append(ret_data)
+
+            if fieldtype == 'Raises':
+                for child in content:
+                    ret_data = child.astext()
+                    # data[uid].setdefault(fieldtype, []).append(ret_data)
+        return data
+
     for node in doctree.traverse(addnodes.desc_content):
         summary = []
         data = {}
         name, uid = _get_desc_data(node.parent)
         for child in node:
             if isinstance(child, remarks):
-                remarks_string = app.docfx_transform_node(child)
+                remarks_string = transform_node(child)
                 data['remarks'] = remarks_string
             elif isinstance(child, addnodes.desc):
                 if child.get('desctype') == 'attribute':
@@ -161,16 +274,17 @@ def transform_yaml(app, docname, doctree):
                 # Don't recurse into child nodes
                 continue
             elif isinstance(child, nodes.field_list):
-                print("FIELDLIST")
+                _data = _get_full_data(child)
+                data.update(_data)
             elif isinstance(child, addnodes.seealso):
-                data['seealso'] = app.docfx_transform_node(child)
+                data['seealso'] = transform_node(child)
             elif isinstance(child, nodes.admonition) and 'Example' in child[0].astext():
                 # Remove the admonition node
                 child_copy = child.deepcopy()
                 child_copy.pop(0)
-                data['example'] = app.docfx_transform_node(child_copy)
+                data['example'] = transform_node(child_copy)
             else:
-                content = app.docfx_transform_node(child)
+                content = transform_node(child)
                 if not content.startswith('Bases: '):
                     summary.append(content)
         

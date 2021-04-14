@@ -1,0 +1,175 @@
+### YamlMime:UniversalReference
+api_name: []
+items:
+- children:
+  - format.rst.directives.DirectivesFoo.method_remarks
+  - format.rst.directives.DirectivesFoo.var_remarks
+  class: format.rst.directives.DirectivesFoo
+  fullName: format.rst.directives.DirectivesFoo
+  inheritance:
+  - type: builtins.object
+  langs:
+  - python
+  module: format.rst.directives
+  name: DirectivesFoo
+  remarks: 'Remarks from class.
+
+    Multi-line content should be supported.
+
+
+
+    > [!NOTE]
+
+    > Note conetnt under class remarks.
+
+    >
+
+    > Second line of note content.
+
+    >
+
+    > [!WARNING]
+
+    > Warning content under class remarks.
+
+    >
+
+    > Second line.
+
+    >
+
+    > <xref:format.rst.foo.Foo>
+
+    >
+
+    > [!TIP]
+
+    > Tip content.
+
+    >
+
+    > [!IMPORTANT]
+
+    > Important content.
+
+    >
+
+    > [!CAUTION]
+
+    > Caution content.
+
+    >
+
+    '
+  source:
+    id: DirectivesFoo
+    path: D:Github\python2yaml\tests\example\format\rst\directives.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\directives.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 20
+  summary: 'Docstring of class <xref:format.rst.directives.DirectivesFoo>.
+
+
+
+    > [!NOTE]
+
+    > Note content from class docstring.
+
+    >
+
+    > Second line of note content.
+
+    >
+
+    > many lines of content.
+
+    >
+
+
+
+    > [!WARNING]
+
+    > Warning message from class docstring.
+
+    >
+
+    > Second line.
+
+    >
+
+
+
+    > [!TIP]
+
+    > Tip content. <xref:format.rst.foo.Foo>
+
+    >
+
+
+
+    > [!IMPORTANT]
+
+    > Important content.
+
+    >
+
+
+
+    > [!CAUTION]
+
+    > Caution content.
+
+    >'
+  syntax:
+    content: DirectivesFoo()
+  type: class
+  uid: format.rst.directives.DirectivesFoo
+- class: format.rst.directives.DirectivesFoo
+  fullName: format.rst.directives.DirectivesFoo.method_remarks
+  langs:
+  - python
+  module: format.rst.directives
+  name: method_remarks()
+  namewithoutparameters: method_remarks
+  remarks: 'Remarks from class method <xref:format.rst.directives.DirectivesFoo.method_remarks>
+
+    Another reference: <xref:format.rst.directives.DirectivesFoo>
+
+    '
+  source:
+    id: method_remarks
+    path: D:Github\python2yaml\tests\example\format\rst\directives.py
+    remote:
+      branch: develop
+      path: D:Github\python2yaml\tests\example\format\rst\directives.py
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: 66
+  syntax:
+    content: method_remarks()
+    parameters: []
+  type: method
+  uid: format.rst.directives.DirectivesFoo.method_remarks
+- class: format.rst.directives.DirectivesFoo
+  fullName: format.rst.directives.DirectivesFoo.var_remarks
+  langs:
+  - python
+  module: format.rst.directives
+  name: var_remarks
+  remarks: 'Remarks from class attribute <xref:format.rst.directives.DirectivesFoo.var_remarks>.
+
+    '
+  source:
+    id: var_remarks
+    path: null
+    remote:
+      branch: develop
+      path: null
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: null
+  syntax:
+    content: var_remarks = ''
+  type: attribute
+  uid: format.rst.directives.DirectivesFoo.var_remarks
+references: []
