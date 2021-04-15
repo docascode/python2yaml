@@ -46,6 +46,11 @@ items:
       id: init_arg2
       type:
       - '[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]'
+    variables:
+    - description: Docstring of <xref:format.rst.foo.Foo.attr> from class docstring.
+      id: attr
+      type:
+      - <xref:format.rst.enum.EnumFoo>
   type: class
   uid: nspkg.native.native_foo.Foo
 - class: nspkg.native.native_foo.Foo

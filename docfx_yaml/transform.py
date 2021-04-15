@@ -151,7 +151,7 @@ def transform_yaml(app, docname, doctree):
                             data['return'].setdefault('type', []).append(returntype)
                     # data[uid].setdefault(fieldtype, []).append(ret_data)
             
-            if fieldtype == 'Parameters':
+            if fieldtype in ['Parameters', 'Variables']:
                 if _is_single_paragraph(fieldbody):
                     ret_data = transform_para(content[0])
                     _id_pattern = re.compile(PARAMETER_NAME)
@@ -169,7 +169,12 @@ def transform_yaml(app, docname, doctree):
                     else:
                         _description = None
                     _data = make_param(_id, _description, _type)
-                    data['parameters'].append(_data)
+                    if fieldtype == 'Parameters':
+                        data['parameters'].append(_data)
+                    else:
+                        id = content[0].astext()[:content[0].astext().find('(')].strip(' ')
+                        _data['id'] = id
+                        data['variables'].append(_data)
                 else:
                     for child in content[0]:
                         ret_data = transform_para(child[0])
@@ -189,7 +194,10 @@ def transform_yaml(app, docname, doctree):
                             _description = None
                         _data = make_param(_id, _description, _type)
                         
-                        data['parameters'].append(_data)
+                        if fieldtype == 'Parameters':
+                            data['parameters'].append(_data)
+                        else:
+                            data['variables'].append(_data)
                     # data[uid].setdefault(fieldtype, []).append(ret_data)
             
             if fieldtype == 'Variables':
