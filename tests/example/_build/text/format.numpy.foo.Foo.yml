@@ -38,10 +38,12 @@ items:
     parameters:
     - description: Parameter init_arg1 from class docstring.
       id: init_arg1
-      type: float
+      type:
+      - '[float](https://docs.python.org/3.6/library/functions.html#float)'
     - description: Parameter init_arg2 from class docstring.
       id: init_arg2
-      type: list
+      type:
+      - '[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]'
   type: class
   uid: format.numpy.foo.Foo
 - class: format.numpy.foo.Foo
@@ -58,7 +60,7 @@ items:
       path: null
       repo: https://github.com/docascode/python2yaml.git
     startLine: null
-  summary: Docstring of <xref:id0> from class docstring.
+  summary: Docstring of <xref:format.numpy.foo.Foo.attr> from attrbute docstring.
   syntax:
     content: attr = 1
   type: attribute
@@ -103,10 +105,14 @@ items:
     - description: Class object of <xref:format.numpy.foo.Foo>.
       id: cls
       isRequired: true
+      type:
+      - class
     - description: Parameter arg1 of `fomrmat.numpy.foo.Foo.class_method()`.
       id: arg1
       isRequired: true
-      type: str
+      type:
+      - "[str](https://docs.python.org/3.6/library/stdtypes.html#str)) \u2013 Parameter\
+        \ arg1 of `fomrmat.numpy.foo.Foo.class_method("
   type: method
   uid: format.numpy.foo.Foo.class_method
 - class: format.numpy.foo.Foo

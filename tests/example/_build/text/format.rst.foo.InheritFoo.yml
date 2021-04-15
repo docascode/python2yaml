@@ -25,7 +25,7 @@ items:
     startLine: 185
   summary: 'Docstring of <xref:format.rst.foo.InheritFoo>.
 
-    This class inherit from two classes: <xref:format.rst.foo.Foo> and <xref:module-format.rst.foo>.'
+    This class inherit from two classes: <xref:format.rst.foo.Foo> and <xref:format.rst.foo>.'
   syntax:
     content: InheritFoo(init_arg1, init_arg2)
   type: class

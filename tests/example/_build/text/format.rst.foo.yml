@@ -41,15 +41,20 @@ items:
     parameters:
     - description: Parameter arg1 of <xref:format.rst.foo.function>.
       id: arg1
-      type: int
+      type:
+      - '[int](https://docs.python.org/3.6/library/functions.html#int)'
     - description: Parameter arg2 of <xref:format.rst.foo.function>.
       id: arg2
-      type: float
+      type:
+      - '[float](https://docs.python.org/3.6/library/functions.html#float)'
     - description: Parameter arg3 of <xref:format.rst.foo.function>.
       id: arg3
+      type:
+      - boolean
     - description: Parameter arg4 of <xref:format.rst.foo.function>.
       id: arg4
-      type: str
+      type:
+      - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
   type: function
   uid: format.rst.foo.function
 references: []

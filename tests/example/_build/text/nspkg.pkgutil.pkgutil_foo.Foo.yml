@@ -40,10 +40,12 @@ items:
     parameters:
     - description: Parameter init_arg1 from class docstring.
       id: init_arg1
-      type: float
+      type:
+      - '[float](https://docs.python.org/3.6/library/functions.html#float)'
     - description: Parameter init_arg2 from class docstring.
       id: init_arg2
-      type: list
+      type:
+      - '[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]'
   type: class
   uid: nspkg.pkgutil.pkgutil_foo.Foo
 - class: nspkg.pkgutil.pkgutil_foo.Foo
@@ -105,10 +107,13 @@ items:
     - description: Class object of <xref:format.rst.foo.Foo>.
       id: cls
       isRequired: true
+      type:
+      - class
     - description: Parameter arg1 of <xref:format.rst.foo.Foo.class_method>.
       id: arg1
       isRequired: true
-      type: str
+      type:
+      - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
   type: method
   uid: nspkg.pkgutil.pkgutil_foo.Foo.class_method
 - class: nspkg.pkgutil.pkgutil_foo.Foo
@@ -184,12 +189,14 @@ items:
       description: "Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value>,\
         \ default value is \u2018default string\u2019."
       id: arg1
-      type: str
+      type:
+      - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
     - defaultValue: None
       description: Paremeter arg2 of <xref:format.rst.foo.Foo.method_default_value>
         default value is None.
       id: arg2
-      type: object
+      type:
+      - '[object](https://docs.python.org/3.6/library/functions.html#object)'
   type: method
   uid: nspkg.pkgutil.pkgutil_foo.Foo.method_default_value
 - class: nspkg.pkgutil.pkgutil_foo.Foo
@@ -217,7 +224,10 @@ items:
       description: Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value_comma>,
         default value is (1,2,3).
       id: arg1
-      type: tuple
+      type:
+      - "[tuple](https://docs.python.org/3.6/library/stdtypes.html#tuple)) \u2013\
+        \ Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value_comma>,\
+        \ default value is (1,2,3"
   type: method
   uid: nspkg.pkgutil.pkgutil_foo.Foo.method_default_value_comma
 - class: nspkg.pkgutil.pkgutil_foo.Foo

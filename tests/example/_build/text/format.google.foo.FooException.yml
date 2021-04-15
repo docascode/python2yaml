@@ -24,7 +24,7 @@ items:
     startLine: 158
   summary: 'Docstring of <xref:format.google.foo.FooException>.
 
-    Another class of <xref:module-format.google.foo> module.'
+    Another class of <xref:format.google.foo> module.'
   syntax: {}
   type: class
   uid: format.google.foo.FooException

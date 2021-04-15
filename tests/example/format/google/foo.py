@@ -52,7 +52,7 @@ class Foo(object):
         """ Docstring of :meth:`format.google.foo.Foo.class_method` @classmethod.
 
         Args:
-            cls (class): Class object of :class:`format.google.foo.Foo`.
+            cls (:class:`format.google.foo.Foo`): Class object of :class:`format.google.foo.Foo`.
             arg1 (str): Parameter arg1 of :meth:`format.google.foo.Foo.class_method`.
         """
         pass

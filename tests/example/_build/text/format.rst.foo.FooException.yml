@@ -24,7 +24,7 @@ items:
     startLine: 174
   summary: 'Docstring of <xref:format.rst.foo.FooException>.
 
-    Another class of <xref:module-format.rst.foo> module.'
+    Another class of <xref:format.rst.foo> module.'
   syntax: {}
   type: class
   uid: format.rst.foo.FooException

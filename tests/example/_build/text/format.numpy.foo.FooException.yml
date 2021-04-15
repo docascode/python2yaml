@@ -24,7 +24,7 @@ items:
     startLine: 181
   summary: 'Docstring of <xref:format.numpy.foo.FooException>.
 
-    Another class of <xref:module-format.numpy.foo> module.'
+    Another class of <xref:format.numpy.foo> module.'
   syntax: {}
   type: class
   uid: format.numpy.foo.FooException

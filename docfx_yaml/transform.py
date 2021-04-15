@@ -1,3 +1,7 @@
+# ---------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# ---------------------------------------------------------
+
 import re
 from docutils import nodes
 from sphinx.util.docfields import _is_single_paragraph
@@ -7,7 +11,7 @@ from nodes import remarks
 
 TYPE_SEP_PATTERN = '(\[|\]|, |\(|\))'
 PARAMETER_NAME = "[*][*](.*?)[*][*]"
-PARAMETER_TYPE = "[[](.*?)[]]"
+PARAMETER_TYPE = "[(](.*)[)]"
 PARAMETER_DESCRIPTION = "[–][ ](.*)"
 
 def transform_yaml(app, docname, doctree):
@@ -48,7 +52,7 @@ def transform_yaml(app, docname, doctree):
 
         try:
             module = node[0].attributes['module']
-            full_name = node[0].attributes['fullname'].split('.')[-1]
+            full_name = node[0].attributes['fullname']
         except KeyError as e:
             print("[docfx_yaml] There maybe some syntax error in docstring near: " + node.astext())
             raise e
@@ -58,7 +62,11 @@ def transform_yaml(app, docname, doctree):
         except Exception:
             uid = '{module}.{full_name}'.format(module=module, full_name=full_name)
             print('Non-standard id: %s' % uid)
-        return full_name, uid
+
+        _uid = '{module}.{full_name}'.format(module=module, full_name=full_name)
+        if uid != _uid:
+            uid = _uid
+        return uid
 
     def _is_desc_of_enum_class(node):
         assert node.tagname == 'desc_content'
@@ -153,10 +161,9 @@ def transform_yaml(app, docname, doctree):
                         _id = re.findall(_id_pattern, ret_data)[0]
                     else:
                         _id = None
+                    _type = []
                     if len(re.findall(_type_pattern, ret_data)) > 0:
-                        _type = re.findall(_type_pattern, ret_data)[0]
-                    else:
-                        _type = None
+                        _type.append(re.findall(_type_pattern, ret_data)[0].replace('*',''))
                     if len(re.findall(_description_pattern, ret_data)) > 0:
                         _description = re.findall(_description_pattern, ret_data)[0]
                     else:
@@ -173,10 +180,9 @@ def transform_yaml(app, docname, doctree):
                             _id = re.findall(_id_pattern, ret_data)[0]
                         else:
                             _id = None
+                        _type = []
                         if len(re.findall(_type_pattern, ret_data)) > 0:
-                            _type = re.findall(_type_pattern, ret_data)[0]
-                        else:
-                            _type = None
+                            _type.append(re.findall(_type_pattern, ret_data)[0].replace('*',''))
                         if len(re.findall(_description_pattern, ret_data)) > 0:
                             _description = re.findall(_description_pattern, ret_data)[0]
                         else:
@@ -211,7 +217,7 @@ def transform_yaml(app, docname, doctree):
     for node in doctree.traverse(addnodes.desc_content):
         summary = []
         data = {}
-        name, uid = _get_desc_data(node.parent)
+        uid = _get_desc_data(node.parent)
         for child in node:
             if isinstance(child, remarks):
                 remarks_string = transform_node(child)

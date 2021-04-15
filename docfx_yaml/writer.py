@@ -932,7 +932,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
         raw_ref_tilde_template = ":class:`~{0}`"
         raw_ref_template = ":class:`{0}`"
         if 'refid' in node.attributes:
-            ref_string = cls.xref_template.format(node.attributes['refid'])
+            ref_string = cls.xref_template.format(node.attributes['reftitle'])
         elif 'refuri' in node.attributes:
             if 'http' in node.attributes['refuri'] or node.attributes['refuri'][0] == '/':
                 ref_string = '[{}]({})'.format(node.astext(), node.attributes['refuri'])
