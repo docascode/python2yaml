@@ -3,6 +3,7 @@ api_name: []
 items:
 - children:
   - nspkg.native.native_foo.Foo.attr
+  - nspkg.native.native_foo.Foo.attr_getter
   - nspkg.native.native_foo.Foo.class_method
   - nspkg.native.native_foo.Foo.method
   - nspkg.native.native_foo.Foo.method_code
@@ -64,6 +65,24 @@ items:
     content: attr = 1
   type: attribute
   uid: nspkg.native.native_foo.Foo.attr
+- class: nspkg.native.native_foo.Foo
+  fullName: nspkg.native.native_foo.Foo.attr_getter
+  langs:
+  - python
+  module: nspkg.native.native_foo
+  name: attr_getter
+  source:
+    id: attr_getter
+    path: null
+    remote:
+      branch: develop
+      path: null
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: null
+  summary: Docstring of <xref:format.rst.foo.Foo.attr_getter> @property.
+  syntax: {}
+  type: attribute
+  uid: nspkg.native.native_foo.Foo.attr_getter
 - class: nspkg.native.native_foo.Foo
   fullName: nspkg.native.native_foo.Foo.class_method
   langs:

@@ -3,6 +3,7 @@ api_name: []
 items:
 - children:
   - format.google.foo.Foo.attr
+  - format.google.foo.Foo.attr_getter
   - format.google.foo.Foo.class_method
   - format.google.foo.Foo.method
   - format.google.foo.Foo.method_code
@@ -15,7 +16,6 @@ items:
   - format.google.foo.Foo.method_seealso
   - format.google.foo.Foo.method_warning
   - format.google.foo.Foo.static_method
-  - id0
   class: format.google.foo.Foo
   fullName: format.google.foo.Foo
   inheritance:
@@ -59,9 +59,28 @@ items:
       repo: https://github.com/docascode/python2yaml.git
     startLine: null
   summary: Docstring of <xref:id0> from class docstring.
-  syntax: {}
+  syntax:
+    content: attr = 1
   type: attribute
   uid: format.google.foo.Foo.attr
+- class: format.google.foo.Foo
+  fullName: format.google.foo.Foo.attr_getter
+  langs:
+  - python
+  module: format.google.foo
+  name: attr_getter
+  source:
+    id: attr_getter
+    path: null
+    remote:
+      branch: develop
+      path: null
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: null
+  summary: Docstring of <xref:format.google.foo.Foo.attr_getter> @property.
+  syntax: {}
+  type: attribute
+  uid: format.google.foo.Foo.attr_getter
 - class: format.google.foo.Foo
   fullName: format.google.foo.Foo.class_method
   langs:
@@ -371,17 +390,6 @@ items:
     content: static_method()
   type: method
   uid: format.google.foo.Foo.static_method
-- class: id
-  fullName: id0
-  langs:
-  - python
-  module: format.google.foo
-  name: attr
-  summary: Docstring of <xref:id0> from attrbute docstring.
-  syntax:
-    content: attr = 1
-  type: attribute
-  uid: id0
 references:
 - fullName: '[bool](https://docs.python.org/3.6/library/functions.html#bool)'
   name: '[bool](html#bool)'

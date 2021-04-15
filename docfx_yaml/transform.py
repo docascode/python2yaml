@@ -33,7 +33,7 @@ def transform_yaml(app, docname, doctree):
         mapping = {
             "staticmethod": "method",
             "classmethod": "method",
-            "exception": "class"
+            "exception": "class",
         }
 
         return mapping[type_name] if type_name in mapping else type_name
@@ -197,6 +197,17 @@ def transform_yaml(app, docname, doctree):
                     # data[uid].setdefault(fieldtype, []).append(ret_data)
         return data
 
+    def _is_property_node(node):
+        try:
+            if isinstance(node.parent[0][0], addnodes.desc_annotation):
+                ret = node.parent[0][0].astext()
+                if (ret.strip(" ") == 'property'):
+                    return True
+                else:
+                    return False
+        except Exception:
+            return False
+
     for node in doctree.traverse(addnodes.desc_content):
         summary = []
         data = {}
@@ -214,13 +225,13 @@ def transform_yaml(app, docname, doctree):
                             # capture attributes data and cache it
                             data.setdefault('added_attribute', [])
 
-                            item_ids = item.get('ids', [''])
+                            # item_ids = item.get('ids', [''])
 
-                            if len(item_ids) == 0: # find a node with no 'ids' attribute
-                                curuid = item.get('module', '') + '.' + item.get('fullname', '')
-                                # generate its uid by module and fullname
-                            else:
-                                curuid = item_ids[0]
+                            # if len(item_ids) == 0: # find a node with no 'ids' attribute
+                            curuid = item.get('module', '') + '.' + item.get('fullname', '')
+                            #     # generate its uid by module and fullname
+                            # else:
+                            #     curuid = item_ids[0]
 
                             if len(curuid) > 0:
                                 parent = curuid[:curuid.rfind('.')]
@@ -299,5 +310,8 @@ def transform_yaml(app, docname, doctree):
                 if not val:
                     del data[key]
         data['type'] = type_mapping(node.parent["desctype"]) if "desctype" in node.parent else 'unknown'
-        app.env.docfx_info_field_data[uid] = data
+        if _is_property_node(node):
+            data['type'] = 'attribute'
+        if (uid in app.env.docfx_info_uid_types):
+            app.env.docfx_info_field_data[uid] = data
 

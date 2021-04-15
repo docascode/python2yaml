@@ -3,6 +3,7 @@ api_name: []
 items:
 - children:
   - format.rst.foo.Foo.attr
+  - format.rst.foo.Foo.attr_getter
   - format.rst.foo.Foo.class_method
   - format.rst.foo.Foo.method
   - format.rst.foo.Foo.method_code
@@ -64,6 +65,24 @@ items:
     content: attr = 1
   type: attribute
   uid: format.rst.foo.Foo.attr
+- class: format.rst.foo.Foo
+  fullName: format.rst.foo.Foo.attr_getter
+  langs:
+  - python
+  module: format.rst.foo
+  name: attr_getter
+  source:
+    id: attr_getter
+    path: null
+    remote:
+      branch: develop
+      path: null
+      repo: https://github.com/docascode/python2yaml.git
+    startLine: null
+  summary: Docstring of <xref:format.rst.foo.Foo.attr_getter> @property.
+  syntax: {}
+  type: attribute
+  uid: format.rst.foo.Foo.attr_getter
 - class: format.rst.foo.Foo
   fullName: format.rst.foo.Foo.class_method
   langs:

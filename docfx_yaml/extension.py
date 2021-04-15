@@ -25,6 +25,7 @@ MODULE = 'module'
 CLASS = 'class'
 EXCEPTION = 'exception'
 ATTRIBUTE = 'attribute'
+PROPERTY = 'property'
 REFMETHOD = 'meth'
 REFFUNCTION = 'func'
 INITPY = '__init__.py'
@@ -86,6 +87,9 @@ def process_docstring(app, _type, name, obj, options, lines):
 
     if _type == EXCEPTION:
         _type = CLASS
+
+    if _type == PROPERTY:
+        _type = ATTRIBUTE
 
     cls, module = _get_cls_module(_type, name)
     if not module:
