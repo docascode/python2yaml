@@ -1,78 +1,25 @@
-### YamlMime:UniversalReference
-api_name: []
-items:
-- children:
-  - format.rst.enum.EnumFoo.VALUE0
-  - format.rst.enum.EnumFoo.VALUE1
-  class: format.rst.enum.EnumFoo
-  fullName: format.rst.enum.EnumFoo
-  inheritance:
-  - inheritance:
-    - type: builtins.object
-    type: enum.Enum
-  langs:
-  - python
-  module: format.rst.enum
-  name: EnumFoo
-  source:
-    id: EnumFoo
-    path: D:Github\python2yaml\tests\example\format\rst\enum.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\rst\enum.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 5
-  summary: Docstring of <xref:format.rst.enum.EnumFoo> class.
-  syntax:
-    content: EnumFoo(value)
-  type: class
-  uid: format.rst.enum.EnumFoo
-- class: format.rst.enum.EnumFoo
-  fullName: format.rst.enum.EnumFoo.VALUE0
-  id: VALUE0
-  langs:
-  - python
-  module: format.rst.enum
+### YamlMime:PythonClass
+uid: format.rst.enum.EnumFoo
+name: EnumFoo
+fullName: format.rst.enum.EnumFoo
+module: format.rst.enum
+inheritances:
+- enum.Enum
+summary: Docstring of <xref:format.rst.enum.EnumFoo> class.
+constructor:
+  syntax: EnumFoo(value)
+attributes:
+- uid: format.rst.enum.EnumFoo.VALUE0
   name: VALUE0
-  parent: format.rst.enum.EnumFoo
-  source:
-    id: VALUE0
-    path: null
-    remote:
-      branch: develop
-      path: null
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: null
   summary: Inline docstring of VALUE0
-  syntax:
-    content: VALUE0 = 0
-    return:
-      type:
-      - format.rst.enum.EnumFoo
-  type: attribute
-  uid: format.rst.enum.EnumFoo.VALUE0
-- class: format.rst.enum.EnumFoo
-  fullName: format.rst.enum.EnumFoo.VALUE1
-  id: VALUE1
-  langs:
-  - python
-  module: format.rst.enum
+  signature: VALUE0 = 0
+  return:
+    types:
+    - <xref:format.rst.enum.EnumFoo>
+- uid: format.rst.enum.EnumFoo.VALUE1
   name: VALUE1
-  parent: format.rst.enum.EnumFoo
-  source:
-    id: VALUE1
-    path: null
-    remote:
-      branch: develop
-      path: null
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: null
   summary: Inlune docstring of VALUE1
-  syntax:
-    content: VALUE1 = 1
-    return:
-      type:
-      - format.rst.enum.EnumFoo
-  type: attribute
-  uid: format.rst.enum.EnumFoo.VALUE1
-references: []
+  signature: VALUE1 = 1
+  return:
+    types:
+    - <xref:format.rst.enum.EnumFoo>

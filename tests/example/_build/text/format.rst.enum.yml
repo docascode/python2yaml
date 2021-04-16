@@ -1,21 +1,6 @@
-### YamlMime:UniversalReference
-api_name: []
-items:
-- children:
-  - format.rst.enum.EnumFoo
-  fullName: format.rst.enum
-  langs:
-  - python
-  module: format.rst.enum
-  name: enum
-  source:
-    id: enum
-    path: D:Github\python2yaml\tests\example\format\rst\enum.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\rst\enum.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 0
-  type: module
-  uid: format.rst.enum
-references: []
+### YamlMime:PythonModule
+uid: format.rst.enum
+name: enum
+fullName: format.rst.enum
+classes:
+- format.rst.enum.EnumFoo

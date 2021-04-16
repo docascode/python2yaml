@@ -1,59 +1,30 @@
-### YamlMime:UniversalReference
-api_name: []
-items:
-- children:
-  - format.google.foo.Foo
-  - format.google.foo.FooException
-  - format.google.foo.function
-  fullName: format.google.foo
-  langs:
-  - python
-  module: format.google.foo
-  name: foo
-  source:
-    id: foo
-    path: D:Github\python2yaml\tests\example\format\google\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\google\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 0
-  summary: Docstring of <xref:format.google.foo> module.
-  type: module
-  uid: format.google.foo
-- fullName: format.google.foo.function
-  langs:
-  - python
-  module: format.google.foo
-  name: function(arg1, arg2, arg3, arg4)
-  source:
-    id: function
-    path: D:Github\python2yaml\tests\example\format\google\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\google\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 10
+### YamlMime:PythonModule
+uid: format.google.foo
+name: foo
+fullName: format.google.foo
+summary: Docstring of <xref:format.google.foo> module.
+functions:
+- uid: format.google.foo.function
+  name: function
   summary: Docstring of <xref:format.google.foo.function> function.
-  syntax:
-    content: function(arg1, arg2, arg3, arg4)
-    parameters:
-    - description: Parameter arg1 of <xref:format.google.foo.function>.
-      id: arg1
-      type:
-      - '[int](https://docs.python.org/3.6/library/functions.html#int)'
-    - description: Parameter arg2 of <xref:format.google.foo.function>.
-      id: arg2
-      type:
-      - '[float](https://docs.python.org/3.6/library/functions.html#float)'
-    - description: Parameter arg3 of <xref:format.google.foo.function>.
-      id: arg3
-      type:
-      - boolean
-    - description: Parameter arg4 of <xref:format.google.foo.function>.
-      id: arg4
-      type:
-      - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
-  type: function
-  uid: format.google.foo.function
-references: []
+  signature: function(arg1, arg2, arg3, arg4)
+  parameters:
+  - name: arg1
+    description: Parameter arg1 of <xref:format.google.foo.function>.
+    types:
+    - <xref:[int](https://docs.python.org/3.6/library/functions.html#int)>
+  - name: arg2
+    description: Parameter arg2 of <xref:format.google.foo.function>.
+    types:
+    - <xref:[float](https://docs.python.org/3.6/library/functions.html#float)>
+  - name: arg3
+    description: Parameter arg3 of <xref:format.google.foo.function>.
+    types:
+    - <xref:boolean>
+  - name: arg4
+    description: Parameter arg4 of <xref:format.google.foo.function>.
+    types:
+    - <xref:[str](https://docs.python.org/3.6/library/stdtypes.html#str)>
+classes:
+- format.google.foo.Foo
+- format.google.foo.FooException

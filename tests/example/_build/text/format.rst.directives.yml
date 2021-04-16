@@ -1,49 +1,20 @@
-### YamlMime:UniversalReference
-api_name: []
-items:
-- children:
-  - format.rst.directives.DirectivesFoo
-  - format.rst.directives.func
-  fullName: format.rst.directives
-  langs:
-  - python
-  module: format.rst.directives
-  name: directives
-  source:
-    id: directives
-    path: D:Github\python2yaml\tests\example\format\rst\directives.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\rst\directives.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 0
-  summary: 'Docstring of module <xref:format.rst.directives>.
+### YamlMime:PythonModule
+uid: format.rst.directives
+name: directives
+fullName: format.rst.directives
+summary: 'Docstring of module <xref:format.rst.directives>.
 
-    This module is used for testing self-defined directives.
+  This module is used for testing self-defined directives.
 
 
 
-    .. remarks:: Remarks from module directives.'
-  type: module
-  uid: format.rst.directives
-- fullName: format.rst.directives.func
-  langs:
-  - python
-  module: format.rst.directives
-  name: func()
+  .. remarks:: Remarks from module directives.'
+functions:
+- uid: format.rst.directives.func
+  name: func
+  signature: func()
   remarks: 'Remarks from module function.
 
     '
-  source:
-    id: func
-    path: D:Github\python2yaml\tests\example\format\rst\directives.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\rst\directives.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 13
-  syntax:
-    content: func()
-  type: function
-  uid: format.rst.directives.func
-references: []
+classes:
+- format.rst.directives.DirectivesFoo

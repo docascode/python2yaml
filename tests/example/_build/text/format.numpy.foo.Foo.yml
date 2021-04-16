@@ -1,156 +1,45 @@
-### YamlMime:UniversalReference
-api_name: []
-items:
-- children:
-  - format.numpy.foo.Foo.attr
-  - format.numpy.foo.Foo.attr_getter
-  - format.numpy.foo.Foo.class_method
-  - format.numpy.foo.Foo.method
-  - format.numpy.foo.Foo.method_code
-  - format.numpy.foo.Foo.method_example
-  - format.numpy.foo.Foo.method_exception
-  - format.numpy.foo.Foo.method_external_link
-  - format.numpy.foo.Foo.method_multiline
-  - format.numpy.foo.Foo.method_note
-  - format.numpy.foo.Foo.method_return
-  - format.numpy.foo.Foo.method_seealso
-  - format.numpy.foo.Foo.method_warning
-  - format.numpy.foo.Foo.static_method
-  class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo
-  inheritance:
-  - type: builtins.object
-  langs:
-  - python
-  module: format.numpy.foo
-  name: Foo
-  source:
-    id: Foo
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 27
-  summary: Docstring of <xref:format.numpy.foo.Foo> class in numpy format.
-  syntax:
-    content: Foo(init_arg1, init_arg2)
-    parameters:
-    - description: Parameter init_arg1 from class docstring.
-      id: init_arg1
-      type:
-      - '[float](https://docs.python.org/3.6/library/functions.html#float)'
-    - description: Parameter init_arg2 from class docstring.
-      id: init_arg2
-      type:
-      - '[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]'
-  type: class
-  uid: format.numpy.foo.Foo
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.attr
-  langs:
-  - python
-  module: format.numpy.foo
-  name: attr
-  source:
-    id: attr
-    path: null
-    remote:
-      branch: develop
-      path: null
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: null
-  summary: Docstring of <xref:format.numpy.foo.Foo.attr> from attrbute docstring.
-  syntax:
-    content: attr = 1
-  type: attribute
-  uid: format.numpy.foo.Foo.attr
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.attr_getter
-  langs:
-  - python
-  module: format.numpy.foo
-  name: attr_getter
-  source:
-    id: attr_getter
-    path: null
-    remote:
-      branch: develop
-      path: null
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: null
-  summary: Docstring of `fomrmat.numpy.foo.Foo.attr_getter()` @property.
-  syntax: {}
-  type: attribute
-  uid: format.numpy.foo.Foo.attr_getter
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.class_method
-  langs:
-  - python
-  module: format.numpy.foo
-  name: class_method(arg1)
-  namewithoutparameters: class_method
-  source:
-    id: class_method
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 63
+### YamlMime:PythonClass
+uid: format.numpy.foo.Foo
+name: Foo
+fullName: format.numpy.foo.Foo
+module: format.numpy.foo
+inheritances:
+- builtins.object
+summary: Docstring of <xref:format.numpy.foo.Foo> class in numpy format.
+constructor:
+  syntax: Foo(init_arg1, init_arg2)
+  parameters:
+  - name: init_arg1
+    description: Parameter init_arg1 from class docstring.
+    types:
+    - <xref:[float](https://docs.python.org/3.6/library/functions.html#float)>
+  - name: init_arg2
+    description: Parameter init_arg2 from class docstring.
+    types:
+    - <xref:[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]>
+methods:
+- uid: format.numpy.foo.Foo.class_method
+  name: class_method
   summary: Docstring of `fomrmat.numpy.foo.Foo.class_method()` @classmethod.
-  syntax:
-    content: class_method(arg1)
-    parameters:
-    - description: Class object of <xref:format.numpy.foo.Foo>.
-      id: cls
-      isRequired: true
-      type:
-      - class
-    - description: Parameter arg1 of `fomrmat.numpy.foo.Foo.class_method()`.
-      id: arg1
-      isRequired: true
-      type:
-      - "[str](https://docs.python.org/3.6/library/stdtypes.html#str)) \u2013 Parameter\
-        \ arg1 of `fomrmat.numpy.foo.Foo.class_method("
-  type: method
-  uid: format.numpy.foo.Foo.class_method
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method()
-  namewithoutparameters: method
-  source:
-    id: method
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 82
+  signature: class_method(arg1)
+  parameters:
+  - name: cls
+    description: Class object of <xref:format.numpy.foo.Foo>.
+    isRequired: true
+    types:
+    - <xref:class>
+  - name: arg1
+    description: Parameter arg1 of `fomrmat.numpy.foo.Foo.class_method()`.
+    isRequired: true
+    types:
+    - "<xref:[str](https://docs.python.org/3.6/library/stdtypes.html#str)) \u2013\
+      \ Parameter arg1 of `fomrmat.numpy.foo.Foo.class_method(>"
+- uid: format.numpy.foo.Foo.method
+  name: method
   summary: Docstring of normal class method `fomrmat.numpy.foo.Foo.method()`.
-  syntax:
-    content: method()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_code
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_code()
-  namewithoutparameters: method_code
-  source:
-    id: method_code
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 152
+  signature: method()
+- uid: format.numpy.foo.Foo.method_code
+  name: method_code
   summary: "Docstring of `fomrmat.numpy.foo.Foo.method_code()`.\n\n<!-- literal_block\
     \ {\"ids\": [], \"classes\": [], \"names\": [], \"dupnames\": [], \"backrefs\"\
     : [], \"xml:space\": \"preserve\", \"force\": false, \"language\": \"python\"\
@@ -160,26 +49,9 @@ items:
     : [], \"backrefs\": [], \"xml:space\": \"preserve\", \"language\": \"default\"\
     , \"force\": false, \"linenos\": false} -->\n\n````default\n\n   import numpy\
     \ as np\n   b = np.random.random(10)\n   ````"
-  syntax:
-    content: method_code()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method_code
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_example
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_example()
-  namewithoutparameters: method_example
-  source:
-    id: method_example
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 167
+  signature: method_code()
+- uid: format.numpy.foo.Foo.method_example
+  name: method_example
   summary: "Docstring of `fomrmat.numpy.foo.Foo.method_example()`.\n\n-[ Examples\
     \ ]-\n\nThis is Example content.\nShould support multi-line.\nCan also include\
     \ file:\n\n<!--[!code-default[Main](at\\rst\\enum.py )]-->\n\n<!-- literal_block\
@@ -191,97 +63,29 @@ items:
     \       \"\"\" Docstring of :class:`format.rst.enum.EnumFoo` class.\n       \"\
     \"\"\n\n       VALUE0 = 0 #: Inline docstring of VALUE0\n       VALUE1 = 1 #:\
     \ Inlune docstring of VALUE1\n\n   ````"
-  syntax:
-    content: method_example()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method_example
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_exception
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_exception()
-  namewithoutparameters: method_exception
-  source:
-    id: method_exception
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 104
+  signature: method_example()
+- uid: format.numpy.foo.Foo.method_exception
+  name: method_exception
   summary: Docstring of `fomrmat.numpy.foo.Foo.method_exception()`.
-  syntax:
-    content: method_exception()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method_exception
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_external_link
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_external_link()
-  namewithoutparameters: method_external_link
-  source:
-    id: method_external_link
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 115
+  signature: method_exception()
+- uid: format.numpy.foo.Foo.method_external_link
+  name: method_external_link
   summary: 'Docstring of `fomrmat.numpy.foo.Foo.method_external_link()`.
 
     Inline link should be transformed to markdown: [Link Text](http://inline.external.link).
 
     And seperated link will fail: [Seprated Link](http://seperated.external.link)'
-  syntax:
-    content: method_external_link()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method_external_link
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_multiline
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_multiline()
-  namewithoutparameters: method_multiline
-  source:
-    id: method_multiline
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 97
+  signature: method_external_link()
+- uid: format.numpy.foo.Foo.method_multiline
+  name: method_multiline
   summary: 'Docstring of `fomrmat.numpy.foo.Foo.method_multiline()`.
 
     This docstring has multiple lines of contents.
 
     And this should work perfectly.'
-  syntax:
-    content: method_multiline()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method_multiline
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_note
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_note()
-  namewithoutparameters: method_note
-  source:
-    id: method_note
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 133
+  signature: method_multiline()
+- uid: format.numpy.foo.Foo.method_note
+  name: method_note
   summary: 'Docstring of `fomrmat.numpy.foo.Foo.method_note()`.
 
 
@@ -295,73 +99,22 @@ items:
     > Another line of note contents.
 
     >'
-  syntax:
-    content: method_note()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method_note
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_return
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_return()
-  namewithoutparameters: method_return
-  source:
-    id: method_return
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 87
+  signature: method_note()
+- uid: format.numpy.foo.Foo.method_return
+  name: method_return
   summary: Docstring of `fomrmat.numpy.foo.Foo.method_return()`.
-  syntax:
-    content: method_return()
-    parameters: []
-    return:
-      description: This method returns a value.
-      type:
-      - '[bool](https://docs.python.org/3.6/library/functions.html#bool)'
-  type: method
-  uid: format.numpy.foo.Foo.method_return
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_seealso
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_seealso()
-  namewithoutparameters: method_seealso
-  seealsoContent: "\n\n  `format.numpy.foo.Foo.mathod_note`\n     See also target.\n"
-  source:
-    id: method_seealso
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 124
+  signature: method_return()
+  return:
+    description: This method returns a value.
+    types:
+    - <xref:[bool](https://docs.python.org/3.6/library/functions.html#bool)>
+- uid: format.numpy.foo.Foo.method_seealso
+  name: method_seealso
   summary: Docstring of `fomrmat.numpy.foo.Foo.method_seealso()`.
-  syntax:
-    content: method_seealso()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method_seealso
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.method_warning
-  langs:
-  - python
-  module: format.numpy.foo
-  name: method_warning()
-  namewithoutparameters: method_warning
-  source:
-    id: method_warning
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 143
+  signature: method_seealso()
+  seeAlsoContent: "\n\n  `format.numpy.foo.Foo.mathod_note`\n     See also target.\n"
+- uid: format.numpy.foo.Foo.method_warning
+  name: method_warning
   summary: 'Docstring of `fomrmat.numpy.foo.Foo.method_warning()`.
 
 
@@ -371,47 +124,16 @@ items:
     > This is content of warning.
 
     >'
-  syntax:
-    content: method_warning()
-    parameters: []
-  type: method
-  uid: format.numpy.foo.Foo.method_warning
-- class: format.numpy.foo.Foo
-  fullName: format.numpy.foo.Foo.static_method
-  langs:
-  - python
-  module: format.numpy.foo
-  name: static_method()
-  namewithoutparameters: static_method
-  source:
-    id: static_method
-    path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-    remote:
-      branch: develop
-      path: D:Github\python2yaml\tests\example\format\numpy\foo.py
-      repo: https://github.com/docascode/python2yaml.git
-    startLine: 76
+  signature: method_warning()
+- uid: format.numpy.foo.Foo.static_method
+  name: static_method
   summary: Docstring of `fomrmat.numpy.foo.Foo.static_method @staticmethod()`.
-  syntax:
-    content: static_method()
-  type: method
-  uid: format.numpy.foo.Foo.static_method
-references:
-- fullName: '[bool](https://docs.python.org/3.6/library/functions.html#bool)'
-  name: '[bool](html#bool)'
-  spec.python:
-  - fullName: '['
-    name: '['
-  - fullName: bool
-    name: bool
-    uid: bool
-  - fullName: ']'
-    name: ']'
-  - fullName: (
-    name: (
-  - fullName: https://docs.python.org/3.6/library/functions.html#bool
-    name: html#bool
-    uid: https://docs.python.org/3.6/library/functions.html#bool
-  - fullName: )
-    name: )
-  uid: '[bool](https://docs.python.org/3.6/library/functions.html#bool)'
+  signature: static_method()
+attributes:
+- uid: format.numpy.foo.Foo.attr
+  name: attr
+  summary: Docstring of <xref:format.numpy.foo.Foo.attr> from attrbute docstring.
+  signature: attr = 1
+- uid: format.numpy.foo.Foo.attr_getter
+  name: attr_getter
+  summary: Docstring of `fomrmat.numpy.foo.Foo.attr_getter()` @property.

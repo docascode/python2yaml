@@ -8,7 +8,13 @@ import os
 from itertools import zip_longest
 
 from sphinx.util import ensuredir
-from yaml import safe_dump as dump
+import yaml as yml
+
+import common
+from convert_package import convert_package
+from convert_enum import convert_enum
+from convert_class import convert_class
+from convert_module import convert_module
 
 INITPY = '__init__.py'
 MODULE = 'module'
@@ -34,6 +40,7 @@ def build_finished(app, exception):
         if 'source' in obj and 'path' in obj['source'] and obj['source']['path']:
             if obj['source']['path'].endswith(INITPY):
                 obj['type'] = 'package'
+                app.env.docfx_info_uid_types[obj['uid']] = 'package'
                 return
 
         for child_uid in obj['children']:
@@ -42,8 +49,30 @@ def build_finished(app, exception):
 
                 if child_uid_type == MODULE:
                     obj['type'] = 'package'
+                    app.env.docfx_info_uid_types[obj['uid']] = 'package'
                     return
 
+    def remove_empty_values(dictionary):
+        ''' Clear empty values in dictionary. Following values will be regarded as empty:
+            empty collections: [], {}, (), set() ...
+            zero value: 0
+            false boolean: False
+            empty string: ''
+            none value: None
+        '''
+        return {k: v for k, v in dictionary.items() if v}
+    
+    def write_yaml(obj, path, mime):
+        ''' Write the SDP styled object to a yaml file.
+
+        :param obj: The object in SDP style.
+        :param path: Path of the yaml file you would like to write.
+        :param mime: Yaml mime type. e.g. PythonClass
+        '''
+        yaml_mime = f'### YamlMime:{mime}\n'
+        yaml_content = yml.dump(obj, default_flow_style=False, indent=2, sort_keys=False)
+        with open(path, 'w') as f:
+            f.write(yaml_mime + yaml_content)
 
     normalized_outdir = os.path.normpath(os.path.join(
         app.builder.outdir  # Output Directory for Builder
@@ -184,30 +213,44 @@ def build_finished(app, exception):
                     obj['source']['remote']['repo'] == 'https://apidrop.visualstudio.com/Content%20CI/_git/ReferenceAutomation'):
                         del(obj['source'])
 
+    for data_set in (app.env.docfx_yaml_modules,
+                     app.env.docfx_yaml_classes, 
+                     app.env.docfx_yaml_functions):  # noqa
+
+        for uid, yaml_data in iter(sorted(data_set.items())):
             # Output file
             if uid.lower() in file_name_set:
                 filename = uid + "(%s)" % app.env.docfx_info_uid_types[uid]
             else:
                 filename = uid
-
             out_file = os.path.join(normalized_outdir, '%s.yml' % filename)
             ensuredir(os.path.dirname(out_file))
-            if app.verbosity >= 1:
-                app.info(bold('[docfx_yaml] ') + darkgreen('Outputting %s' % filename))
+            new_object = {}
 
-            with open(out_file, 'w') as out_file_obj:
-                out_file_obj.write('### YamlMime:UniversalReference\n')
-                try:
-                    dump(
-                        {
-                            'items': yaml_data,
-                            'references': references,
-                            'api_name': [],  # Hack around docfx YAML
-                        },
-                        out_file_obj,
-                        default_flow_style=False
-                    )
-                except Exception as e:
-                    raise ValueError("Unable to dump object\n{0}".format(yaml_data)) from e
+            transformed_obj = None
+            if yaml_data[0]['type'] == 'package':
+                transformed_obj = convert_package(yaml_data, app.env.docfx_info_uid_types)
+                mime = "PythonPackage"
+            elif yaml_data[0].get('type', None) == 'class':
+                transformed_obj = convert_class(yaml_data)
+                mime = "PythonClass"
+            else:
+                transformed_obj = convert_module(yaml_data, app.env.docfx_info_uid_types)
+                mime = "PythonModule"
+            
+            if transformed_obj == None:
+                print("Unknown yml: "+ yamlfile_path)
+            else:
+                # save file
+                common.write_yaml(transformed_obj, out_file, mime)
+                file_name_set.add(filename) 
 
-            file_name_set.add(filename)
+        
+                
+            
+
+           
+
+            
+
+            
