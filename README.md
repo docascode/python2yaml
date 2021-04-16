@@ -1,6 +1,6 @@
 # python2yaml
 
-1. Install Sphinx
+1. First you need to install the latest version of Sphinx
 ```
 pip install -U sphinx
 ```
