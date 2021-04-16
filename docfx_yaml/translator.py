@@ -61,15 +61,7 @@ def translator(app, docname, doctree):
             print("[docfx_yaml] There maybe some syntax error in docstring near: " + node.astext())
             raise e
 
-        try:
-            uid = node[0].attributes['ids'][0]
-        except Exception:
-            uid = '{module}.{full_name}'.format(module=module, full_name=full_name)
-            print('Non-standard id: %s' % uid)
-
-        _uid = '{module}.{full_name}'.format(module=module, full_name=full_name)
-        if uid != _uid:
-            uid = _uid
+        uid = '{module}.{full_name}'.format(module=module, full_name=full_name)
         return uid
 
     def _is_desc_of_enum_class(node):
@@ -155,7 +147,6 @@ def translator(app, docname, doctree):
                 returnvalue_ret = transform_node(content[0])
                 if returnvalue_ret:
                     data['return']['description'] = returnvalue_ret.strip(" \n\r\t")
-                    # data[uid].setdefault(fieldtype, []).append(ret_data)
             
             if fieldtype == 'Return':
                 for returntype_node in content:
@@ -170,7 +161,6 @@ def translator(app, docname, doctree):
                                     data['references'].append(_added_reference)
 
                             data['return'].setdefault('type', []).append(returntype)
-                    # data[uid].setdefault(fieldtype, []).append(ret_data)
             
             if fieldtype in ['Parameters', 'Variables']:
                 if _is_single_paragraph(fieldbody):
@@ -191,17 +181,15 @@ def translator(app, docname, doctree):
                         else:
                             _data['id'] = content[0].astext()[:content[0].astext().find('(')].strip(' ')
                             data['variables'].append(_data)
-                    # data[uid].setdefault(fieldtype, []).append(ret_data)
             
             if fieldtype == 'Variables':
                 for child in content:
                     ret_data = child.astext()
-                    # data[uid].setdefault(fieldtype, []).append(ret_data)
 
             if fieldtype == 'Raises':
                 for child in content:
                     ret_data = child.astext()
-                    # data[uid].setdefault(fieldtype, []).append(ret_data)
+
         return data
 
     def _is_property_node(node):
@@ -231,14 +219,7 @@ def translator(app, docname, doctree):
                         if isinstance(item, desc_signature) and any(isinstance(n, addnodes.desc_annotation) for n in item):
                             # capture attributes data and cache it
                             data.setdefault('added_attribute', [])
-
-                            # item_ids = item.get('ids', [''])
-
-                            # if len(item_ids) == 0: # find a node with no 'ids' attribute
                             curuid = item.get('module', '') + '.' + item.get('fullname', '')
-                            #     # generate its uid by module and fullname
-                            # else:
-                            #     curuid = item_ids[0]
 
                             if len(curuid) > 0:
                                 parent = curuid[:curuid.rfind('.')]
