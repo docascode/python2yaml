@@ -18,11 +18,9 @@ import sys
 import textwrap
 from itertools import groupby
 
-
 from docutils import nodes, writers
+from docutils.nodes import Node, Text, TextElement
 from docutils.utils import column_width
-from docutils.nodes import TextElement, Text, Node
-
 from sphinx import addnodes
 from sphinx.locale import admonitionlabels
 

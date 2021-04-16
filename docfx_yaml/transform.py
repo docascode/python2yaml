@@ -1,12 +1,16 @@
+# -*- coding: utf-8 -*-
+#
 # ---------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # ---------------------------------------------------------
 
 import re
+
 from docutils import nodes
-from sphinx.util.docfields import _is_single_paragraph
 from sphinx import addnodes
 from sphinx.addnodes import desc, desc_signature
+from sphinx.util.docfields import _is_single_paragraph
+
 from nodes import remarks
 
 TYPE_SEP_PATTERN = '(\[|\]|, |\(|\))'

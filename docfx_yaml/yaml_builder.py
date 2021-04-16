@@ -1,15 +1,29 @@
+# -*- coding: utf-8 -*-
+#
+# ---------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# ---------------------------------------------------------
+
+"""
+Simaple YamlBuilder for parsing .yml output 
+"""
+
+from io import open
+from os import path
+
 from docutils import nodes
 from docutils.io import StringOutput
 from docutils.nodes import Node
-from io import open
-from os import path
 from sphinx.builders import Builder
 from sphinx.util.osutil import ensuredir, os_path
+
 from directives import RemarksDirective, TodoDirective
+from build_init import build_init
+from process_doctree import process_docstring, process_signature
+from build_finished import build_finished
 from nodes import remarks
-from extension import build_init
-from extension import process_docstring, process_signature, build_finished
 from transform import transform_yaml
+
 
 class YamlBuilder(Builder):
     name = 'yaml'

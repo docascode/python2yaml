@@ -1,0 +1,213 @@
+# -*- coding: utf-8 -*-
+#
+# ---------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# ---------------------------------------------------------
+
+import os
+from itertools import zip_longest
+
+from sphinx.util import ensuredir
+from yaml import safe_dump as dump
+
+INITPY = '__init__.py'
+MODULE = 'module'
+
+def build_finished(app, exception):
+    """
+    Output YAML on the file system.
+    """
+    def find_node_in_toc_tree(toc_yaml, to_add_node):
+        for module in toc_yaml:
+            if module['name'] == to_add_node:
+                return module
+
+            if 'items' in module:
+                items = module['items']
+                found_module = find_node_in_toc_tree(items, to_add_node)
+                if found_module != None:
+                    return found_module
+
+        return None
+
+    def convert_module_to_package_if_needed(obj):
+        if 'source' in obj and 'path' in obj['source'] and obj['source']['path']:
+            if obj['source']['path'].endswith(INITPY):
+                obj['type'] = 'package'
+                return
+
+        for child_uid in obj['children']:
+            if child_uid in app.env.docfx_info_uid_types:
+                child_uid_type = app.env.docfx_info_uid_types[child_uid]
+
+                if child_uid_type == MODULE:
+                    obj['type'] = 'package'
+                    return
+
+
+    normalized_outdir = os.path.normpath(os.path.join(
+        app.builder.outdir  # Output Directory for Builder
+        #API_ROOT
+    ))
+    ensuredir(normalized_outdir)
+
+    toc_yaml = []
+    # Used to record filenames dumped to avoid confliction
+    # caused by Windows case insensitive file system
+    file_name_set = set()
+
+    # Order matters here, we need modules before lower level classes,
+    # so that we can make sure to inject the TOC properly
+    for data_set in (app.env.docfx_yaml_modules,
+                     app.env.docfx_yaml_classes, 
+                     app.env.docfx_yaml_functions):  # noqa
+
+        for uid, yaml_data in iter(sorted(data_set.items())):
+            if not uid:
+                # Skip objects without a module
+                continue
+
+            references = []
+
+            # Merge module data with class data
+            for obj in yaml_data:
+                arg_params = obj.get('syntax', {}).get('parameters', [])
+                if(len(arg_params) > 0 and 'id' in arg_params[0] and arg_params[0]['id'] == 'self'):
+                    # Support having `self` as an arg param, but not documented
+                    arg_params = arg_params[1:]
+                    obj['syntax']['parameters'] = arg_params
+                if obj['uid'] in app.env.docfx_info_field_data and \
+                    obj['type'] == app.env.docfx_info_field_data[obj['uid']]['type']:
+                    # Avoid entities with same uid and diff type.
+                    del(app.env.docfx_info_field_data[obj['uid']]['type']) # Delete `type` temporarily
+                    if 'syntax' not in obj:
+                        obj['syntax'] = {}
+                    merged_params = []
+                    if 'parameters' in app.env.docfx_info_field_data[obj['uid']]:
+                        doc_params = app.env.docfx_info_field_data[obj['uid']].get('parameters', [])
+                        if arg_params and doc_params:
+                            if len(arg_params) - len(doc_params) > 0:
+                                app.warn(
+                                    "Documented params don't match size of params:"
+                                    " {}".format(obj['uid']))
+                            # Zip 2 param lists until the long one is exhausted
+                            for args, docs in zip_longest(arg_params, doc_params, fillvalue={}):
+                                if len(args) == 0:
+                                    merged_params.append(docs)
+                                else:
+                                    args.update(docs)
+                                    merged_params.append(args)
+                    obj['syntax'].update(app.env.docfx_info_field_data[obj['uid']])
+                    if merged_params:
+                        obj['syntax']['parameters'] = merged_params
+
+                    if 'parameters' in obj['syntax'] and obj['type'] == 'method':
+                        for args in obj['syntax']['parameters']:
+                            if 'defaultValue' not in args:
+                                args['isRequired'] = True
+
+                    # Raise up summary
+                    if 'summary' in obj['syntax'] and obj['syntax']['summary']:
+                        obj['summary'] = obj['syntax'].pop('summary').strip(" \n\r\r")
+
+                    # Raise up remarks
+                    if 'remarks' in obj['syntax'] and obj['syntax']['remarks']:
+                        obj['remarks'] = obj['syntax'].pop('remarks')
+
+                    # Raise up seealso
+                    if 'seealso' in obj['syntax'] and obj['syntax']['seealso']:
+                        obj['seealsoContent'] = obj['syntax'].pop('seealso')
+
+                    # Raise up example
+                    if 'example' in obj['syntax'] and obj['syntax']['example']:
+                        obj.setdefault('example', []).append(obj['syntax'].pop('example'))
+
+                    # Raise up exceptions
+                    if 'exceptions' in obj['syntax'] and obj['syntax']['exceptions']:
+                        obj['exceptions'] = obj['syntax'].pop('exceptions')
+
+                    # Raise up references
+                    if 'references' in obj['syntax'] and obj['syntax']['references']:
+                        obj.setdefault('references', []).extend(obj['syntax'].pop('references'))
+
+                    # add content of temp list 'added_attribute' to children and yaml_data
+                    if 'added_attribute' in obj['syntax'] and obj['syntax']['added_attribute']:
+                        added_attribute = obj['syntax'].pop('added_attribute')
+                        for attrData in added_attribute:
+                            existed_Data = next((n for n in yaml_data if n['uid'] == attrData['uid']), None)
+                            if existed_Data:
+                                # Update data for already existed one which has attribute comment in source file
+                                existed_Data.update(attrData)
+                            else:
+                                obj.get('children', []).append(attrData['uid'])
+                                yaml_data.append(attrData)
+                                if 'class' in attrData:
+                                    # Get parent for attrData of Non enum class
+                                    parent = attrData['class']
+                                else:
+                                    # Get parent for attrData of enum class
+                                    parent = attrData['parent']
+                                # obj['references'].append(_create_reference(attrData, parent))
+                    app.env.docfx_info_field_data[obj['uid']]['type'] = obj['type'] # Revert `type` for other objects to use
+
+                if 'references' in obj:
+                    # Ensure that references have no duplicate ref
+                    ref_uids = [r['uid'] for r in references]
+                    for ref_obj in obj['references']:
+                        if ref_obj['uid'] not in ref_uids:
+                            references.append(ref_obj)
+                    obj.pop('references')
+
+                if obj['type'] == 'module':
+                    convert_module_to_package_if_needed(obj)
+
+                if obj['type'] == 'method':
+                    obj['namewithoutparameters'] = obj['source']['id']
+
+                # To distinguish distribution package and import package
+                if obj.get('type', '') == 'package' and obj.get('kind', '') != 'distribution':
+                    obj['kind'] = 'import'
+
+                try:
+                    if remove_inheritance_for_notfound_class:
+                        if 'inheritance' in obj:
+                            python_sdk_name = obj['uid'].split('.')[0]
+                            obj['inheritance'] = [n for n in obj['inheritance'] if not n['type'].startswith(python_sdk_name) or
+                                                  n['type'] in app.env.docfx_info_uid_types]
+                            if not obj['inheritance']:
+                                obj.pop('inheritance')
+
+                except NameError:
+                    pass
+
+                if 'source' in obj and (not obj['source']['remote']['repo'] or \
+                    obj['source']['remote']['repo'] == 'https://apidrop.visualstudio.com/Content%20CI/_git/ReferenceAutomation'):
+                        del(obj['source'])
+
+            # Output file
+            if uid.lower() in file_name_set:
+                filename = uid + "(%s)" % app.env.docfx_info_uid_types[uid]
+            else:
+                filename = uid
+
+            out_file = os.path.join(normalized_outdir, '%s.yml' % filename)
+            ensuredir(os.path.dirname(out_file))
+            if app.verbosity >= 1:
+                app.info(bold('[docfx_yaml] ') + darkgreen('Outputting %s' % filename))
+
+            with open(out_file, 'w') as out_file_obj:
+                out_file_obj.write('### YamlMime:UniversalReference\n')
+                try:
+                    dump(
+                        {
+                            'items': yaml_data,
+                            'references': references,
+                            'api_name': [],  # Hack around docfx YAML
+                        },
+                        out_file_obj,
+                        default_flow_style=False
+                    )
+                except Exception as e:
+                    raise ValueError("Unable to dump object\n{0}".format(yaml_data)) from e
+
+            file_name_set.add(filename)

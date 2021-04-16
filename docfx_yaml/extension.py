@@ -1,5 +1,5 @@
-import os
 import inspect
+import os
 import re
 
 try:
@@ -7,17 +7,17 @@ try:
 except ImportError:
     from commands import getoutput
 
-from yaml import safe_dump as dump
-
-from sphinx.util.console import darkgreen, bold
-from sphinx.util import ensuredir
-from sphinx.errors import ExtensionError
-from sphinx.util.nodes import make_refnode
-from settings import API_ROOT
-from utils import transform_node, transform_string
-
 from functools import partial
 from itertools import zip_longest
+
+from sphinx.errors import ExtensionError
+from sphinx.util import ensuredir
+from sphinx.util.console import bold, darkgreen
+from sphinx.util.nodes import make_refnode
+from yaml import safe_dump as dump
+
+from settings import API_ROOT
+from utils import transform_node, transform_string
 
 METHOD = 'method'
 FUNCTION = 'function'
