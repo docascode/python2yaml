@@ -12,19 +12,19 @@ functions:
   - name: arg1
     description: Parameter arg1 of <xref:format.numpy.foo.function>.
     types:
-    - <xref:[int](https://docs.python.org/3.6/library/functions.html#int)>
+    - '[int](https://docs.python.org/3.6/library/functions.html#int)'
   - name: arg2
     description: Parameter arg2 of <xref:format.numpy.foo.function>.
     types:
-    - <xref:[float](https://docs.python.org/3.6/library/functions.html#float)>
+    - '[float](https://docs.python.org/3.6/library/functions.html#float)'
   - name: arg3
     description: Parameter arg3 of <xref:format.numpy.foo.function>.
     types:
-    - <xref:boolean>
+    - boolean
   - name: arg4
     description: Parameter arg4 of <xref:format.numpy.foo.function>.
     types:
-    - <xref:[str](https://docs.python.org/3.6/library/stdtypes.html#str)>
+    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
 classes:
 - format.numpy.foo.Foo
 - format.numpy.foo.FooException

@@ -12,11 +12,11 @@ constructor:
   - name: init_arg1
     description: Parameter init_arg1 from class docstring.
     types:
-    - <xref:[float](https://docs.python.org/3.6/library/functions.html#float)>
+    - '[float](https://docs.python.org/3.6/library/functions.html#float)'
   - name: init_arg2
     description: Parameter init_arg2 from class docstring.
     types:
-    - <xref:[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]>
+    - '[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]'
 variables:
 - description: Docstring of <xref:format.rst.foo.Foo.attr> from class docstring.
   name: attr
@@ -32,12 +32,12 @@ methods:
     description: Class object of <xref:format.rst.foo.Foo>.
     isRequired: true
     types:
-    - <xref:class>
+    - class
   - name: arg1
     description: Parameter arg1 of <xref:format.rst.foo.Foo.class_method>.
     isRequired: true
     types:
-    - <xref:[str](https://docs.python.org/3.6/library/stdtypes.html#str)>
+    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method
   name: method
   summary: Docstring of normal class method <xref:format.rst.foo.Foo.method>.
@@ -64,13 +64,13 @@ methods:
       \ default value is \u2018default string\u2019."
     defaultValue: default string
     types:
-    - <xref:[str](https://docs.python.org/3.6/library/stdtypes.html#str)>
+    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
   - name: arg2
     description: Paremeter arg2 of <xref:format.rst.foo.Foo.method_default_value>
       default value is None.
     defaultValue: None
     types:
-    - <xref:[object](https://docs.python.org/3.6/library/functions.html#object)>
+    - '[object](https://docs.python.org/3.6/library/functions.html#object)'
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method_default_value_comma
   name: method_default_value_comma
   summary: 'Docstring of <xref:format.rst.foo.Foo.method_default_value_comma>.
@@ -143,7 +143,7 @@ methods:
   return:
     description: This method returns a value.
     types:
-    - <xref:boolean>
+    - boolean
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method_seealso
   name: method_seealso
   summary: Docstring of <xref:format.rst.foo.Foo.method_seealso>.

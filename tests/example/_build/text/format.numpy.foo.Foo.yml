@@ -12,11 +12,11 @@ constructor:
   - name: init_arg1
     description: Parameter init_arg1 from class docstring.
     types:
-    - <xref:[float](https://docs.python.org/3.6/library/functions.html#float)>
+    - '[float](https://docs.python.org/3.6/library/functions.html#float)'
   - name: init_arg2
     description: Parameter init_arg2 from class docstring.
     types:
-    - <xref:[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]>
+    - '[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]'
 methods:
 - uid: format.numpy.foo.Foo.class_method
   name: class_method
@@ -27,13 +27,13 @@ methods:
     description: Class object of <xref:format.numpy.foo.Foo>.
     isRequired: true
     types:
-    - <xref:class>
+    - class
   - name: arg1
     description: Parameter arg1 of `fomrmat.numpy.foo.Foo.class_method()`.
     isRequired: true
     types:
-    - "<xref:[str](https://docs.python.org/3.6/library/stdtypes.html#str)) \u2013\
-      \ Parameter arg1 of `fomrmat.numpy.foo.Foo.class_method(>"
+    - "[str](https://docs.python.org/3.6/library/stdtypes.html#str)) \u2013 Parameter\
+      \ arg1 of `fomrmat.numpy.foo.Foo.class_method("
 - uid: format.numpy.foo.Foo.method
   name: method
   summary: Docstring of normal class method `fomrmat.numpy.foo.Foo.method()`.
@@ -107,7 +107,7 @@ methods:
   return:
     description: This method returns a value.
     types:
-    - <xref:[bool](https://docs.python.org/3.6/library/functions.html#bool)>
+    - '[bool](https://docs.python.org/3.6/library/functions.html#bool)'
 - uid: format.numpy.foo.Foo.method_seealso
   name: method_seealso
   summary: Docstring of `fomrmat.numpy.foo.Foo.method_seealso()`.

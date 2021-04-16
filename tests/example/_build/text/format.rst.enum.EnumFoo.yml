@@ -15,11 +15,11 @@ attributes:
   signature: VALUE0 = 0
   return:
     types:
-    - <xref:format.rst.enum.EnumFoo>
+    - format.rst.enum.EnumFoo
 - uid: format.rst.enum.EnumFoo.VALUE1
   name: VALUE1
   summary: Inlune docstring of VALUE1
   signature: VALUE1 = 1
   return:
     types:
-    - <xref:format.rst.enum.EnumFoo>
+    - format.rst.enum.EnumFoo
