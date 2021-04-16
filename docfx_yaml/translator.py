@@ -18,7 +18,7 @@ PARAMETER_NAME = "[*][*](.*?)[*][*]"
 PARAMETER_TYPE = "[(](.*)[)]"
 PARAMETER_DESCRIPTION = "[–][ ](.*)"
 
-def transform_yaml(app, docname, doctree):
+def translator(app, docname, doctree):
 
     transform_node = app.docfx_transform_node
 
@@ -109,6 +109,23 @@ def transform_yaml(app, docname, doctree):
 
         return data_type, _added_reference
 
+    def parse_parameter(ret_data):
+        _id_pattern = re.compile(PARAMETER_NAME)
+        _type_pattern = re.compile(PARAMETER_TYPE)
+        _description_pattern = re.compile(PARAMETER_DESCRIPTION)
+        if len(re.findall(_id_pattern, ret_data)) > 0:
+            _id = re.findall(_id_pattern, ret_data)[0]
+        else:
+            _id = None
+        _type = []
+        if len(re.findall(_type_pattern, ret_data)) > 0:
+            _type.append(re.findall(_type_pattern, ret_data)[0].replace('*',''))
+        if len(re.findall(_description_pattern, ret_data)) > 0:
+            _description = re.findall(_description_pattern, ret_data)[0]
+        else:
+            _description = None
+        _data = make_param(_id, _description, _type)
+        return _data
 
     def _get_full_data(node):
         data = {
@@ -158,49 +175,21 @@ def transform_yaml(app, docname, doctree):
             if fieldtype in ['Parameters', 'Variables']:
                 if _is_single_paragraph(fieldbody):
                     ret_data = transform_para(content[0])
-                    _id_pattern = re.compile(PARAMETER_NAME)
-                    _type_pattern = re.compile(PARAMETER_TYPE)
-                    _description_pattern = re.compile(PARAMETER_DESCRIPTION)
-                    if len(re.findall(_id_pattern, ret_data)) > 0:
-                        _id = re.findall(_id_pattern, ret_data)[0]
-                    else:
-                        _id = None
-                    _type = []
-                    if len(re.findall(_type_pattern, ret_data)) > 0:
-                        _type.append(re.findall(_type_pattern, ret_data)[0].replace('*',''))
-                    if len(re.findall(_description_pattern, ret_data)) > 0:
-                        _description = re.findall(_description_pattern, ret_data)[0]
-                    else:
-                        _description = None
-                    _data = make_param(_id, _description, _type)
+                    _data = parse_parameter(ret_data)
                     if fieldtype == 'Parameters':
                         data['parameters'].append(_data)
                     else:
-                        id = content[0].astext()[:content[0].astext().find('(')].strip(' ')
-                        _data['id'] = id
+                        _data['id'] = content[0].astext()[:content[0].astext().find('(')].strip(' ')
                         data['variables'].append(_data)
                 else:
                     for child in content[0]:
                         ret_data = transform_para(child[0])
-                        _id_pattern = re.compile(PARAMETER_NAME)
-                        _type_pattern = re.compile(PARAMETER_TYPE)
-                        _description_pattern = re.compile(PARAMETER_DESCRIPTION)
-                        if len(re.findall(_id_pattern, ret_data)) > 0:
-                            _id = re.findall(_id_pattern, ret_data)[0]
-                        else:
-                            _id = None
-                        _type = []
-                        if len(re.findall(_type_pattern, ret_data)) > 0:
-                            _type.append(re.findall(_type_pattern, ret_data)[0].replace('*',''))
-                        if len(re.findall(_description_pattern, ret_data)) > 0:
-                            _description = re.findall(_description_pattern, ret_data)[0]
-                        else:
-                            _description = None
-                        _data = make_param(_id, _description, _type)
+                        _data = parse_parameter(ret_data)
                         
                         if fieldtype == 'Parameters':
                             data['parameters'].append(_data)
                         else:
+                            _data['id'] = content[0].astext()[:content[0].astext().find('(')].strip(' ')
                             data['variables'].append(_data)
                     # data[uid].setdefault(fieldtype, []).append(ret_data)
             

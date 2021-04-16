@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+#
+# ---------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# ---------------------------------------------------------
+
 import re
 from docutils.io import StringOutput
 from docutils.utils import new_document

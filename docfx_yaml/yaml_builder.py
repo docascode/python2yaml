@@ -17,12 +17,12 @@ from docutils.nodes import Node
 from sphinx.builders import Builder
 from sphinx.util.osutil import ensuredir, os_path
 
-from directives import RemarksDirective, TodoDirective
-from build_init import build_init
-from process_doctree import process_docstring, process_signature
 from build_finished import build_finished
+from build_init import build_init
+from directives import RemarksDirective, TodoDirective
 from nodes import remarks
-from transform import transform_yaml
+from process_doctree import process_docstring, process_signature
+from translator import translator
 
 
 class YamlBuilder(Builder):
@@ -64,7 +64,7 @@ class YamlBuilder(Builder):
         pass
 
     def write_doc(self, docname, doctree):
-        transform_yaml(self.app, docname, doctree)
+        translator(self.app, docname, doctree)
 
     def finish(self):
         pass

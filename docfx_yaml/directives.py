@@ -1,4 +1,8 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
+#
+# ---------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# ---------------------------------------------------------
 
 """
 This module is used to add extra supported directives to sphinx.

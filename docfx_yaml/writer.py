@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+#
+# ---------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# ---------------------------------------------------------
+
 """
 This is a forked version of the Sphinx text writer.
 
@@ -35,8 +40,6 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-
-
 
 class TextWrapper(textwrap.TextWrapper):
     """Custom subclass that uses a different word separator regex."""
