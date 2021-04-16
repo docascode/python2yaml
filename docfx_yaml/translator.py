@@ -105,13 +105,15 @@ def translator(app, docname, doctree):
         _id_pattern = re.compile(PARAMETER_NAME)
         _type_pattern = re.compile(PARAMETER_TYPE)
         _description_pattern = re.compile(PARAMETER_DESCRIPTION)
-        if len(re.findall(_id_pattern, ret_data)) > 0:
-            _id = re.findall(_id_pattern, ret_data)[0]
+        _des_index = ret_data.find('–')
+        _first_part_ret_data = ret_data[:_des_index]
+        if len(re.findall(_id_pattern, _first_part_ret_data)) > 0:
+            _id = re.findall(_id_pattern, _first_part_ret_data)[0]
         else:
             _id = None
         _type = []
-        if len(re.findall(_type_pattern, ret_data)) > 0:
-            _type.append(re.findall(_type_pattern, ret_data)[0].replace('*',''))
+        if len(re.findall(_type_pattern, _first_part_ret_data)) > 0:
+            _type.append(re.findall(_type_pattern, _first_part_ret_data)[0].replace('*',''))
         if len(re.findall(_description_pattern, ret_data)) > 0:
             _description = re.findall(_description_pattern, ret_data)[0]
         else:

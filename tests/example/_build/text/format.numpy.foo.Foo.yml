@@ -32,8 +32,7 @@ methods:
     description: Parameter arg1 of `fomrmat.numpy.foo.Foo.class_method()`.
     isRequired: true
     types:
-    - "[str](https://docs.python.org/3.6/library/stdtypes.html#str)) \u2013 Parameter\
-      \ arg1 of `fomrmat.numpy.foo.Foo.class_method("
+    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
 - uid: format.numpy.foo.Foo.method
   name: method
   summary: Docstring of normal class method `fomrmat.numpy.foo.Foo.method()`.
