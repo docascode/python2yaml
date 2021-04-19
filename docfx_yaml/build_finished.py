@@ -51,28 +51,25 @@ def build_finished(app, exception):
                     obj['type'] = 'package'
                     app.env.docfx_info_uid_types[obj['uid']] = 'package'
                     return
-
-    def remove_empty_values(dictionary):
-        ''' Clear empty values in dictionary. Following values will be regarded as empty:
-            empty collections: [], {}, (), set() ...
-            zero value: 0
-            false boolean: False
-            empty string: ''
-            none value: None
-        '''
-        return {k: v for k, v in dictionary.items() if v}
     
-    def write_yaml(obj, path, mime):
-        ''' Write the SDP styled object to a yaml file.
-
-        :param obj: The object in SDP style.
-        :param path: Path of the yaml file you would like to write.
-        :param mime: Yaml mime type. e.g. PythonClass
-        '''
-        yaml_mime = f'### YamlMime:{mime}\n'
-        yaml_content = yml.dump(obj, default_flow_style=False, indent=2, sort_keys=False)
-        with open(path, 'w') as f:
-            f.write(yaml_mime + yaml_content)
+    def convert_class_to_enum_if_needed(obj):
+        if (obj.get('inheritance'), None):
+            children = obj.get('inheritance', None)
+            inheritanceLines = []
+            for child in children:
+                iLine = []
+                if child.get('inheritance', None) and child['inheritance'][0].get('type', None):
+                    iLine.append(child['inheritance'][0]['type'])
+                if child.get('type', None):
+                    iLine.append(child['type'])
+                inheritanceLines.append(iLine)
+            if inheritanceLines:
+                for iLine in inheritanceLines:
+                    for inheritance in iLine:
+                        if inheritance.find('enum.Enum') > -1:
+                            obj['type'] = 'enum'
+                            app.env.docfx_info_uid_types[obj['uid']] = 'enum'
+                            return
 
     normalized_outdir = os.path.normpath(os.path.join(
         app.builder.outdir  # Output Directory for Builder
@@ -213,6 +210,9 @@ def build_finished(app, exception):
                     obj['source']['remote']['repo'] == 'https://apidrop.visualstudio.com/Content%20CI/_git/ReferenceAutomation'):
                         del(obj['source'])
 
+                if (obj['type'] == 'class' and obj['inheritance']):
+                    convert_class_to_enum_if_needed(obj)
+
     for data_set in (app.env.docfx_yaml_modules,
                      app.env.docfx_yaml_classes, 
                      app.env.docfx_yaml_functions):  # noqa
@@ -234,6 +234,9 @@ def build_finished(app, exception):
             elif yaml_data[0].get('type', None) == 'class':
                 transformed_obj = convert_class(yaml_data)
                 mime = "PythonClass"
+            elif yaml_data[0].get('type', None) == 'enum':
+                transformed_obj = convert_enum(yaml_data)
+                mime = "PythonEnum"
             else:
                 transformed_obj = convert_module(yaml_data, app.env.docfx_info_uid_types)
                 mime = "PythonModule"

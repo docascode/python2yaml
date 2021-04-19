@@ -1,25 +1,15 @@
-### YamlMime:PythonClass
+### YamlMime:PythonEnum
 uid: format.rst.enum.EnumFoo
 name: EnumFoo
 fullName: format.rst.enum.EnumFoo
-module: format.rst.enum
-inheritances:
-- enum.Enum
 summary: Docstring of <xref:format.rst.enum.EnumFoo> class.
+module: format.rst.enum
 constructor:
   syntax: EnumFoo(value)
-attributes:
-- uid: format.rst.enum.EnumFoo.VALUE0
-  name: VALUE0
-  summary: Inline docstring of VALUE0
-  signature: VALUE0 = 0
-  return:
-    types:
-    - format.rst.enum.EnumFoo
-- uid: format.rst.enum.EnumFoo.VALUE1
-  name: VALUE1
-  summary: Inlune docstring of VALUE1
-  signature: VALUE1 = 1
-  return:
-    types:
-    - format.rst.enum.EnumFoo
+inheritances:
+- enum.Enum
+fields:
+- name: VALUE0
+  uid: format.rst.enum.EnumFoo.VALUE0
+- name: VALUE1
+  uid: format.rst.enum.EnumFoo.VALUE1

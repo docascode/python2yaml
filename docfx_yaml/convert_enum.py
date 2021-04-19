@@ -8,15 +8,11 @@ def convert_enum(obj):
     record = {}
     reference_mapping = {}
     old_enum_object = {}
-    
-    if obj.get('items', None):
-        for item in obj['items']:
-            record[item['uid']] = item
-            if item['type'] == 'class':
-                old_enum_object = item
 
-    if obj.get('references', None):
-        reference_mapping = parse_references(obj.get('references'))
+    for item in obj:
+        record[item['uid']] = item
+        if item['type'] == 'enum':
+            old_enum_object = item
 
     new_enum_object = {
         'uid': old_enum_object.get('uid', None),
@@ -43,6 +39,7 @@ def convert_enum(obj):
 
     new_enum_object['fields'] = list(map(convert_fields, fields))
 
+    print ("enum: " + new_enum_object['uid'])
     return remove_empty_values(new_enum_object)
 
 def convert_fields(obj):

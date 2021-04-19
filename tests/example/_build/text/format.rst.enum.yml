@@ -2,5 +2,5 @@
 uid: format.rst.enum
 name: enum
 fullName: format.rst.enum
-classes:
+enums:
 - format.rst.enum.EnumFoo
