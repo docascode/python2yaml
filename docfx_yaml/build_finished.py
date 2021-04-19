@@ -7,14 +7,15 @@
 import os
 from itertools import zip_longest
 
-from sphinx.util import ensuredir
 import yaml as yml
+from sphinx.util import ensuredir
+from yaml import safe_dump as dump
 
 import common
-from convert_package import convert_package
-from convert_enum import convert_enum
 from convert_class import convert_class
+from convert_enum import convert_enum
 from convert_module import convert_module
+from convert_package import convert_package
 
 INITPY = '__init__.py'
 MODULE = 'module'
@@ -213,6 +214,20 @@ def build_finished(app, exception):
                 if (obj['type'] == 'class' and obj['inheritance']):
                     convert_class_to_enum_if_needed(obj)
 
+            # Build nested TOC
+            if uid.count('.') >= 1:
+                parent_level = '.'.join(uid.split('.')[:-1])
+                found_node = find_node_in_toc_tree(toc_yaml, parent_level)
+
+                if found_node:
+                    found_node.pop('uid', 'No uid found')
+                    found_node.setdefault('items', [{'name': 'Overview', 'uid': parent_level}]).append({'name': uid, 'uid': uid})
+                else:
+                    toc_yaml.append({'name': uid, 'uid': uid})
+
+            else:
+                toc_yaml.append({'name': uid, 'uid': uid})        
+
     for data_set in (app.env.docfx_yaml_modules,
                      app.env.docfx_yaml_classes, 
                      app.env.docfx_yaml_functions):  # noqa
@@ -246,7 +261,53 @@ def build_finished(app, exception):
             else:
                 # save file
                 common.write_yaml(transformed_obj, out_file, mime)
-                file_name_set.add(filename) 
+                file_name_set.add(filename)
+    
+    if len(toc_yaml) == 0:
+        raise RuntimeError("No documentation for this module.")
+
+    toc_file = os.path.join(normalized_outdir, 'toc.yml')
+    with open(toc_file, 'w') as writable:
+        writable.write(
+            dump(
+                [{
+                    'name': app.config.project,
+                    'items': [{'name': 'Overview', 'uid': 'project-' + app.config.project}] + toc_yaml
+                }],
+                default_flow_style=False,
+            )
+        )
+    
+    index_file = os.path.join(normalized_outdir, 'index.yml')
+    index_children = []
+    index_references = []
+    for item in toc_yaml:
+        index_children.append(item.get('name', ''))
+        index_references.append({
+            'uid': item.get('name', ''),
+            'name': item.get('name', ''),
+            'fullname': item.get('name', ''),
+            'isExternal': False
+        })
+
+    index_obj = [{
+        'uid': 'project-' + app.config.project,
+        'name': app.config.project,
+        'fullName': app.config.project,
+        'langs': ['python'],
+        'type': 'package',
+        'kind': 'distribution',
+        'summary': '',
+        'children': index_children
+    }]
+    transformed_obj = convert_package(index_obj, app.env.docfx_info_uid_types)
+    mime = "PythonPackage"
+    if transformed_obj == None:
+        print("Unknown yml: "+ yamlfile_path)
+    else:
+        # save file
+        common.write_yaml(transformed_obj, index_file, mime)
+        file_name_set.add(filename)
 
         
                 

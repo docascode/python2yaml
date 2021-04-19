@@ -1,0 +1,100 @@
+- items:
+  - name: Overview
+    uid: project-example
+  - items:
+    - name: Overview
+      uid: format
+    - items:
+      - name: Overview
+        uid: format.google
+      - items:
+        - name: Overview
+          uid: format.google.foo
+        - name: format.google.foo.Foo
+          uid: format.google.foo.Foo
+        - items:
+          - name: Overview
+            uid: format.google.foo.FooException
+          - name: format.google.foo.FooException.InternalFoo
+            uid: format.google.foo.FooException.InternalFoo
+          name: format.google.foo.FooException
+        name: format.google.foo
+      name: format.google
+    - items:
+      - name: Overview
+        uid: format.numpy
+      - items:
+        - name: Overview
+          uid: format.numpy.foo
+        - name: format.numpy.foo.Foo
+          uid: format.numpy.foo.Foo
+        - items:
+          - name: Overview
+            uid: format.numpy.foo.FooException
+          - name: format.numpy.foo.FooException.InternalFoo
+            uid: format.numpy.foo.FooException.InternalFoo
+          name: format.numpy.foo.FooException
+        name: format.numpy.foo
+      name: format.numpy
+    - items:
+      - name: Overview
+        uid: format.rst
+      - items:
+        - name: Overview
+          uid: format.rst.directives
+        - name: format.rst.directives.DirectivesFoo
+          uid: format.rst.directives.DirectivesFoo
+        name: format.rst.directives
+      - items:
+        - name: Overview
+          uid: format.rst.enum
+        - name: format.rst.enum.EnumFoo
+          uid: format.rst.enum.EnumFoo
+        name: format.rst.enum
+      - items:
+        - name: Overview
+          uid: format.rst.foo
+        - name: format.rst.foo.Foo
+          uid: format.rst.foo.Foo
+        - items:
+          - name: Overview
+            uid: format.rst.foo.FooException
+          - name: format.rst.foo.FooException.InternalFoo
+            uid: format.rst.foo.FooException.InternalFoo
+          name: format.rst.foo.FooException
+        - name: format.rst.foo.InheritFoo
+          uid: format.rst.foo.InheritFoo
+        name: format.rst.foo
+      name: format.rst
+    name: format
+  - items:
+    - name: Overview
+      uid: nspkg
+    - items:
+      - name: Overview
+        uid: nspkg.pkg_resources
+      - items:
+        - name: Overview
+          uid: nspkg.pkg_resources.pkg_resources_foo
+        - name: nspkg.pkg_resources.pkg_resources_foo.Foo
+          uid: nspkg.pkg_resources.pkg_resources_foo.Foo
+        name: nspkg.pkg_resources.pkg_resources_foo
+      name: nspkg.pkg_resources
+    - items:
+      - name: Overview
+        uid: nspkg.pkgutil
+      - items:
+        - name: Overview
+          uid: nspkg.pkgutil.pkgutil_foo
+        - name: nspkg.pkgutil.pkgutil_foo.Foo
+          uid: nspkg.pkgutil.pkgutil_foo.Foo
+        name: nspkg.pkgutil.pkgutil_foo
+      name: nspkg.pkgutil
+    name: nspkg
+  - items:
+    - name: Overview
+      uid: nspkg.native.native_foo
+    - name: nspkg.native.native_foo.Foo
+      uid: nspkg.native.native_foo.Foo
+    name: nspkg.native.native_foo
+  name: example
