@@ -10,6 +10,7 @@ from itertools import zip_longest
 import yaml as yml
 from sphinx.util import ensuredir
 from yaml import safe_dump as dump
+from settings import API_ROOT
 
 import common
 from convert_class import convert_class
@@ -73,8 +74,8 @@ def build_finished(app, exception):
                             return
 
     normalized_outdir = os.path.normpath(os.path.join(
-        app.builder.outdir  # Output Directory for Builder
-        #API_ROOT
+        app.builder.outdir,  # Output Directory for Builder
+        API_ROOT
     ))
     ensuredir(normalized_outdir)
 

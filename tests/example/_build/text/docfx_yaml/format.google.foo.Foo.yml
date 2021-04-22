@@ -51,18 +51,19 @@ methods:
   signature: method_code()
 - uid: format.google.foo.Foo.method_example
   name: method_example
-  summary: "Docstring of <xref:format.google.foo.Foo.method_example>.\n\n-[ Example\
-    \ ]-\n\nThis is example content.\nShould support multi-line.\nCan also include\
-    \ file:\n\n<!--[!code-default[Main](at\\rst\\enum.py )]-->\n\n<!-- literal_block\
-    \ {\"ids\": [], \"classes\": [], \"names\": [], \"dupnames\": [], \"backrefs\"\
-    : [], \"source\": \"D:\\\\Github\\\\python2yaml\\\\tests\\\\example\\\\format\\\
-    \\rst\\\\enum.py\", \"xml:space\": \"preserve\", \"force\": false, \"highlight_args\"\
-    : {\"linenostart\": 1}, \"language\": \"default\", \"linenos\": false} -->\n\n\
-    ````default\n\n   # coding: utf-8\n\n   from enum import Enum\n\n   class EnumFoo(Enum):\n\
-    \       \"\"\" Docstring of :class:`format.rst.enum.EnumFoo` class.\n       \"\
-    \"\"\n\n       VALUE0 = 0 #: Inline docstring of VALUE0\n       VALUE1 = 1 #:\
-    \ Inlune docstring of VALUE1\n\n   ````"
+  summary: Docstring of <xref:format.google.foo.Foo.method_example>.
   signature: method_example()
+  examples:
+  - "This is example content.\nShould support multi-line.\nCan also include file:<!--[!code-default[Main](at\\\
+    rst\\enum.py )]-->\n\n<!-- literal_block {\"ids\": [], \"classes\": [], \"names\"\
+    : [], \"dupnames\": [], \"backrefs\": [], \"source\": \"D:\\\\Github\\\\python2yaml\\\
+    \\tests\\\\example\\\\format\\\\rst\\\\enum.py\", \"xml:space\": \"preserve\"\
+    , \"force\": false, \"highlight_args\": {\"linenostart\": 1}, \"language\": \"\
+    default\", \"linenos\": false} -->\n\n````default\n\n   # coding: utf-8\n\n  \
+    \ from enum import Enum\n\n   class EnumFoo(Enum):\n       \"\"\" Docstring of\
+    \ :class:`format.rst.enum.EnumFoo` class.\n       \"\"\"\n\n       VALUE0 = 0\
+    \ #: Inline docstring of VALUE0\n       VALUE1 = 1 #: Inlune docstring of VALUE1\n\
+    \n   ````\n"
 - uid: format.google.foo.Foo.method_exception
   name: method_exception
   summary: Docstring of <xref:format.google.foo.Foo.method_exception>.

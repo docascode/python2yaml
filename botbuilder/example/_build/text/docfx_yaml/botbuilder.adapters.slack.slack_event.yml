@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.adapters.slack.slack_event
+name: slack_event
+fullName: botbuilder.adapters.slack.slack_event
+classes:
+- botbuilder.adapters.slack.slack_event.SlackEvent

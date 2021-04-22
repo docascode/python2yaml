@@ -23,6 +23,7 @@ from directives import RemarksDirective, TodoDirective
 from nodes import remarks
 from process_doctree import process_docstring, process_signature
 from translator import translator
+from miss_reference import missing_reference
 
 
 class YamlBuilder(Builder):
@@ -79,6 +80,7 @@ def setup(app):
     app.connect('autodoc-process-docstring', process_docstring)
     app.connect('autodoc-process-signature', process_signature)
     app.connect('build-finished', build_finished)
+    app.connect('missing-reference', missing_reference)
 
     app.add_config_value('autodoc_functions', False, 'env')
     app.add_config_value('folder', '', 'html')
