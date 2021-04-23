@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
 import os
 import re
 import sys
 import yaml as yml
+from yaml import safe_dump as dump
 from functools import partial
 
 xref_pattern = re.compile(r'<\s*xref\s*:\s*[\w\.]+\s*>')
+
 
 def list_yaml_files(root):
     paths = []
@@ -36,7 +39,8 @@ def write_yaml(obj, path, mime):
     :param mime: Yaml mime type. e.g. PythonClass
     '''
     yaml_mime = f'### YamlMime:{mime}\n'
-    yaml_content = yml.dump(obj, default_flow_style=False, indent=2, sort_keys=False)
+    yaml_content = yml.dump(obj, default_flow_style=False,
+                            indent=2, sort_keys=False)
     with open(path, 'w') as f:
         f.write(yaml_mime + yaml_content)
 
@@ -57,7 +61,8 @@ def resolve_type(reference):
         e.g. input: 'list[azure.core.Model]' -> output: '<xref:list>[<xref:azure.core.Model>]'
     '''
     xref = ''
-    http_pattern = re.compile(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+    http_pattern = re.compile(
+        r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 
     if reference.get('spec.python', None):
         specList = reference['spec.python']
@@ -67,12 +72,12 @@ def resolve_type(reference):
             if re.match(http_pattern, item.get('uid')):
                 d[item.get('uid')] = True
                 d[filterList[i-1].get('uid')] = True
-            else: 
+            else:
                 d[item.get('uid')] = False
 
         for i, item in enumerate(specList):
             if item.get('uid', None) and d[item.get('uid')]:
-                xref += item["uid"]   
+                xref += item["uid"]
             elif item.get('uid', None):
                 xref += f'<xref:{item["uid"]}>'
             else:
@@ -95,7 +100,8 @@ def remove_empty_values(dictionary):
 
 
 def convert_member(obj, reference_mapping):
-    convert_parameter_partial = partial(convert_parameter, reference_mapping=reference_mapping)
+    convert_parameter_partial = partial(
+        convert_parameter, reference_mapping=reference_mapping)
 
     if obj:
         member_object = {
@@ -158,8 +164,10 @@ def convert_parameter(obj, reference_mapping):
 
 
 def get_constructor_and_variables(syntax_object, reference_mapping):
-    convert_parameter_partial = partial(convert_parameter, reference_mapping=reference_mapping)
-    convert_variable_partial = partial(convert_variable, reference_mapping=reference_mapping)
+    convert_parameter_partial = partial(
+        convert_parameter, reference_mapping=reference_mapping)
+    convert_variable_partial = partial(
+        convert_variable, reference_mapping=reference_mapping)
 
     if syntax_object:
         constructor_object = {

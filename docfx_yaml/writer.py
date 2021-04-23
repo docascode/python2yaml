@@ -31,6 +31,7 @@ from sphinx.locale import admonitionlabels
 
 from nodes import remarks
 
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -40,6 +41,7 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
 
 class TextWrapper(textwrap.TextWrapper):
     """Custom subclass that uses a different word separator regex."""
@@ -204,13 +206,13 @@ class MarkdownTranslator(nodes.NodeVisitor):
     def resolve_reference_in_node(node):
         if node.tagname == 'reference':
             ref_string = MarkdownTranslator._resolve_reference(node)
-            
+
             if not node.parent is None:
                 for i, n in enumerate(node.parent):
-                    if n is node: # Replace the reference node.
+                    if n is node:  # Replace the reference node.
                         node.parent.children[i] = Text(ref_string)
                         break
-            else: # If reference node has no parent, replace it's content.
+            else:  # If reference node has no parent, replace it's content.
                 node.clear()
                 node.children.append(Text(ref_string))
         else:
@@ -323,7 +325,6 @@ class MarkdownTranslator(nodes.NodeVisitor):
             depth += 1
             element = element.parent
         self.add_text(self.nl * 2 + (depth * '#') + ' ')
-
 
     def depart_title(self, node):
         pass
@@ -627,14 +628,17 @@ class MarkdownTranslator(nodes.NodeVisitor):
 
     def visit_image(self, node):
         try:
-            image_name = '/'.join(node.attributes['uri'].split('/')[node.attributes['uri'].split('/').index('_static')-1:])
+            image_name = '/'.join(node.attributes['uri'].split(
+                '/')[node.attributes['uri'].split('/').index('_static')-1:])
         except ValueError as e:
-            print("Image not found where expected {}".format(node.attributes['uri']))
+            print("Image not found where expected {}".format(
+                node.attributes['uri']))
             raise nodes.SkipNode
         image_name = ''.join(image_name.split())
         self.new_state(0)
         if 'alt' in node.attributes:
-            self.add_text('![{}]({})'.format(node['alt'], image_name) + self.nl)
+            self.add_text('![{}]({})'.format(
+                node['alt'], image_name) + self.nl)
         self.add_text('![image]({})'.format(image_name) + self.nl)
         self.end_state(False)
         raise nodes.SkipNode
@@ -823,27 +827,30 @@ class MarkdownTranslator(nodes.NodeVisitor):
             path = self.builder.confdir
             relative_path = node.attributes['source'][len(path)+1:]
 
+            if 'language' in node.attributes:
+                include_language = node.attributes['language']
 
             if 'language' in node.attributes:
-                    include_language = node.attributes['language']
-
-            if 'language' in node.attributes:
-                    include_language = node.attributes['language']
+                include_language = node.attributes['language']
 
             if 'caption' in node.attributes:
-                    include_caption = node.attributes['caption']
+                include_caption = node.attributes['caption']
 
-            include_language = (('-' + include_language) if (include_language is not None) else '')
-            include_caption = (('"' + include_caption + '"') if (include_caption is not None) else '')
+            include_language = (('-' + include_language)
+                                if (include_language is not None) else '')
+            include_caption = (('"' + include_caption + '"')
+                               if (include_caption is not None) else '')
 
-            self.add_text('<!--[!code{}[Main]({} {})]-->'.format(include_language, relative_path, include_caption))
+            self.add_text(
+                '<!--[!code{}[Main]({} {})]-->'.format(include_language, relative_path, include_caption))
         except KeyError as e:
             pass
         except ValueError as e:
             pass
 
         self.new_state(0)
-        self.add_text('<!-- {} {} -->'.format(node.tagname, json.dumps(node.attributes)))
+        self.add_text('<!-- {} {} -->'.format(node.tagname,
+                      json.dumps(node.attributes)))
         self.end_state(wrap=False)
 
         if 'language' in node.attributes:
@@ -851,7 +858,6 @@ class MarkdownTranslator(nodes.NodeVisitor):
         else:
             self.add_text('````')
         self.new_state()
-
 
     def depart_literal_block(self, node):
         self.add_text(self.nl + '````')
@@ -936,7 +942,8 @@ class MarkdownTranslator(nodes.NodeVisitor):
             ref_string = cls.xref_template.format(node.attributes['reftitle'])
         elif 'refuri' in node.attributes:
             if 'http' in node.attributes['refuri'] or node.attributes['refuri'][0] == '/':
-                ref_string = '[{}]({})'.format(node.astext(), node.attributes['refuri'])
+                ref_string = '[{}]({})'.format(
+                    node.astext(), node.attributes['refuri'])
             else:
                 # only use id in class and func refuri if its id exists
                 # otherwise, remove '.html#' in refuri
@@ -952,13 +959,15 @@ class MarkdownTranslator(nodes.NodeVisitor):
                     pos = fname.find('.html')
                     if pos != -1:
                         node.attributes['refuri'] = fname[0: pos]
-                
+
                 if node.parent.rawsource == raw_ref_tilde_template.format(node.attributes['refuri']) or node.parent.rawsource == raw_ref_template.format(node.attributes['refuri']) or node.parent.tagname == 'document':
                     ref_string = node.attributes['refuri']
                 else:
-                    ref_string = cls.xref_template.format(node.attributes['refuri'])
+                    ref_string = cls.xref_template.format(
+                        node.attributes['refuri'])
         else:
-            ref_string = '{}<!-- {} -->'.format(node.tagname, json.dumps(node.attributes))
+            ref_string = '{}<!-- {} -->'.format(node.tagname,
+                                                json.dumps(node.attributes))
 
         return ref_string
 
@@ -1045,7 +1054,11 @@ class MarkdownTranslator(nodes.NodeVisitor):
         raise nodes.SkipNode
 
     def visit_Text(self, node):
-        self.add_text(node.astext())
+        text = node.astext()
+        text = text.replace('\u201c', '"')
+        text = text.replace('\u201d', '"')
+        text = text.replace('\u2019', "'")
+        self.add_text(text)
 
     def depart_Text(self, node):
         pass
@@ -1077,7 +1090,8 @@ class MarkdownTranslator(nodes.NodeVisitor):
         self.add_text('<<')
 
     def visit_system_message(self, node):
-        print(bcolors.WARNING + "System message warnings: %s" % node.astext() + bcolors.ENDC)
+        print(bcolors.WARNING + "System message warnings: %s" %
+              node.astext() + bcolors.ENDC)
         raise nodes.SkipNode
 
     def visit_comment(self, node):
@@ -1091,7 +1105,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
         if 'text' in node.get('format', '').split():
             self.new_state(0)
             self.add_text(node.astext())
-            self.end_state(wrap = False)
+            self.end_state(wrap=False)
         raise nodes.SkipNode
 
     def visit_math(self, node):
@@ -1105,6 +1119,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
 
     def visit_substitution_reference(self, node):
         pass
+
     def depart_substitution_reference(self, node):
         pass
 

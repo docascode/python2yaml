@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 import os
 import yaml as yml
 from functools import partial
 from common import remove_empty_values, parse_references, convert_member
+
 
 def convert_package(obj, uid_type_mapping):
     record = {}
@@ -13,7 +15,8 @@ def convert_package(obj, uid_type_mapping):
         if item['type'] == 'package':
             old_object = item
 
-    convert_function_partial = partial(convert_member, reference_mapping=reference_mapping)
+    convert_function_partial = partial(
+        convert_member, reference_mapping=reference_mapping)
 
     new_object = {
         'uid': old_object.get('uid', None),
@@ -30,15 +33,21 @@ def convert_package(obj, uid_type_mapping):
     }
 
     children = old_object.get('children', [])
-    children_objects = list(filter(lambda y: y is not None, map(lambda x: record.get(x), children)))
-    functions = list(filter(lambda x: x.get('type') == 'function', children_objects))
+    children_objects = list(
+        filter(lambda y: y is not None, map(lambda x: record.get(x), children)))
+    functions = list(filter(lambda x: x.get('type')
+                     == 'function', children_objects))
     new_object['functions'] = list(map(convert_function_partial, functions))
 
-    new_object['packages'] = list(filter(lambda x: uid_type_mapping.get(x, None) == 'package', children))
-    new_object['classes'] = list(filter(lambda x: uid_type_mapping.get(x, None) == 'class', children))
-    new_object['modules'] = list(filter(lambda x: uid_type_mapping.get(x, None) == 'module', children))
-    new_object['enums'] = list(filter(lambda x: uid_type_mapping.get(x, None) == 'enum', children))
+    new_object['packages'] = list(
+        filter(lambda x: uid_type_mapping.get(x, None) == 'package', children))
+    new_object['classes'] = list(
+        filter(lambda x: uid_type_mapping.get(x, None) == 'class', children))
+    new_object['modules'] = list(
+        filter(lambda x: uid_type_mapping.get(x, None) == 'module', children))
+    new_object['enums'] = list(
+        filter(lambda x: uid_type_mapping.get(x, None) == 'enum', children))
 
     toreturn = remove_empty_values(new_object)
-    print ("package: " + toreturn['uid'])
+    print("package: " + toreturn['uid'])
     return toreturn
