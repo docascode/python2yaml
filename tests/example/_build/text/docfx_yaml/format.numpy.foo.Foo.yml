@@ -20,26 +20,26 @@ constructor:
 methods:
 - uid: format.numpy.foo.Foo.class_method
   name: class_method
-  summary: Docstring of `fomrmat.numpy.foo.Foo.class_method()` @classmethod.
+  summary: Docstring of <xref:fomrmat.numpy.foo.Foo.class_method> @classmethod.
   signature: class_method(arg1)
   parameters:
   - name: cls
     description: Class object of <xref:format.numpy.foo.Foo>.
     isRequired: true
     types:
-    - class
+    - <xref:format.numpy.foo.class>
   - name: arg1
-    description: Parameter arg1 of `fomrmat.numpy.foo.Foo.class_method()`.
+    description: Parameter arg1 of <xref:fomrmat.numpy.foo.Foo.class_method>.
     isRequired: true
     types:
     - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
 - uid: format.numpy.foo.Foo.method
   name: method
-  summary: Docstring of normal class method `fomrmat.numpy.foo.Foo.method()`.
+  summary: Docstring of normal class method <xref:fomrmat.numpy.foo.Foo.method>.
   signature: method()
 - uid: format.numpy.foo.Foo.method_code
   name: method_code
-  summary: "Docstring of `fomrmat.numpy.foo.Foo.method_code()`.\n\n<!-- literal_block\
+  summary: "Docstring of <xref:fomrmat.numpy.foo.Foo.method_code>.\n\n<!-- literal_block\
     \ {\"ids\": [], \"classes\": [], \"names\": [], \"dupnames\": [], \"backrefs\"\
     : [], \"xml:space\": \"preserve\", \"force\": false, \"language\": \"python\"\
     , \"highlight_args\": {}, \"linenos\": false} -->\n\n````python\n\n   import numpy\
@@ -51,7 +51,7 @@ methods:
   signature: method_code()
 - uid: format.numpy.foo.Foo.method_example
   name: method_example
-  summary: Docstring of `fomrmat.numpy.foo.Foo.method_example()`.
+  summary: Docstring of <xref:fomrmat.numpy.foo.Foo.method_example>.
   signature: method_example()
   examples:
   - "This is Example content.\nShould support multi-line.\nCan also include file:<!--[!code-default[Main](at\\\
@@ -66,11 +66,11 @@ methods:
     \n   ````\n"
 - uid: format.numpy.foo.Foo.method_exception
   name: method_exception
-  summary: Docstring of `fomrmat.numpy.foo.Foo.method_exception()`.
+  summary: Docstring of <xref:fomrmat.numpy.foo.Foo.method_exception>.
   signature: method_exception()
 - uid: format.numpy.foo.Foo.method_external_link
   name: method_external_link
-  summary: 'Docstring of `fomrmat.numpy.foo.Foo.method_external_link()`.
+  summary: 'Docstring of <xref:fomrmat.numpy.foo.Foo.method_external_link>.
 
     Inline link should be transformed to markdown: [Link Text](http://inline.external.link).
 
@@ -78,7 +78,7 @@ methods:
   signature: method_external_link()
 - uid: format.numpy.foo.Foo.method_multiline
   name: method_multiline
-  summary: 'Docstring of `fomrmat.numpy.foo.Foo.method_multiline()`.
+  summary: 'Docstring of <xref:fomrmat.numpy.foo.Foo.method_multiline>.
 
     This docstring has multiple lines of contents.
 
@@ -86,7 +86,7 @@ methods:
   signature: method_multiline()
 - uid: format.numpy.foo.Foo.method_note
   name: method_note
-  summary: 'Docstring of `fomrmat.numpy.foo.Foo.method_note()`.
+  summary: 'Docstring of <xref:fomrmat.numpy.foo.Foo.method_note>.
 
 
 
@@ -102,7 +102,7 @@ methods:
   signature: method_note()
 - uid: format.numpy.foo.Foo.method_return
   name: method_return
-  summary: Docstring of `fomrmat.numpy.foo.Foo.method_return()`.
+  summary: Docstring of <xref:fomrmat.numpy.foo.Foo.method_return>.
   signature: method_return()
   return:
     description: This method returns a value.
@@ -110,12 +110,12 @@ methods:
     - '[bool](https://docs.python.org/3.6/library/functions.html#bool)'
 - uid: format.numpy.foo.Foo.method_seealso
   name: method_seealso
-  summary: Docstring of `fomrmat.numpy.foo.Foo.method_seealso()`.
+  summary: Docstring of <xref:fomrmat.numpy.foo.Foo.method_seealso>.
   signature: method_seealso()
-  seeAlsoContent: "\n\n  `format.numpy.foo.Foo.mathod_note`\n     See also target.\n"
+  seeAlsoContent: "\n\n  <xref:format.numpy.foo.Foo.mathod_note>\n     See also target.\n"
 - uid: format.numpy.foo.Foo.method_warning
   name: method_warning
-  summary: 'Docstring of `fomrmat.numpy.foo.Foo.method_warning()`.
+  summary: 'Docstring of <xref:fomrmat.numpy.foo.Foo.method_warning>.
 
 
 
@@ -127,7 +127,7 @@ methods:
   signature: method_warning()
 - uid: format.numpy.foo.Foo.static_method
   name: static_method
-  summary: Docstring of `fomrmat.numpy.foo.Foo.static_method @staticmethod()`.
+  summary: Docstring of <xref:fomrmat.numpy.foo.Foo.static_method @staticmethod>.
   signature: static_method()
 attributes:
 - uid: format.numpy.foo.Foo.attr
@@ -136,4 +136,4 @@ attributes:
   signature: attr = 1
 - uid: format.numpy.foo.Foo.attr_getter
   name: attr_getter
-  summary: Docstring of `fomrmat.numpy.foo.Foo.attr_getter()` @property.
+  summary: Docstring of <xref:fomrmat.numpy.foo.Foo.attr_getter> @property.

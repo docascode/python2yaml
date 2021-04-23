@@ -18,15 +18,17 @@ PARAMETER_NAME = "[*][*](.*?)[*][*]"
 PARAMETER_TYPE = "[(](.*)[)]"
 PARAMETER_DESCRIPTION = "[–][ ](.*)"
 
+
 def translator(app, docname, doctree):
 
     transform_node = app.docfx_transform_node
 
     def make_param(_id, _description, _type=None):
-        ret = {
-            'id': _id,
-            'description': _description.strip(" \n\r\t"),
-        }
+        ret = {}
+        if _id:
+            ret['id'] = _id
+        if _description:
+            ret['description'] = _description
         if _type:
             ret['type'] = _type
         return ret
@@ -36,7 +38,7 @@ def translator(app, docname, doctree):
             return transform_node(para_field)
         else:
             return para_field.astext()
-    
+
     def type_mapping(type_name):
         mapping = {
             "staticmethod": "method",
@@ -58,7 +60,8 @@ def translator(app, docname, doctree):
             module = node[0].attributes['module']
             full_name = node[0].attributes['fullname']
         except KeyError as e:
-            print("[docfx_yaml] There maybe some syntax error in docstring near: " + node.astext())
+            print(
+                "[docfx_yaml] There maybe some syntax error in docstring near: " + node.astext())
             raise e
 
         uid = '{module}.{full_name}'.format(module=module, full_name=full_name)
@@ -113,7 +116,8 @@ def translator(app, docname, doctree):
             _id = None
         _type = []
         if len(re.findall(_type_pattern, _first_part_ret_data)) > 0:
-            _type.append(re.findall(_type_pattern, _first_part_ret_data)[0].replace('*',''))
+            _type.append(re.findall(_type_pattern, _first_part_ret_data)[
+                         0].replace('*', ''))
         if len(re.findall(_description_pattern, ret_data)) > 0:
             _description = re.findall(_description_pattern, ret_data)[0]
         else:
@@ -148,22 +152,25 @@ def translator(app, docname, doctree):
             if fieldtype == 'Returns':
                 returnvalue_ret = transform_node(content[0])
                 if returnvalue_ret:
-                    data['return']['description'] = returnvalue_ret.strip(" \n\r\t")
-            
+                    data['return']['description'] = returnvalue_ret.strip(
+                        " \n\r\t")
+
             if fieldtype == 'Return':
                 for returntype_node in content:
                     returntype_ret = transform_node(returntype_node)
                     if returntype_ret:
                         for returntype in re.split('[ \n]or[ \n]', returntype_ret):
-                            returntype, _added_reference = resolve_type(returntype)
+                            returntype, _added_reference = resolve_type(
+                                returntype)
                             if _added_reference:
                                 if len(data['references']) == 0:
                                     data['references'].append(_added_reference)
                                 elif any(r['uid'] != _added_reference['uid'] for r in data['references']):
                                     data['references'].append(_added_reference)
 
-                            data['return'].setdefault('type', []).append(returntype)
-            
+                            data['return'].setdefault(
+                                'type', []).append(returntype)
+
             if fieldtype in ['Parameters', 'Variables']:
                 if _is_single_paragraph(fieldbody):
                     ret_data = transform_para(content[0])
@@ -171,19 +178,21 @@ def translator(app, docname, doctree):
                     if fieldtype == 'Parameters':
                         data['parameters'].append(_data)
                     else:
-                        _data['id'] = content[0].astext()[:content[0].astext().find('(')].strip(' ')
+                        _data['id'] = content[0].astext(
+                        )[:content[0].astext().find('(')].strip(' ')
                         data['variables'].append(_data)
                 else:
                     for child in content[0]:
                         ret_data = transform_para(child[0])
                         _data = parse_parameter(ret_data)
-                        
+
                         if fieldtype == 'Parameters':
                             data['parameters'].append(_data)
                         else:
-                            _data['id'] = content[0].astext()[:content[0].astext().find('(')].strip(' ')
+                            _data['id'] = content[0].astext(
+                            )[:content[0].astext().find('(')].strip(' ')
                             data['variables'].append(_data)
-            
+
             if fieldtype == 'Variables':
                 for child in content:
                     ret_data = child.astext()
@@ -215,24 +224,29 @@ def translator(app, docname, doctree):
                 data['remarks'] = remarks_string
             elif isinstance(child, addnodes.desc):
                 if child.get('desctype') == 'attribute':
-                    attribute_map = {} # Used for detecting duplicated attributes in intermediate data and merge them
+                    # Used for detecting duplicated attributes in intermediate data and merge them
+                    attribute_map = {}
 
                     for item in child:
                         if isinstance(item, desc_signature) and any(isinstance(n, addnodes.desc_annotation) for n in item):
                             # capture attributes data and cache it
                             data.setdefault('added_attribute', [])
-                            curuid = item.get('module', '') + '.' + item.get('fullname', '')
+                            curuid = item.get('module', '') + \
+                                '.' + item.get('fullname', '')
 
                             if len(curuid) > 0:
                                 parent = curuid[:curuid.rfind('.')]
                                 name = item.children[0].astext()
 
                                 if curuid in attribute_map:
-                                    if len(item_ids) == 0: # ensure the order of docstring attributes and real attributes is fixed
-                                        attribute_map[curuid]['syntax']['content'] += (' ' + item.astext())
+                                    # ensure the order of docstring attributes and real attributes is fixed
+                                    if len(item_ids) == 0:
+                                        attribute_map[curuid]['syntax']['content'] += (
+                                            ' ' + item.astext())
                                         # concat the description of duplicated nodes
                                     else:
-                                        attribute_map[curuid]['syntax']['content'] = item.astext() + ' ' + attribute_map[curuid]['syntax']['content']
+                                        attribute_map[curuid]['syntax']['content'] = item.astext(
+                                        ) + ' ' + attribute_map[curuid]['syntax']['content']
                                 else:
                                     if _is_desc_of_enum_class(node):
                                         addedData = {
@@ -267,10 +281,12 @@ def translator(app, docname, doctree):
 
                                     attribute_map[curuid] = addedData
                             else:
-                                raise Exception('ids of node: ' + repr(item) + ' is missing.')
+                                raise Exception(
+                                    'ids of node: ' + repr(item) + ' is missing.')
                                 # no ids and no duplicate or uid can not be generated.
                     if 'added_attribute' in data:
-                        data['added_attribute'].extend(attribute_map.values()) # Add attributes data to a temp list
+                        # Add attributes data to a temp list
+                        data['added_attribute'].extend(attribute_map.values())
 
                 # Don't recurse into child nodes
                 continue
@@ -288,20 +304,21 @@ def translator(app, docname, doctree):
                 content = transform_node(child)
                 if not content.startswith('Bases: '):
                     summary.append(content)
-        
+
         if "desctype" in node.parent and node.parent["desctype"] == 'class':
-                data.pop('exceptions', '') # Make sure class doesn't have 'exceptions' field.
+            # Make sure class doesn't have 'exceptions' field.
+            data.pop('exceptions', '')
 
         if summary:
             data['summary'] = '\n'.join(summary)
-        
+
         # Don't include empty data
-            for key, val in data.copy().items():
-                if not val:
-                    del data[key]
-        data['type'] = type_mapping(node.parent["desctype"]) if "desctype" in node.parent else 'unknown'
+        for key, val in data.copy().items():
+            if not val:
+                del data[key]
+        data['type'] = type_mapping(
+            node.parent["desctype"]) if "desctype" in node.parent else 'unknown'
         if _is_property_node(node):
             data['type'] = 'attribute'
         if (uid in app.env.docfx_info_uid_types):
             app.env.docfx_info_field_data[uid] = data
-

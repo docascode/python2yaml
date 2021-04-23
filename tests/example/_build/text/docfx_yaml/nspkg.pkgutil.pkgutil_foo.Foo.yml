@@ -32,7 +32,7 @@ methods:
     description: Class object of <xref:format.rst.foo.Foo>.
     isRequired: true
     types:
-    - class
+    - <xref:nspkg.pkgutil.pkgutil_foo.class>
   - name: arg1
     description: Parameter arg1 of <xref:format.rst.foo.Foo.class_method>.
     isRequired: true
@@ -141,7 +141,7 @@ methods:
   return:
     description: This method returns a value.
     types:
-    - boolean
+    - <xref:nspkg.pkgutil.pkgutil_foo.boolean>
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method_seealso
   name: method_seealso
   summary: Docstring of <xref:format.rst.foo.Foo.method_seealso>.

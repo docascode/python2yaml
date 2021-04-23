@@ -20,7 +20,7 @@ functions:
   - name: arg3
     description: Parameter arg3 of <xref:format.google.foo.function>.
     types:
-    - boolean
+    - <xref:format.google.foo.boolean>
   - name: arg4
     description: Parameter arg4 of <xref:format.google.foo.function>.
     types:

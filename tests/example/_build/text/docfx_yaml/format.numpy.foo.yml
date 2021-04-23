@@ -20,7 +20,7 @@ functions:
   - name: arg3
     description: Parameter arg3 of <xref:format.numpy.foo.function>.
     types:
-    - boolean
+    - <xref:format.numpy.foo.boolean>
   - name: arg4
     description: Parameter arg4 of <xref:format.numpy.foo.function>.
     types:

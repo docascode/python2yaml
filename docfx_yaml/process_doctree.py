@@ -19,11 +19,13 @@ REFMETHOD = 'meth'
 REFFUNCTION = 'func'
 REF_PATTERN = ':(py:)?(func|class|meth|mod|ref):`~?[a-zA-Z_\.<> ]*?`'
 
+
 def _fullname(obj):
     """
     Get the fullname from a Python object
     """
     return obj.__module__ + "." + obj.__name__
+
 
 def _get_cls_module(_type, name):
     """
@@ -49,6 +51,7 @@ def _get_cls_module(_type, name):
         return (None, None)
     return (cls, module)
 
+
 def _refact_example_in_module_summary(lines):
     new_lines = []
     block_lines = []
@@ -66,7 +69,7 @@ def _refact_example_in_module_summary(lines):
         elif example_block_flag:
             if line == '   ':  # origianl line is blank line ('\n').
                 line = '\n'  # after outer ['\n'.join] operation,
-                             # this '\n' will be appended to previous line then. BINGO!
+                # this '\n' will be appended to previous line then. BINGO!
             elif line.startswith('   '):
                 # will be indented by 4 spaces according to yml block syntax.
                 # https://learnxinyminutes.com/docs/yaml/
@@ -76,6 +79,7 @@ def _refact_example_in_module_summary(lines):
         else:
             new_lines.append(line)
     return new_lines
+
 
 def _resolve_reference_in_module_summary(lines):
     new_lines = []
@@ -92,11 +96,78 @@ def _resolve_reference_in_module_summary(lines):
                 ref_name = matched_str[index+1:-2]
             else:
                 # match string like ':func:`~***`' or ':func:`***`'
-                index = matched_str.index('~') if '~' in matched_str else matched_str.index('`')
+                index = matched_str.index(
+                    '~') if '~' in matched_str else matched_str.index('`')
                 ref_name = matched_str[index+1:-1]
-            new_line = new_line.replace(matched_str, '<xref:{}>'.format(ref_name))
+            new_line = new_line.replace(
+                matched_str, '<xref:{}>'.format(ref_name))
         new_lines.append(new_line)
     return new_lines
+
+
+def enumerate_extract_signature(doc, max_args=20):
+    el = "((?P<p%d>[*a-zA-Z_]+) *(?P<a%d>: *[a-zA-Z_.]+)? *(?P<d%d>= *[^ ]+?)?)"
+    els = [el % (i, i, i) for i in range(0, max_args)]
+    par = els[0] + "?" + "".join(["( *, *" + e + ")?" for e in els[1:]])
+    exp = "(?P<name>[a-zA-Z_]+) *[(] *(?P<sig>{0}) *[)]".format(par)
+    reg = re.compile(exp)
+    for func in reg.finditer(doc.replace("\n", " ")):
+        yield func
+
+
+def enumerate_cleaned_signature(doc, max_args=20):
+    for sig in enumerate_extract_signature(doc, max_args=max_args):
+        dic = sig.groupdict()
+        name = sig["name"]
+        args = []
+        for i in range(0, max_args):
+            p = dic.get('p%d' % i, None)
+            if p is None:
+                break
+            d = dic.get('d%d' % i, None)
+            if d is None:
+                args.append(p)
+            else:
+                args.append("%s%s" % (p, d))
+        yield "{0}({1})".format(name, ", ".join(args))
+
+
+def _extract_signature(obj_sig):
+    try:
+        signature = inspect.signature(obj_sig)
+        parameters = signature.parameters
+    except TypeError as e:
+        mes = "[docfx] unable to get signature of '{0}' - {1}.".format(
+            object_name, str(e).replace("\n", "\\n"))
+        signature = None
+        parameters = None
+    except ValueError as e:
+        # Backup plan, no __text_signature__, this happen
+        # when a function was created with pybind11.
+        doc = obj_sig.__doc__
+        sigs = set(enumerate_cleaned_signature(doc))
+        if len(sigs) == 0:
+            mes = "[docfx] unable to get signature of '{0}' - {1}.".format(
+                object_name, str(e).replace("\n", "\\n"))
+            signature = None
+            parameters = None
+        elif len(sigs) > 1:
+            mes = "[docfx] too many signatures for '{0}' - {1} - {2}.".format(
+                object_name, str(e).replace("\n", "\\n"), " *** ".join(sigs))
+            signature = None
+            parameters = None
+        else:
+            try:
+                signature = inspect._signature_fromstr(
+                    inspect.Signature, obj_sig, list(sigs)[0])
+                parameters = signature.parameters
+            except TypeError as e:
+                mes = "[docfx] unable to get signature of '{0}' - {1}.".format(
+                    object_name, str(e).replace("\n", "\\n"))
+                signature = None
+                parameters = None
+    return signature, parameters
+
 
 def _create_datam(app, cls, module, name, _type, obj, lines=None):
     """
@@ -111,7 +182,8 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
                 for name in namespace_package_dict:
                     if re.match(name, package_name) is not None:
                         package_name = namespace_package_dict[name]
-                        path = os.path.join(package_name, path[package_name_index + 1:])
+                        path = os.path.join(
+                            package_name, path[package_name_index + 1:])
                         return path
 
             except NameError:
@@ -119,14 +191,14 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
 
         return path
 
-
     if lines is None:
         lines = []
     short_name = name.split('.')[-1]
     args = []
+
     try:
         if _type in [METHOD, FUNCTION]:
-            argspec = inspect.getargspec(obj) # noqa
+            argspec = inspect.getfullargspec(obj)  # noqa
             for arg in argspec.args:
                 args.append({'id': arg})
             if argspec.defaults:
@@ -136,7 +208,8 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
                     # inspect.getargspec method will return wrong defaults which contain object address for some default values, like sys.stdout
                     # Match the defaults with the count
                     if 'object at 0x' not in str(default):
-                        args[len(args) - cut_count + count]['defaultValue'] = str(default)
+                        args[len(args) - cut_count +
+                             count]['defaultValue'] = str(default)
     except Exception:
         print("Can't get argspec for {}: {}".format(type(obj), name))
 
@@ -147,7 +220,7 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
 
     try:
         full_path = inspect.getsourcefile(obj)
-        if full_path is None: # Meet a .pyd file
+        if full_path is None:  # Meet a .pyd file
             raise TypeError()
         # Sub git repo path
         path = full_path.replace(app.env.docfx_root, '')
@@ -199,7 +272,8 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
     # Only add summary to parts of the code that we don't get it from the monkeypatch
     if _type == MODULE:
         lines = _resolve_reference_in_module_summary(lines)
-        summary = app.docfx_transform_string('\n'.join(_refact_example_in_module_summary(lines)))
+        summary = app.docfx_transform_string(
+            '\n'.join(_refact_example_in_module_summary(lines)))
         if summary:
             datam['summary'] = summary.strip(" \n\r\r")
 
@@ -216,9 +290,11 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
         datam['references'] = []
 
     if _type in [FUNCTION, METHOD]:
-        datam['name'] = app.env.docfx_signature_funcs_methods.get(name, datam['name'])
+        datam['name'] = app.env.docfx_signature_funcs_methods.get(
+            name, datam['name'])
 
     return datam
+
 
 def insert_inheritance(app, _type, obj, datam):
 
@@ -269,7 +345,7 @@ def insert_children_on_module(app, _type, datam):
             # obj['references'].append(_create_reference(datam, parent=obj['uid']))
             break
 
-    if _type in [MODULE]: # Make sure datam is a module.
+    if _type in [MODULE]:  # Make sure datam is a module.
         # Add this module(datam) to parent module node
         if datam[MODULE].count('.') >= 1:
             parent_module_name = '.'.join(datam[MODULE].split('.')[:-1])
@@ -290,8 +366,8 @@ def insert_children_on_module(app, _type, datam):
         # Time complex: O(N^2)
         for module, module_contents in app.env.docfx_yaml_modules.items():
             if module != datam['uid'] and \
-                    module[:module.rfind('.')] == datam['uid']: # Current module is submodule/subpackage of datam
-                for obj in module_contents: # Traverse module's contents to find the module itself.
+                    module[:module.rfind('.')] == datam['uid']:  # Current module is submodule/subpackage of datam
+                for obj in module_contents:  # Traverse module's contents to find the module itself.
                     if obj['type'] == MODULE and obj['uid'] == module:
                         datam['children'].append(module)
                         # datam['references'].append(_create_reference(obj, parent=module))
@@ -327,6 +403,7 @@ def insert_children_on_function(app, _type, datam):
 
     insert_functions = app.env.docfx_yaml_functions[datam[FUNCTION]]
     insert_functions.append(datam)
+
 
 def process_docstring(app, _type, name, obj, options, lines):
     """
@@ -365,7 +442,8 @@ def process_docstring(app, _type, name, obj, options, lines):
         if cls is None:
             cls = name
         if cls is None:
-            raise ValueError("cls is None for name='{1}' {0}".format(datam, name))
+            raise ValueError(
+                "cls is None for name='{1}' {0}".format(datam, name))
         if cls not in app.env.docfx_yaml_functions:
             app.env.docfx_yaml_functions[cls] = [datam]
         else:
@@ -377,6 +455,7 @@ def process_docstring(app, _type, name, obj, options, lines):
     insert_children_on_function(app, _type, datam)
 
     app.env.docfx_info_uid_types[datam['uid']] = _type
+
 
 def process_signature(app, _type, name, obj, options, signature, return_annotation):
     if signature:

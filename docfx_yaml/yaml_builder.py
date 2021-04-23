@@ -59,7 +59,7 @@ class YamlBuilder(Builder):
 
     def get_target_uri(self, docname: str, typ=None):
         # Returns the target markdown file name
-        return f"{docname}.yml"
+        return f"{docname}"
 
     def prepare_writing(self, docnames):
         pass
@@ -70,9 +70,10 @@ class YamlBuilder(Builder):
     def finish(self):
         pass
 
+
 def setup(app):
     app.add_builder(YamlBuilder)
-    app.add_node(remarks, html = (remarks.visit_remarks, remarks.depart_remarks))
+    app.add_node(remarks, html=(remarks.visit_remarks, remarks.depart_remarks))
     app.add_directive('remarks', RemarksDirective)
     app.add_directive('todo', TodoDirective)
 
