@@ -1057,7 +1057,9 @@ class MarkdownTranslator(nodes.NodeVisitor):
         text = node.astext()
         text = text.replace('\u201c', '"')
         text = text.replace('\u201d', '"')
+        text = text.replace('\u2018', "'")
         text = text.replace('\u2019', "'")
+        text = text.replace('\u2026', "...")
         self.add_text(text)
 
     def depart_Text(self, node):
