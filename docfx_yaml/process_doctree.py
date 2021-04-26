@@ -8,6 +8,8 @@ import inspect
 import os
 import re
 
+from utils import transform_string
+
 METHOD = 'method'
 FUNCTION = 'function'
 MODULE = 'module'
@@ -137,8 +139,6 @@ def _extract_signature(obj_sig):
         signature = inspect.signature(obj_sig)
         parameters = signature.parameters
     except TypeError as e:
-        mes = "[docfx] unable to get signature of '{0}' - {1}.".format(
-            object_name, str(e).replace("\n", "\\n"))
         signature = None
         parameters = None
     except ValueError as e:
@@ -147,13 +147,9 @@ def _extract_signature(obj_sig):
         doc = obj_sig.__doc__
         sigs = set(enumerate_cleaned_signature(doc))
         if len(sigs) == 0:
-            mes = "[docfx] unable to get signature of '{0}' - {1}.".format(
-                object_name, str(e).replace("\n", "\\n"))
             signature = None
             parameters = None
         elif len(sigs) > 1:
-            mes = "[docfx] too many signatures for '{0}' - {1} - {2}.".format(
-                object_name, str(e).replace("\n", "\\n"), " *** ".join(sigs))
             signature = None
             parameters = None
         else:
@@ -162,8 +158,6 @@ def _extract_signature(obj_sig):
                     inspect.Signature, obj_sig, list(sigs)[0])
                 parameters = signature.parameters
             except TypeError as e:
-                mes = "[docfx] unable to get signature of '{0}' - {1}.".format(
-                    object_name, str(e).replace("\n", "\\n"))
                 signature = None
                 parameters = None
     return signature, parameters
@@ -213,25 +207,27 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
     except Exception:
         print("Can't get argspec for {}: {}".format(type(obj), name))
 
-    # if name in app.env.docfx_signature_funcs_methods:
-    #     sig = app.env.docfx_signature_funcs_methods[name]
-    #     if _type in [METHOD, FUNCTION, CLASS]:
-    #         sig_return_type, _ = _extract_signature(obj)
-    #         _retun_type_index = str(sig_return_type).find(' -> ')
-    #         if (_retun_type_index >= 0):
-    #             sig_return_type = str(sig_return_type)[_retun_type_index:]
-    #             sig += sig_return_type
-    # else:
-    #     sig = None
-
-    if _type in [METHOD, FUNCTION, CLASS]:
-        sig, _ = _extract_signature(obj)
-        sig = str(sig).replace(':', ': ')
-        sig = sig.replace('self, ', '')
-        sig = sig.replace('=', ' = ')
-        sig = short_name + sig
+    if name in app.env.docfx_signature_funcs_methods:
+        sig = app.env.docfx_signature_funcs_methods[name]
+        if _type in [METHOD, FUNCTION, CLASS]:
+            sig_return_type, _ = _extract_signature(obj)
+            _retun_type_index = str(sig_return_type).find(' -> ')
+            if (_retun_type_index >= 0):
+                sig_return_type = str(sig_return_type)[_retun_type_index:]
+                sig += sig_return_type
     else:
         sig = None
+
+    # if _type in [METHOD, FUNCTION, CLASS]:
+    #     sig, _ = _extract_signature(obj)
+    #     sig = str(sig).replace(':', ': ')
+    #     sig = sig.replace('self, ', '')
+    #     sig = sig.replace('self', '')
+    #     sig = sig.replace('=', ' = ')
+    #     sig = short_name + sig
+    #     sig = transform_string(app, sig)
+    # else:
+    #     sig = None
 
     try:
         full_path = inspect.getsourcefile(obj)
@@ -472,8 +468,20 @@ def process_docstring(app, _type, name, obj, options, lines):
     app.env.docfx_info_uid_types[datam['uid']] = _type
 
 
+def _remove_optional_tag(signature):
+    sig = signature.replace('Optional[', '')
+    parenthesis_cnt = 0
+    signatur_list = list(sig)
+    result_list = []
+    for (letter)
+
+
+    return sig
+
 def process_signature(app, _type, name, obj, options, signature, return_annotation):
     if signature:
         short_name = name.split('.')[-1]
         signature = short_name + signature
+        signature = _remove_optional_tag(signature)
         app.env.docfx_signature_funcs_methods[name] = signature
+

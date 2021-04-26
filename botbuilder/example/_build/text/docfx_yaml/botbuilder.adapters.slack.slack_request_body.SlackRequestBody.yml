@@ -6,4 +6,6 @@ module: botbuilder.adapters.slack.slack_request_body
 inheritances:
 - builtins.object
 constructor:
-  syntax: SlackRequestBody(**kwargs)
+  syntax: 'SlackRequestBody(**kwargs)
+
+    '
