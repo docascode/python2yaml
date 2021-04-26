@@ -213,14 +213,23 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
     except Exception:
         print("Can't get argspec for {}: {}".format(type(obj), name))
 
-    if name in app.env.docfx_signature_funcs_methods:
-        sig = app.env.docfx_signature_funcs_methods[name]
-        if _type in [METHOD, FUNCTION, CLASS]:
-            sig_return_type, _ = _extract_signature(obj)
-            _retun_type_index = str(sig_return_type).find(' -> ')
-            if (_retun_type_index >= 0):
-                sig_return_type = str(sig_return_type)[_retun_type_index:]
-                sig += sig_return_type
+    # if name in app.env.docfx_signature_funcs_methods:
+    #     sig = app.env.docfx_signature_funcs_methods[name]
+    #     if _type in [METHOD, FUNCTION, CLASS]:
+    #         sig_return_type, _ = _extract_signature(obj)
+    #         _retun_type_index = str(sig_return_type).find(' -> ')
+    #         if (_retun_type_index >= 0):
+    #             sig_return_type = str(sig_return_type)[_retun_type_index:]
+    #             sig += sig_return_type
+    # else:
+    #     sig = None
+
+    if _type in [METHOD, FUNCTION, CLASS]:
+        sig, _ = _extract_signature(obj)
+        sig = str(sig).replace(':', ': ')
+        sig = sig.replace('self, ', '')
+        sig = sig.replace('=', ' = ')
+        sig = short_name + sig
     else:
         sig = None
 

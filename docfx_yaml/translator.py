@@ -178,8 +178,7 @@ def translator(app, docname, doctree):
                     if fieldtype == 'Parameters':
                         data['parameters'].append(_data)
                     else:
-                        _data['id'] = content[0].astext(
-                        )[:content[0].astext().find('(')].strip(' ')
+                        _data['id'] = content[0].astext()[:content[0].astext().find('(')].strip(' ')
                         data['variables'].append(_data)
                 else:
                     for child in content[0]:
@@ -188,13 +187,9 @@ def translator(app, docname, doctree):
                         if fieldtype == 'Parameters':
                             data['parameters'].append(_data)
                         else:
-                            _data['id'] = content[0].astext(
-                            )[:content[0].astext().find('(')].strip(' ')
+                            _data['id'] = child.astext(
+                            )[:child.astext().find('(')].strip(' ')
                             data['variables'].append(_data)
-
-            if fieldtype == 'Variables':
-                for child in content:
-                    ret_data = child.astext()
 
             if fieldtype == 'Raises':
                 for child in content:

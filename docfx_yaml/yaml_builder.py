@@ -79,7 +79,6 @@ def setup(app):
 
     app.connect('builder-inited', build_init)
     app.connect('autodoc-process-docstring', process_docstring)
-    app.connect('autodoc-process-signature', process_signature)
     app.connect('build-finished', build_finished)
     app.connect('missing-reference', missing_reference)
 
