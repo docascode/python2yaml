@@ -1,8 +1,0 @@
-### YamlMime:PythonPackage
-uid: project-example
-name: example
-fullName: example
-type: distribution
-modules:
-- botbuilder.adapters.slack.about
-- botbuilder.adapters.slack.slack_client_options

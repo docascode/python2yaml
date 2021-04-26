@@ -476,8 +476,10 @@ def _remove_optional_tag(signature):
     for letter in signature_list:
         if letter == '[':
             parenthesis_cnt = parenthesis_cnt + 1
+            result_list.append(letter)
         elif letter == ']' and parenthesis_cnt > 0:
             parenthesis_cnt = parenthesis_cnt - 1
+            result_list.append(letter)
         elif letter == ']' and parenthesis_cnt == 0:
             continue
         else:
