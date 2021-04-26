@@ -24,7 +24,7 @@ htmlhelp_basename = 'Example Document'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
-    'sphinx.ext.intersphinx',
+    # 'sphinx.ext.intersphinx',
     'yaml_builder'
 ]
 intersphinx_mapping = {'python': ('https://docs.python.org/3.6', None)}

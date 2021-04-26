@@ -3,5 +3,6 @@ uid: project-example
 name: example
 fullName: example
 type: distribution
-packages:
-- botbuilder.adapters.slack
+modules:
+- botbuilder.adapters.slack.about
+- botbuilder.adapters.slack.slack_client_options

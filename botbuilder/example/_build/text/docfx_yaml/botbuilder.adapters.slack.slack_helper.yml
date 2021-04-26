@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.adapters.slack.slack_helper
-name: slack_helper
-fullName: botbuilder.adapters.slack.slack_helper
-classes:
-- botbuilder.adapters.slack.slack_helper.SlackHelper

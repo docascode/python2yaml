@@ -471,10 +471,18 @@ def process_docstring(app, _type, name, obj, options, lines):
 def _remove_optional_tag(signature):
     sig = signature.replace('Optional[', '')
     parenthesis_cnt = 0
-    signatur_list = list(sig)
+    signature_list = list(sig)
     result_list = []
-    for (letter)
-
+    for letter in signature_list:
+        if letter == '[':
+            parenthesis_cnt = parenthesis_cnt + 1
+        elif letter == ']' and parenthesis_cnt > 0:
+            parenthesis_cnt = parenthesis_cnt - 1
+        elif letter == ']' and parenthesis_cnt == 0:
+            continue
+        else:
+            result_list.append(letter)
+    sig = u''.join(result_list)
 
     return sig
 

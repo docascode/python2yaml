@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.adapters.slack.activity_resourceresponse
-name: activity_resourceresponse
-fullName: botbuilder.adapters.slack.activity_resourceresponse
-classes:
-- botbuilder.adapters.slack.activity_resourceresponse.ActivityResourceResponse
