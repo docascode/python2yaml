@@ -19,12 +19,12 @@ def missing_reference(app, env, node, contnode):
             module = node['py:module']
 
         #Refactor reftarget to fullname if it is a short name
-        if reftype in [CLASS, REFFUNCTION, REFMETHOD] and module and '.' not in reftarget:
-            if reftype in [CLASS, REFFUNCTION]:
-                fields = (module, reftarget)
-            else:
-                fields = (module, node['py:class'], reftarget)
-            reftarget = '.'.join(field for field in fields if field is not None)
+        # if reftype in [CLASS, REFFUNCTION, REFMETHOD] and module and '.' not in reftarget:
+        #     if reftype in [CLASS, REFFUNCTION]:
+        #         fields = (module, reftarget)
+        #     else:
+        #         fields = (module, node['py:class'], reftarget)
+        #     reftarget = '.'.join(field for field in fields if field is not None)
 
         return make_refnode(app.builder, refdoc, reftarget, '', contnode)
 

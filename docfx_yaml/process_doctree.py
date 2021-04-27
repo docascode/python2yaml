@@ -215,6 +215,7 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
             if (_retun_type_index >= 0):
                 sig_return_type = str(sig_return_type)[_retun_type_index:]
                 sig += sig_return_type
+        sig = _add_typing_tag(sig)
     else:
         sig = None
 
@@ -487,6 +488,13 @@ def _remove_optional_tag(signature):
     sig = u''.join(result_list)
 
     return sig
+
+def _add_typing_tag(signature):
+    _typing_obj = ['List', 'Union', 'Callable', 'Awaitable', 'Dict']
+    for obj in _typing_obj:
+        signature = signature.replace(obj, 'typing.' + obj)
+    return signature
+    
 
 def process_signature(app, _type, name, obj, options, signature, return_annotation):
     if signature:

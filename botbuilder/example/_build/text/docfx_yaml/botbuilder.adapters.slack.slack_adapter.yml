@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.adapters.slack.slack_adapter
+name: slack_adapter
+fullName: botbuilder.adapters.slack.slack_adapter
+classes:
+- botbuilder.adapters.slack.slack_adapter.SlackAdapter

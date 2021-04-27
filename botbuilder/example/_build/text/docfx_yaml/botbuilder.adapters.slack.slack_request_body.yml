@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.adapters.slack.slack_request_body
+name: slack_request_body
+fullName: botbuilder.adapters.slack.slack_request_body
+classes:
+- botbuilder.adapters.slack.slack_request_body.SlackRequestBody

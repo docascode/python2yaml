@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.adapters.slack.slack_message
+name: slack_message
+fullName: botbuilder.adapters.slack.slack_message
+classes:
+- botbuilder.adapters.slack.slack_message.SlackMessage
