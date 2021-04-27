@@ -135,8 +135,9 @@ def build_finished(app, exception):
 
                     if 'parameters' in obj['syntax']:
                         for args in obj['syntax']['parameters']:
-                            if 'defaultValue' not in args:
-                                args['isRequired'] = True
+                            # need to roll back after diff compare
+                            # if 'defaultValue' not in args:
+                            args['isRequired'] = True
 
                     # Raise up summary
                     if 'summary' in obj['syntax'] and obj['syntax']['summary']:

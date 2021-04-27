@@ -219,17 +219,6 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
     else:
         sig = None
 
-    # if _type in [METHOD, FUNCTION, CLASS]:
-    #     sig, _ = _extract_signature(obj)
-    #     sig = str(sig).replace(':', ': ')
-    #     sig = sig.replace('self, ', '')
-    #     sig = sig.replace('self', '')
-    #     sig = sig.replace('=', ' = ')
-    #     sig = short_name + sig
-    #     sig = transform_string(app, sig)
-    # else:
-    #     sig = None
-
     try:
         full_path = inspect.getsourcefile(obj)
         if full_path is None:  # Meet a .pyd file
@@ -490,7 +479,7 @@ def _remove_optional_tag(signature):
     return sig
 
 def _add_typing_tag(signature):
-    _typing_obj = ['List', 'Union', 'Callable', 'Awaitable', 'Dict']
+    _typing_obj = ['List', 'Union', 'Callable', 'Awaitable', 'Dict', 'Coroutine', 'Tuple', 'Type', 'Iterable', 'Any']
     for obj in _typing_obj:
         signature = signature.replace(obj, 'typing.' + obj)
     return signature
