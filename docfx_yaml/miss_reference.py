@@ -18,7 +18,7 @@ def missing_reference(app, env, node, contnode):
         if 'py:module' in node:
             module = node['py:module']
 
-        external_variable_list = ["str", "bool", "Dict"]
+        external_variable_list = ["str", "bool", "dict", "int", "optional", "float", "list", "object"]
         #Refactor reftarget to fullname if it is a short name
         if reftype in [CLASS, REFFUNCTION, REFMETHOD] and module and '.' not in reftarget and reftarget not in external_variable_list:
             if reftype in [CLASS, REFFUNCTION]:

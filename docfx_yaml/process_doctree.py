@@ -216,6 +216,7 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
                 sig_return_type = str(sig_return_type)[_retun_type_index:]
                 sig += sig_return_type
         sig = _add_typing_tag(sig)
+        sig = short_name + sig
     else:
         sig = None
 
@@ -487,8 +488,8 @@ def _add_typing_tag(signature):
 
 def process_signature(app, _type, name, obj, options, signature, return_annotation):
     if signature:
-        short_name = name.split('.')[-1]
-        signature = short_name + signature
+        # short_name = name.split('.')[-1]
+        # signature = short_name + signature
         signature = _remove_optional_tag(signature)
         app.env.docfx_signature_funcs_methods[name] = signature
 
