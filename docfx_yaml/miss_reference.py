@@ -5,6 +5,7 @@ CLASS = 'class'
 REFMETHOD = 'meth'
 REFFUNCTION = 'func'
 
+
 def missing_reference(app, env, node, contnode):
     reftarget = ''
     refdoc = ''
@@ -18,16 +19,19 @@ def missing_reference(app, env, node, contnode):
         if 'py:module' in node:
             module = node['py:module']
 
-        external_variable_list = ["str", "bool", "dict", "int", "optional", "float", "list", "object"]
-        #Refactor reftarget to fullname if it is a short name
+        external_variable_list = ["str", "bool", "dict", "int", "timedelta",
+                                  "optional", "float", "list", "object", "long", "datetime"]
+        # Refactor reftarget to fullname if it is a short name
         if reftype in [CLASS, REFFUNCTION, REFMETHOD] and module and '.' not in reftarget and reftarget not in external_variable_list:
             if reftype in [CLASS, REFFUNCTION]:
                 fields = (module, reftarget)
             else:
                 fields = (module, node['py:class'], reftarget)
-            reftarget = '.'.join(field for field in fields if field is not None)
+            reftarget = '.'.join(
+                field for field in fields if field is not None)
 
         return make_refnode(app.builder, refdoc, reftarget, '', contnode)
+
 
 def make_refnode(builder: "Builder", fromdocname: str, todocname: str, targetid: str,
                  child: Node, title: str = None) -> nodes.reference:

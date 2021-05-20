@@ -116,8 +116,10 @@ def translator(app, docname, doctree):
             _id = None
         _type = []
         if len(re.findall(_type_pattern, _first_part_ret_data)) > 0:
-            _type.append(re.findall(_type_pattern, _first_part_ret_data)[
-                         0].replace('*', ''))
+            _types = re.findall(_type_pattern, _first_part_ret_data)[
+                0].replace('*', '')
+            _type = list(map(lambda x: x.strip(
+                " \n"), _types.split(' or ')))
         if _des_index >= 0:
             _description = ret_data[_des_index+1:]
         else:
@@ -178,7 +180,8 @@ def translator(app, docname, doctree):
                     if fieldtype == 'Parameters':
                         data['parameters'].append(_data)
                     else:
-                        _data['id'] = content[0].astext()[:content[0].astext().find('(')].strip(' ')
+                        _data['id'] = content[0].astext(
+                        )[:content[0].astext().find('(')].strip(' ')
                         data['variables'].append(_data)
                 else:
                     for child in content[0]:
