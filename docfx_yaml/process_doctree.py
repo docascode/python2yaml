@@ -418,7 +418,7 @@ def _remove_optional_tag(signature):
 
 def _add_typing_tag(signature):
     _typing_obj = ['List', 'Union', 'Callable', 'Awaitable',
-                   'Dict', 'Coroutine', 'Tuple', ' Type', 'Iterable', 'Any']
+                   'Dict', 'Coroutine', 'Tuple', 'Type', 'Iterable', 'Any']
     for obj in _typing_obj:
         signature = signature.replace(obj, 'typing.' + obj)
     return signature
