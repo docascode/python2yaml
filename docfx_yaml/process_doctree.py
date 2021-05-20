@@ -107,62 +107,6 @@ def _resolve_reference_in_module_summary(lines):
     return new_lines
 
 
-def enumerate_extract_signature(doc, max_args=20):
-    el = "((?P<p%d>[*a-zA-Z_]+) *(?P<a%d>: *[a-zA-Z_.]+)? *(?P<d%d>= *[^ ]+?)?)"
-    els = [el % (i, i, i) for i in range(0, max_args)]
-    par = els[0] + "?" + "".join(["( *, *" + e + ")?" for e in els[1:]])
-    exp = "(?P<name>[a-zA-Z_]+) *[(] *(?P<sig>{0}) *[)]".format(par)
-    reg = re.compile(exp)
-    for func in reg.finditer(doc.replace("\n", " ")):
-        yield func
-
-
-def enumerate_cleaned_signature(doc, max_args=20):
-    for sig in enumerate_extract_signature(doc, max_args=max_args):
-        dic = sig.groupdict()
-        name = sig["name"]
-        args = []
-        for i in range(0, max_args):
-            p = dic.get('p%d' % i, None)
-            if p is None:
-                break
-            d = dic.get('d%d' % i, None)
-            if d is None:
-                args.append(p)
-            else:
-                args.append("%s%s" % (p, d))
-        yield "{0}({1})".format(name, ", ".join(args))
-
-
-def _extract_signature(obj_sig):
-    try:
-        signature = inspect.signature(obj_sig)
-        parameters = signature.parameters
-    except TypeError as e:
-        signature = None
-        parameters = None
-    except ValueError as e:
-        # Backup plan, no __text_signature__, this happen
-        # when a function was created with pybind11.
-        doc = obj_sig.__doc__
-        sigs = set(enumerate_cleaned_signature(doc))
-        if len(sigs) == 0:
-            signature = None
-            parameters = None
-        elif len(sigs) > 1:
-            signature = None
-            parameters = None
-        else:
-            try:
-                signature = inspect._signature_fromstr(
-                    inspect.Signature, obj_sig, list(sigs)[0])
-                parameters = signature.parameters
-            except TypeError as e:
-                signature = None
-                parameters = None
-    return signature, parameters
-
-
 def _create_datam(app, cls, module, name, _type, obj, lines=None):
     """
     Build the data structure for an autodoc class
@@ -209,14 +153,6 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
 
     if name in app.env.docfx_signature_funcs_methods:
         sig = app.env.docfx_signature_funcs_methods[name]
-        if _type in [METHOD, FUNCTION, CLASS]:
-            sig_return_type, _ = _extract_signature(obj)
-            _retun_type_index = str(sig_return_type).find(' -> ')
-            if (_retun_type_index >= 0):
-                sig_return_type = str(sig_return_type)[_retun_type_index:]
-                sig += sig_return_type
-        sig = _add_typing_tag(sig)
-        sig = short_name + sig
     else:
         sig = None
 
@@ -479,17 +415,21 @@ def _remove_optional_tag(signature):
 
     return sig
 
+
 def _add_typing_tag(signature):
-    _typing_obj = ['List', 'Union', 'Callable', 'Awaitable', 'Dict', 'Coroutine', 'Tuple', 'Type', 'Iterable', 'Any']
+    _typing_obj = ['List', 'Union', 'Callable', 'Awaitable',
+                   'Dict', 'Coroutine', 'Tuple', ' Type', 'Iterable', 'Any']
     for obj in _typing_obj:
         signature = signature.replace(obj, 'typing.' + obj)
     return signature
-    
+
 
 def process_signature(app, _type, name, obj, options, signature, return_annotation):
     if signature:
-        # short_name = name.split('.')[-1]
-        # signature = short_name + signature
         signature = _remove_optional_tag(signature)
+        short_name = name.split('.')[-1]
+        signature = short_name + signature
+        if (return_annotation):
+            signature = signature + ' -> ' + return_annotation
+        signature = _add_typing_tag(signature)
         app.env.docfx_signature_funcs_methods[name] = signature
-
