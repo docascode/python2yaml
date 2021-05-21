@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.choices.choice_recognizers
+name: choice_recognizers
+fullName: botbuilder.dialogs.choices.choice_recognizers
+classes:
+- botbuilder.dialogs.choices.choice_recognizers.ChoiceRecognizers

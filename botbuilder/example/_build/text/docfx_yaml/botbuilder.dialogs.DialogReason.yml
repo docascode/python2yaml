@@ -1,0 +1,46 @@
+### YamlMime:PythonEnum
+uid: botbuilder.dialogs.DialogReason
+name: DialogReason
+fullName: botbuilder.dialogs.DialogReason
+summary: Indicates in which a dialog-related method is being called.
+module: botbuilder.dialogs
+constructor:
+  syntax: DialogReason(value) -> None
+variables:
+- description: A dialog is being started through a call to <xref:DialogContext.begin>.
+  name: BeginCalled
+  types:
+  - <xref:int>
+- description: A dialog is being continued through a call to <xref:botbuilder.dialogs.DialogContext.continue_dialog>.
+  name: BeginCalled
+  types:
+  - <xref:int>
+- description: A dialog ended normally through a call to :meth:>>`<<DialogContext.end_dialog()
+  name: BeginCalled
+  types:
+  - <xref:int>
+- description: A dialog is ending and replaced through a call to :meth:>>``<<DialogContext.replace_dialog()`.
+  name: BeginCalled
+- description: A dialog was cancelled as part of a call to <xref:botbuilder.dialogs.DialogContext.cancel_all_dialogs>.
+  name: BeginCalled
+  types:
+  - <xref:int>
+- description: A preceding step was skipped through a call to <xref:botbuilder.dialogs.WaterfallStepContext.next>.
+  name: BeginCalled
+  types:
+  - <xref:int>
+inheritances:
+- enum.Enum
+fields:
+- name: BeginCalled
+  uid: botbuilder.dialogs.DialogReason.BeginCalled
+- name: CancelCalled
+  uid: botbuilder.dialogs.DialogReason.CancelCalled
+- name: ContinueCalled
+  uid: botbuilder.dialogs.DialogReason.ContinueCalled
+- name: EndCalled
+  uid: botbuilder.dialogs.DialogReason.EndCalled
+- name: NextCalled
+  uid: botbuilder.dialogs.DialogReason.NextCalled
+- name: ReplaceCalled
+  uid: botbuilder.dialogs.DialogReason.ReplaceCalled

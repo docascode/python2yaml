@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.choices.choice_factory
+name: choice_factory
+fullName: botbuilder.dialogs.choices.choice_factory
+classes:
+- botbuilder.dialogs.choices.choice_factory.ChoiceFactory

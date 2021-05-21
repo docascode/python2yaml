@@ -431,5 +431,7 @@ def process_signature(app, _type, name, obj, options, signature, return_annotati
         signature = short_name + signature
         if (return_annotation):
             signature = signature + ' -> ' + return_annotation
+        else:
+            signature = signature + ' -> None'
         signature = _add_typing_tag(signature)
         app.env.docfx_signature_funcs_methods[name] = signature

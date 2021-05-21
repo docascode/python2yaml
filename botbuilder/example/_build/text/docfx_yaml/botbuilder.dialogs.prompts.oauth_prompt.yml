@@ -1,0 +1,7 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.prompts.oauth_prompt
+name: oauth_prompt
+fullName: botbuilder.dialogs.prompts.oauth_prompt
+classes:
+- botbuilder.dialogs.prompts.oauth_prompt.CallerInfo
+- botbuilder.dialogs.prompts.oauth_prompt.OAuthPrompt

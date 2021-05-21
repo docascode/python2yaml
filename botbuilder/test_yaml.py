@@ -18,8 +18,8 @@ def sphinx_build(test_dir):
 
     try:
         app = Sphinx(
-            srcdir='./doc',
-            confdir='./doc',
+            srcdir='./docc',
+            confdir='./docc',
             outdir='_build/text',
             doctreedir='_build/.doctrees',
             buildername='yaml'
@@ -32,9 +32,9 @@ def sphinx_build(test_dir):
 
 
 class YamlTests(unittest.TestCase):
-    build_path = '_build/text/docfx_yaml' #: Path of all the yaml files.
+    build_path = '_build/text/docfx_yaml'  # : Path of all the yaml files.
 
-    yaml_files = { #: yaml files needed to be tested.
+    yaml_files = {  # : yaml files needed to be tested.
         "class_files": {
             "google": [
                 "format.google.foo.Foo.yml",
@@ -276,7 +276,7 @@ class YamlTests(unittest.TestCase):
                 )
 
                 self.assertIn(
-                    'format{sep}rst{sep}foo.py'.format(sep = os.sep),
+                    'format{sep}rst{sep}foo.py'.format(sep=os.sep),
                     data['items'][0]['source']['path']
                 )
 
@@ -300,7 +300,7 @@ class YamlTests(unittest.TestCase):
                 )
 
                 self.assertIn(
-                    'format{sep}rst{sep}enum.py'.format(sep = os.sep),
+                    'format{sep}rst{sep}enum.py'.format(sep=os.sep),
                     data['items'][0]['source']['path']
                 )
 
@@ -324,7 +324,7 @@ class YamlTests(unittest.TestCase):
                 )
 
                 self.assertIn(
-                    'format{sep}google{sep}__init__.py'.format(sep = os.sep),
+                    'format{sep}google{sep}__init__.py'.format(sep=os.sep),
                     data['items'][0]['source']['path']
                 )
 
@@ -388,7 +388,8 @@ class YamlTests(unittest.TestCase):
                 for item in data['items']:
                     if item['uid'] == 'format.numpy.foo.Foo.method_seealso':
                         self.assertEqual(
-                            re.sub(r'\s+', ' ', item['seealsoContent']).strip(),
+                            re.sub(r'\s+', ' ',
+                                   item['seealsoContent']).strip(),
                             '<xref:format.numpy.foo.Foo.mathod_note> See also target.'
                         )  # Test see also centent from numpy format.
 
@@ -410,8 +411,8 @@ class YamlTests(unittest.TestCase):
                     len(data[0]['items']),
                     3
                 )  # Test there are three package nodes.
-                   # Actually should be two, cuz namespace package should be placed in father nodes.
-                   # TODO: To be fixed in future.
+                # Actually should be two, cuz namespace package should be placed in father nodes.
+                # TODO: To be fixed in future.
 
                 self.assertEqual(
                     data[0]['items'][0]['uid'],
@@ -451,8 +452,8 @@ class YamlTests(unittest.TestCase):
                     'nspkg.native.native_foo',
                     data['items'][0]['children']
                 )  # Test nspkg.native.native_foo package is in index.yml
-                   # Actually this should not be in index.
-                   # TODO: To be fixed in future.
+                # Actually this should not be in index.
+                # TODO: To be fixed in future.
 
     def test_examples(self):
         """
@@ -507,17 +508,20 @@ class YamlTests(unittest.TestCase):
                     if item['uid'] == 'format.rst.enum.EnumFoo':
                         self.assertEqual(
                             item['children'],
-                            ['format.rst.enum.EnumFoo.VALUE0', 'format.rst.enum.EnumFoo.VALUE1']
+                            ['format.rst.enum.EnumFoo.VALUE0',
+                                'format.rst.enum.EnumFoo.VALUE1']
                         )  # Test containing all enum values
                     if item['uid'] == 'format.rst.enum.EnumFoo.VALUE0':
                         self.assertEqual(
                             item['syntax'],
-                            {'content': 'VALUE0 = 0', 'return': {'type': ['format.rst.enum.EnumFoo']}}
+                            {'content': 'VALUE0 = 0', 'return': {
+                                'type': ['format.rst.enum.EnumFoo']}}
                         )  # Test enum value syntax
                         self.assertEqual(
                             item['type'],
                             'attribute'
                         )  # Test enum value type
+
 
 if __name__ == '__main__':
     with sphinx_build('example'):

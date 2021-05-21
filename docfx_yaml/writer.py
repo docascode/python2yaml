@@ -390,7 +390,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
             self.add_text(', ')
         else:
             self.first_param = 0
-        self.add_text(node.astext())
+        self.add_text(self.replace_special_unicode(node.astext()))
         raise nodes.SkipNode
 
     def visit_desc_optional(self, node):
@@ -783,7 +783,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
         def depart_alert_box(self, node):
             self.clear_last_state()
             MarkdownTranslator.resolve_reference_in_node(node)
-            lines = node.astext().split('\n')
+            lines = self.replace_special_unicode(node.astext()).split('\n')
             quoteLines = ['> {0}\n>'.format(line) for line in lines]
             mdStr = '\n> [!{0}]\n{1}'.format(name, '\n'.join(quoteLines))
             self.add_text(mdStr)
@@ -942,8 +942,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
             ref_string = cls.xref_template.format(node.attributes['reftitle'])
         elif 'refuri' in node.attributes:
             if 'http' in node.attributes['refuri'] or node.attributes['refuri'][0] == '/':
-                ref_string = '[{}]({})'.format(
-                    node.astext(), node.attributes['refuri'])
+                ref_string = '[{}]({})'.format(node.astext(), node.attributes['refuri'])
             else:
                 # only use id in class and func refuri if its id exists
                 # otherwise, remove '.html#' in refuri
@@ -1046,20 +1045,23 @@ class MarkdownTranslator(nodes.NodeVisitor):
         pass
 
     def visit_footnote_reference(self, node):
-        self.add_text('[%s]' % node.astext())
+        self.add_text('[%s]' % self.replace_special_unicode(node.astext()))
         raise nodes.SkipNode
 
     def visit_citation_reference(self, node):
-        self.add_text('[%s]' % node.astext())
+        self.add_text('[%s]' % self.replace_special_unicode(node.astext()))
         raise nodes.SkipNode
 
-    def visit_Text(self, node):
-        text = node.astext()
+    def replace_special_unicode(self, text):
         text = text.replace('\u201c', '"')
         text = text.replace('\u201d', '"')
         text = text.replace('\u2018', "'")
         text = text.replace('\u2019', "'")
         text = text.replace('\u2026', "...")
+        return text
+
+    def visit_Text(self, node):
+        text = self.replace_special_unicode(node.astext())
         self.add_text(text)
 
     def depart_Text(self, node):
@@ -1093,7 +1095,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
 
     def visit_system_message(self, node):
         print(bcolors.WARNING + "System message warnings: %s" %
-              node.astext() + bcolors.ENDC)
+              self.replace_special_unicode(node.astext()) + bcolors.ENDC)
         raise nodes.SkipNode
 
     def visit_comment(self, node):
@@ -1106,7 +1108,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
     def visit_raw(self, node):
         if 'text' in node.get('format', '').split():
             self.new_state(0)
-            self.add_text(node.astext())
+            self.add_text(self.replace_special_unicode(node.astext()))
             self.end_state(wrap=False)
         raise nodes.SkipNode
 

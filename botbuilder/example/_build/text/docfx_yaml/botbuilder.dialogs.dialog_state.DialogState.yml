@@ -1,0 +1,20 @@
+### YamlMime:PythonClass
+uid: botbuilder.dialogs.dialog_state.DialogState
+name: DialogState
+fullName: botbuilder.dialogs.dialog_state.DialogState
+module: botbuilder.dialogs.dialog_state
+inheritances:
+- builtins.object
+summary: Contains state information for the dialog stack.
+constructor:
+  syntax: 'DialogState(stack: typing.List[botbuilder.dialogs.dialog_instance.DialogInstance]
+    = None) -> None'
+attributes:
+- uid: botbuilder.dialogs.dialog_state.DialogState.dialog_stack
+  name: dialog_stack
+  summary: Initializes a new instance of the <xref:botbuilder.dialogs.dialog_state.DialogState>
+    class.
+  return:
+    description: The state information to initialize the stack with.
+    types:
+    - <xref:typing.List>

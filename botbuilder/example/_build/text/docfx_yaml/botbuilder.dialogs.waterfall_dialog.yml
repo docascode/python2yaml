@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.waterfall_dialog
+name: waterfall_dialog
+fullName: botbuilder.dialogs.waterfall_dialog
+classes:
+- botbuilder.dialogs.waterfall_dialog.WaterfallDialog

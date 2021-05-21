@@ -4,4 +4,4 @@ name: example
 fullName: example
 type: distribution
 packages:
-- botbuilder.adapters.slack
+- botbuilder.dialogs

@@ -6,5 +6,9 @@ obj = {
     'value': summary
 }
 
-print(yaml.dump(obj, default_flow_style=False,
-                indent=2, sort_keys=False))
+summary = "Recognizes the user's input.\n\n\n > [!NOTE]\n > When overridden in a derived\
+    \ class, attempts to recognize the user\u2019s input.\n >"
+
+summary = summary.replace('\u2019', "'")
+
+print(summary)

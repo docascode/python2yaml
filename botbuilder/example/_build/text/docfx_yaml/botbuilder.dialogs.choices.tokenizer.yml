@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.choices.tokenizer
+name: tokenizer
+fullName: botbuilder.dialogs.choices.tokenizer
+classes:
+- botbuilder.dialogs.choices.tokenizer.Tokenizer

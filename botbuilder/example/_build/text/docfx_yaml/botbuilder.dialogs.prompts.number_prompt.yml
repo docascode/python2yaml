@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.prompts.number_prompt
+name: number_prompt
+fullName: botbuilder.dialogs.prompts.number_prompt
+classes:
+- botbuilder.dialogs.prompts.number_prompt.NumberPrompt

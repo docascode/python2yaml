@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.prompts.text_prompt
+name: text_prompt
+fullName: botbuilder.dialogs.prompts.text_prompt
+classes:
+- botbuilder.dialogs.prompts.text_prompt.TextPrompt

@@ -1,0 +1,38 @@
+### YamlMime:PythonEnum
+uid: botbuilder.dialogs.dialog_turn_status.DialogTurnStatus
+name: DialogTurnStatus
+fullName: botbuilder.dialogs.dialog_turn_status.DialogTurnStatus
+summary: Indicates in which a dialog-related method is being called.
+module: botbuilder.dialogs.dialog_turn_status
+constructor:
+  syntax: DialogTurnStatus(value) -> None
+variables:
+- description: Indicates that there is currently nothing on the dialog stack.
+  name: Empty
+  types:
+  - <xref:int>
+- description: Indicates that the dialog on top is waiting for a response from the
+    user.
+  name: Empty
+  types:
+  - <xref:int>
+- description: Indicates that the dialog completed successfully, the result is available,
+    and the stack is empty.
+  name: Empty
+  types:
+  - <xref:int>
+- description: Indicates that the dialog was cancelled and the stack is empty.
+  name: Empty
+  types:
+  - <xref:int>
+inheritances:
+- enum.Enum
+fields:
+- name: Cancelled
+  uid: botbuilder.dialogs.dialog_turn_status.DialogTurnStatus.Cancelled
+- name: Complete
+  uid: botbuilder.dialogs.dialog_turn_status.DialogTurnStatus.Complete
+- name: Empty
+  uid: botbuilder.dialogs.dialog_turn_status.DialogTurnStatus.Empty
+- name: Waiting
+  uid: botbuilder.dialogs.dialog_turn_status.DialogTurnStatus.Waiting

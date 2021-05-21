@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.prompts.prompt_validator_context
+name: prompt_validator_context
+fullName: botbuilder.dialogs.prompts.prompt_validator_context
+classes:
+- botbuilder.dialogs.prompts.prompt_validator_context.PromptValidatorContext
