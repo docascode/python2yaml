@@ -1,0 +1,7 @@
+### YamlMime:PythonModule
+uid: botframework.connector.async_mixin.async_mixin
+name: async_mixin
+fullName: botframework.connector.async_mixin.async_mixin
+classes:
+- botframework.connector.async_mixin.async_mixin.AsyncServiceClientMixin
+- botframework.connector.async_mixin.async_mixin.StreamDownloadGenerator

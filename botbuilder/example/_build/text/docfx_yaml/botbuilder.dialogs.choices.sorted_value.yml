@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.choices.sorted_value
-name: sorted_value
-fullName: botbuilder.dialogs.choices.sorted_value
-classes:
-- botbuilder.dialogs.choices.sorted_value.SortedValue

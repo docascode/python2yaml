@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.choices.find_choices_options
-name: find_choices_options
-fullName: botbuilder.dialogs.choices.find_choices_options
-classes:
-- botbuilder.dialogs.choices.find_choices_options.FindChoicesOptions

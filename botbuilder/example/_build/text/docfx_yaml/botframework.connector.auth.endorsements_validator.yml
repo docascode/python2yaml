@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.endorsements_validator
+name: endorsements_validator
+fullName: botframework.connector.auth.endorsements_validator
+classes:
+- botframework.connector.auth.endorsements_validator.EndorsementsValidator

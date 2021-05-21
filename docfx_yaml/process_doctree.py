@@ -153,6 +153,9 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
 
     if name in app.env.docfx_signature_funcs_methods:
         sig = app.env.docfx_signature_funcs_methods[name]
+        signature = str(inspect.signature(obj))
+        if signature.find(' -> None') >= 0:
+            sig += ' -> None'
     else:
         sig = None
 
@@ -431,7 +434,5 @@ def process_signature(app, _type, name, obj, options, signature, return_annotati
         signature = short_name + signature
         if (return_annotation):
             signature = signature + ' -> ' + return_annotation
-        else:
-            signature = signature + ' -> None'
         signature = _add_typing_tag(signature)
         app.env.docfx_signature_funcs_methods[name] = signature

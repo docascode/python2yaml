@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.choices.find_values_options
-name: find_values_options
-fullName: botbuilder.dialogs.choices.find_values_options
-classes:
-- botbuilder.dialogs.choices.find_values_options.FindValuesOptions

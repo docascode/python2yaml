@@ -1,0 +1,7 @@
+### YamlMime:PythonPackage
+uid: botframework.connector.async_mixin
+name: async_mixin
+fullName: botframework.connector.async_mixin
+type: import
+modules:
+- botframework.connector.async_mixin.async_mixin

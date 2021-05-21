@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.dialog_turn_result
-name: dialog_turn_result
-fullName: botbuilder.dialogs.dialog_turn_result
-classes:
-- botbuilder.dialogs.dialog_turn_result.DialogTurnResult

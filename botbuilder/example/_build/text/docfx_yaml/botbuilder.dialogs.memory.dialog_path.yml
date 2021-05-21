@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.memory.dialog_path
-name: dialog_path
-fullName: botbuilder.dialogs.memory.dialog_path
-classes:
-- botbuilder.dialogs.memory.dialog_path.DialogPath

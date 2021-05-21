@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.skill_validation
+name: skill_validation
+fullName: botframework.connector.auth.skill_validation
+classes:
+- botframework.connector.auth.skill_validation.SkillValidation

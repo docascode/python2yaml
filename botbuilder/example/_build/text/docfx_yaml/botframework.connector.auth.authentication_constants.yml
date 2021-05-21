@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.authentication_constants
+name: authentication_constants
+fullName: botframework.connector.auth.authentication_constants
+classes:
+- botframework.connector.auth.authentication_constants.AuthenticationConstants

@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.government_channel_validation
+name: government_channel_validation
+fullName: botframework.connector.auth.government_channel_validation
+classes:
+- botframework.connector.auth.government_channel_validation.GovernmentChannelValidation

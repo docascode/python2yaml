@@ -1,7 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.prompts.prompt_recognizer_result
-name: prompt_recognizer_result
-fullName: botbuilder.dialogs.prompts.prompt_recognizer_result
-summary: Result returned by a prompts recognizer function.
-classes:
-- botbuilder.dialogs.prompts.prompt_recognizer_result.PromptRecognizerResult

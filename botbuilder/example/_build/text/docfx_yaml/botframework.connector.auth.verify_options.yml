@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.verify_options
+name: verify_options
+fullName: botframework.connector.auth.verify_options
+classes:
+- botframework.connector.auth.verify_options.VerifyOptions

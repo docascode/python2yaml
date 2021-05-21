@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.choices.list_style
-name: list_style
-fullName: botbuilder.dialogs.choices.list_style
-enums:
-- botbuilder.dialogs.choices.list_style.ListStyle

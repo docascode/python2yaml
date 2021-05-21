@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.prompts.attachment_prompt
-name: attachment_prompt
-fullName: botbuilder.dialogs.prompts.attachment_prompt
-classes:
-- botbuilder.dialogs.prompts.attachment_prompt.AttachmentPrompt

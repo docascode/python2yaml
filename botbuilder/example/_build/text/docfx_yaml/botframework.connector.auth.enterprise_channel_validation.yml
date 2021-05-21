@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.enterprise_channel_validation
+name: enterprise_channel_validation
+fullName: botframework.connector.auth.enterprise_channel_validation
+classes:
+- botframework.connector.auth.enterprise_channel_validation.EnterpriseChannelValidation

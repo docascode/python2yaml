@@ -1,0 +1,7 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.claims_identity
+name: claims_identity
+fullName: botframework.connector.auth.claims_identity
+classes:
+- botframework.connector.auth.claims_identity.Claim
+- botframework.connector.auth.claims_identity.ClaimsIdentity

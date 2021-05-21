@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.object_path
-name: object_path
-fullName: botbuilder.dialogs.object_path
-classes:
-- botbuilder.dialogs.object_path.ObjectPath

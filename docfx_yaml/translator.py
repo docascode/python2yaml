@@ -157,21 +157,17 @@ def translator(app, docname, doctree):
                     data['return']['description'] = returnvalue_ret.strip(
                         " \n\r\t")
 
-            if fieldtype == 'Return':
+            if fieldtype in ['Return', 'Raises']:
                 for returntype_node in content:
                     returntype_ret = transform_node(returntype_node)
                     if returntype_ret:
                         for returntype in re.split('[ \n]or[ \n]', returntype_ret):
                             returntype, _added_reference = resolve_type(
                                 returntype)
-                            if _added_reference:
-                                if len(data['references']) == 0:
-                                    data['references'].append(_added_reference)
-                                elif any(r['uid'] != _added_reference['uid'] for r in data['references']):
-                                    data['references'].append(_added_reference)
-
-                            data['return'].setdefault(
-                                'type', []).append(returntype)
+                            if fieldtype == 'Return':
+                                data['return'].setdefault('type', []).append(returntype)
+                            else:
+                                data['exceptions'].append(returntype.strip(" \n\r\t\u2013"))
 
             if fieldtype in ['Parameters', 'Variables']:
                 if _is_single_paragraph(fieldbody):
@@ -194,17 +190,11 @@ def translator(app, docname, doctree):
                         if fieldtype == 'Parameters':
                             data['parameters'].append(_data)
                         else:
-                            if content[0].astext().find('(') >= 0:
-                                _data['id'] = content[0].astext(
-                                )[:content[0].astext().find('(')].strip(' ')
+                            if child.astext().find('(') >= 0:
+                                _data['id'] = child.astext()[:child.astext().find('(')].strip(' ')
                             else:
-                                _data['id'] = content[0].astext(
-                                )[:content[0].astext().find('–')].strip(' ')
+                                _data['id'] = child.astext()[:child.astext().find('–')].strip(' ')
                             data['variables'].append(_data)
-
-            if fieldtype == 'Raises':
-                for child in content:
-                    ret_data = child.astext()
 
         return data
 

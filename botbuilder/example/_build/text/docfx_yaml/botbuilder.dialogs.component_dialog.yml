@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.component_dialog
-name: component_dialog
-fullName: botbuilder.dialogs.component_dialog
-classes:
-- botbuilder.dialogs.component_dialog.ComponentDialog

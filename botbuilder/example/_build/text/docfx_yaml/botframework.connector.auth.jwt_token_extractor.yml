@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.jwt_token_extractor
+name: jwt_token_extractor
+fullName: botframework.connector.auth.jwt_token_extractor
+classes:
+- botframework.connector.auth.jwt_token_extractor.JwtTokenExtractor
