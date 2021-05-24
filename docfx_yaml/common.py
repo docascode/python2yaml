@@ -150,13 +150,20 @@ def convert_return(obj, reference_mapping):
 
 def convert_parameter(obj, reference_mapping):
     if obj:
-        parameter_object = {
-            'name': obj.get('id', None),
-            'description': obj.get('description', None),
-            'isRequired': str(obj.get('isRequired', '')).lower() == 'true',
-            'defaultValue': obj.get('defaultValue', None),
-            'types': convert_types(obj.get('type', []), reference_mapping)
-        }
+        if obj.get('defaultValue', None):
+            parameter_object = {
+                'name': obj.get('id', None),
+                'description': obj.get('description', None),
+                'defaultValue': obj.get('defaultValue', None),
+                'types': convert_types(obj.get('type', []), reference_mapping)
+            }
+        else:
+            parameter_object = {
+                'name': obj.get('id', None),
+                'description': obj.get('description', None),
+                'isRequired': str(obj.get('isRequired', '')).lower() == 'true',
+                'types': convert_types(obj.get('type', []), reference_mapping)
+            }
 
         return remove_empty_values(parameter_object)
     else:

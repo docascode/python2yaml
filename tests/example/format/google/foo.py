@@ -11,7 +11,7 @@ def function(arg1, arg2, arg3, arg4):
     """ Docstring of :func:`format.google.foo.function` function.
 
     Args:
-        arg1 (int): Parameter arg1 of :func:`format.google.foo.function`.
+        arg1 (int or str): Parameter arg1 of :func:`format.google.foo.function`.
         arg2 (float): Parameter arg2 of :func:`format.google.foo.function`.
         arg3 (boolean): Parameter arg3 of :func:`format.google.foo.function`.
         arg4 (str): Parameter arg4 of :func:`format.google.foo.function`.
@@ -28,6 +28,10 @@ class Foo(object):
     Arguments:
         init_arg1 (float): Parameter init_arg1 from class docstring.
         init_arg2 (list[int]): Parameter init_arg2 from class docstring.
+
+    :return: An instance of an LROPoller. Call `result()` on the poller
+        object to return a :class:`~azure.ai.formrecognizer.CustomFormModel`.
+    :rtype: ~azure.core.polling.LROPoller[~azure.ai.formrecognizer.CustomFormModel]
     """
 
     attr = 1
@@ -37,7 +41,7 @@ class Foo(object):
         """ Docstring of constructor of :class:`format.google.foo.Foo`.
 
         Parameters:
-            init_arg1 (float): Parameter init_arg1 from constructor's docstring.
+            init_arg1 (float or\n str): Parameter init_arg1 from constructor's docstring.
             init_arg2 (list[int]): Parameter init_arg2 from constructor's docstring.
         """
 

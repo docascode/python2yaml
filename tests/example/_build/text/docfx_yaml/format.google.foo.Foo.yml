@@ -70,6 +70,9 @@ methods:
   name: method_exception
   summary: Docstring of <xref:format.google.foo.Foo.method_exception>.
   signature: method_exception()
+  exceptions:
+  - type: f:format.rst.foo.FooException
+    description: "This function raises \n\n* <xref:exception.> \u2013"
 - uid: format.google.foo.Foo.method_external_link
   name: method_external_link
   summary: 'Docstring of <xref:format.google.foo.Foo.method_external_link>.

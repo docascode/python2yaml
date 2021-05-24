@@ -148,13 +148,16 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
                     if 'object at 0x' not in str(default):
                         args[len(args) - cut_count +
                              count]['defaultValue'] = str(default)
-    except Exception:
-        print("Can't get argspec for {}: {}".format(type(obj), name))
+    except Exception as e:
+        print("Can't get argspec for {}: {}. Exception: {}".format(type(obj), name, e))
 
     if name in app.env.docfx_signature_funcs_methods:
         sig = app.env.docfx_signature_funcs_methods[name]
-        signature = str(inspect.signature(obj))
-        if signature.find(' -> None') >= 0:
+        try:
+            signature = str(inspect.signature(obj))
+        except:
+            signature = None
+        if signature and signature.find(' -> None') >= 0 and sig.find(' -> None') == -1:
             sig += ' -> None'
     else:
         sig = None

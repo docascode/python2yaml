@@ -14,6 +14,7 @@ functions:
     isRequired: true
     types:
     - '[int](https://docs.python.org/3.6/library/functions.html#int)'
+    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
   - name: arg2
     description: Parameter arg2 of <xref:format.google.foo.function>.
     isRequired: true

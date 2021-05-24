@@ -70,6 +70,9 @@ methods:
   name: method_exception
   summary: Docstring of <xref:fomrmat.numpy.foo.Foo.method_exception>.
   signature: method_exception()
+  exceptions:
+  - type: format.rst.foo.FooException
+    description: "This function raises\n    exception."
 - uid: format.numpy.foo.Foo.method_external_link
   name: method_external_link
   summary: 'Docstring of <xref:fomrmat.numpy.foo.Foo.method_external_link>.

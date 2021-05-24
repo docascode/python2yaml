@@ -5,25 +5,13 @@ fullName: nspkg.native.native_foo.Foo
 module: nspkg.native.native_foo
 inheritances:
 - builtins.object
-summary: Docstring of <xref:format.rst.foo.Foo> class in rst format.
+summary: "Docstring of <xref:format.rst.foo.Foo> class in rst format.\n\n   var attr:\n\
+  \      Docstring of <xref:format.rst.foo.Foo.attr> from class docstring.\n\n   vartype\
+  \ attr:\n      ~format.rst.enum.EnumFoo\n\n   param init_arg1:\n      Parameter\
+  \ init_arg1 from class docstring.\n\n   type init_arg1:\n      float or\n\nSSSTTTRRR\n\
+  \   param list[int] init_arg2:\n      Parameter init_arg2 from class docstring."
 constructor:
   syntax: Foo(init_arg1, init_arg2)
-  parameters:
-  - name: init_arg1
-    description: Parameter init_arg1 from class docstring.
-    isRequired: true
-    types:
-    - '[float](https://docs.python.org/3.6/library/functions.html#float)'
-  - name: init_arg2
-    description: Parameter init_arg2 from class docstring.
-    isRequired: true
-    types:
-    - '[list](https://docs.python.org/3.6/library/stdtypes.html#list)[[int](https://docs.python.org/3.6/library/functions.html#int)]'
-variables:
-- description: Docstring of <xref:format.rst.foo.Foo.attr> from class docstring.
-  name: attr
-  types:
-  - <xref:format.rst.enum.EnumFoo>
 methods:
 - uid: nspkg.native.native_foo.Foo.class_method
   name: class_method
@@ -104,6 +92,10 @@ methods:
   name: method_exception
   summary: Docstring of <xref:format.rst.foo.Foo.method_exception>.
   signature: method_exception()
+  exceptions:
+  - type: 'format.rst.foo.FooException> This function raises
+
+      exception'
 - uid: nspkg.native.native_foo.Foo.method_external_link
   name: method_external_link
   summary: 'Docstring of <xref:format.rst.foo.Foo.method_external_link>.

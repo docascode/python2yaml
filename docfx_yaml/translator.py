@@ -15,15 +15,14 @@ from nodes import remarks
 
 TYPE_SEP_PATTERN = '(\[|\]|, |\(|\))'
 PARAMETER_NAME = "[*][*](.*?)[*][*]"
-PARAMETER_TYPE = "[(](.*)[)]"
-PARAMETER_DESCRIPTION = "[–][ ](.*)"
+PARAMETER_TYPE = "[(]((?:.|\n)*)[)]"
 
 
 def translator(app, docname, doctree):
 
     transform_node = app.docfx_transform_node
 
-    def make_param(_id, _description, _type=None):
+    def make_param(_id, _description, _type=None, _required=None):
         ret = {}
         if _id:
             ret['id'] = _id
@@ -31,6 +30,10 @@ def translator(app, docname, doctree):
             ret['description'] = _description.strip(" \n\r\r")
         if _type:
             ret['type'] = _type
+
+        if _required is not None:
+                ret['isRequired'] = _required
+
         return ret
 
     def transform_para(para_field):
@@ -104,10 +107,9 @@ def translator(app, docname, doctree):
 
         return data_type, _added_reference
 
-    def parse_parameter(ret_data):
+    def parse_parameter(ret_data, fieldtype):
         _id_pattern = re.compile(PARAMETER_NAME)
-        _type_pattern = re.compile(PARAMETER_TYPE)
-        _description_pattern = re.compile(PARAMETER_DESCRIPTION)
+        _type_pattern = re.compile(PARAMETER_TYPE, re.DOTALL)
         _des_index = ret_data.find('–')
         _first_part_ret_data = ret_data[:_des_index]
         if len(re.findall(_id_pattern, _first_part_ret_data)) > 0:
@@ -115,16 +117,14 @@ def translator(app, docname, doctree):
         else:
             _id = None
         _type = []
-        if len(re.findall(_type_pattern, _first_part_ret_data)) > 0:
-            _types = re.findall(_type_pattern, _first_part_ret_data)[
-                0].replace('*', '')
-            _type = list(map(lambda x: x.strip(
-                " \n"), _types.split(' or ')))
+        if len(_type_pattern.findall(_first_part_ret_data)) > 0:
+            _types = _type_pattern.findall(_first_part_ret_data)[0].replace('*', '')
+            _type = list(map(lambda x: x.strip(" \n"), _types.split(' or')))
         if _des_index >= 0:
             _description = ret_data[_des_index+1:]
         else:
             _description = None
-        _data = make_param(_id, _description, _type)
+        _data = make_param(_id, _description, _type, _required=False if fieldtype == 'Keyword' else True)
         return _data
 
     def _get_full_data(node):
@@ -151,29 +151,52 @@ def translator(app, docname, doctree):
             else:
                 content = fieldbody.children
 
+            if fieldtype == 'Raises':
+                for exception_node in content:
+                    exception_ret = transform_node(exception_node)
+                    if exception_ret:
+                        description_index = exception_ret.find('–')
+                        if description_index >= 0:
+                            exception_description = exception_ret[description_index+1:].strip(" \n\r\t")
+                            exception_type = exception_ret[:description_index-1].strip(" \n\r\t")
+                            if exception_type.find('<xref:') >= 0:
+                                exception_type = exception_type[6:-1]
+                            data['exceptions'].append({
+                                'type': exception_type,
+                                'description': exception_description
+                            })
+                        else:
+                            exception_type = exception_ret.strip(" \n\r\t")
+                            if exception_type.find('<xref:') >= 0:
+                                exception_type = exception_type[6:-1]
+                            data['exceptions'].append({
+                                'type': exception_type
+                            })              
+            
             if fieldtype == 'Returns':
                 returnvalue_ret = transform_node(content[0])
                 if returnvalue_ret:
-                    data['return']['description'] = returnvalue_ret.strip(
-                        " \n\r\t")
+                    data['return']['description'] = returnvalue_ret.strip(" \n\r\t")
 
-            if fieldtype in ['Return', 'Raises']:
+            if fieldtype in ['Return']:
                 for returntype_node in content:
                     returntype_ret = transform_node(returntype_node)
                     if returntype_ret:
                         for returntype in re.split('[ \n]or[ \n]', returntype_ret):
                             returntype, _added_reference = resolve_type(
                                 returntype)
-                            if fieldtype == 'Return':
-                                data['return'].setdefault('type', []).append(returntype)
-                            else:
-                                data['exceptions'].append(returntype.strip(" \n\r\t\u2013"))
+                            data['return'].setdefault('type', []).append(returntype)
+                            # else:
+                            #     if returntype.find('<xref:') >= 0:
+                            #         exceptiontype = returntype.strip(" \n\r\t\u2013")
+                            #         exceptiontype = exceptiontype[6:-1]
+                            #         data['exceptions'].append('type: ' + exceptiontype)
 
-            if fieldtype in ['Parameters', 'Variables']:
+            if fieldtype in ['Parameters', 'Variables', 'Keyword']:
                 if _is_single_paragraph(fieldbody):
                     ret_data = transform_para(content[0])
-                    _data = parse_parameter(ret_data)
-                    if fieldtype == 'Parameters':
+                    _data = parse_parameter(ret_data, fieldtype)
+                    if fieldtype in ['Parameters', 'Keyword']:
                         data['parameters'].append(_data)
                     else:
                         if content[0].astext().find('(') >= 0:
@@ -186,7 +209,7 @@ def translator(app, docname, doctree):
                 else:
                     for child in content[0]:
                         ret_data = transform_para(child[0])
-                        _data = parse_parameter(ret_data)
+                        _data = parse_parameter(ret_data, fieldtype)
                         if fieldtype == 'Parameters':
                             data['parameters'].append(_data)
                         else:

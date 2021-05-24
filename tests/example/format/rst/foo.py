@@ -27,7 +27,7 @@ class Foo(object):
     :vartype attr: ~format.rst.enum.EnumFoo
 
     :param init_arg1: Parameter init_arg1 from class docstring.
-    :type init_arg1: float
+    :type init_arg1: float or\n SSSTTTRRR
     :param list[int] init_arg2: Parameter init_arg2 from class docstring.
     """
 
