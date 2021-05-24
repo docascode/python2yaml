@@ -203,7 +203,7 @@ def translator(app, docname, doctree):
                     for child in content[0]:
                         ret_data = transform_para(child[0])
                         _data = parse_parameter(ret_data, fieldtype)
-                        if fieldtype == 'Parameters':
+                        if fieldtype in ['Parameters', 'Keyword']:
                             data['parameters'].append(_data)
                         else:
                             if child.astext().find('(') >= 0:

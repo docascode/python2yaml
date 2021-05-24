@@ -29,9 +29,14 @@ class Foo(object):
         init_arg1 (float): Parameter init_arg1 from class docstring.
         init_arg2 (list[int]): Parameter init_arg2 from class docstring.
 
-    :return: An instance of an LROPoller. Call `result()` on the poller
-        object to return a :class:`~azure.ai.formrecognizer.CustomFormModel`.
-    :rtype: ~azure.core.polling.LROPoller[~azure.ai.formrecognizer.CustomFormModel]
+    :keyword str prefix: A case-sensitive prefix string to filter documents in the source path for
+        training. For example, when using a Azure storage blob URI, use the prefix to restrict sub
+        folders for training.
+    :keyword bool include_subfolders: A flag to indicate if subfolders within the set of prefix folders
+        will also need to be included when searching for content to be preprocessed. Not supported if
+        training with labels.
+    :keyword str model_name: An optional, user-defined name to associate with your model.
+    :keyword str continuation_token: A continuation token to restart a poller from a saved state.
     """
 
     attr = 1

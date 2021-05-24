@@ -47,7 +47,7 @@ methods:
 - uid: format.rst.foo.Foo.method_default_value
   name: method_default_value
   summary: Docstring of <xref:format.rst.foo.Foo.method_default_value>.
-  signature: method_default_value(arg1='default string', arg2=None)
+  signature: method_default_value(arg1 = 'default string', arg2 = None)
   parameters:
   - name: arg1
     description: Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value>,
@@ -66,7 +66,7 @@ methods:
   summary: 'Docstring of <xref:format.rst.foo.Foo.method_default_value_comma>.
 
     The default value of method parameter contains comma thus will fail to parse.'
-  signature: method_default_value_comma(arg1=(1, 2, 3))
+  signature: method_default_value_comma(arg1 = (1, 2, 3))
   parameters:
   - name: arg1
     description: Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value_comma>,
