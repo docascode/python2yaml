@@ -21,7 +21,7 @@ methods:
 - uid: botbuilder.dialogs.dialog_set.DialogSet.create_context
   name: create_context
   signature: 'create_context(turn_context: botbuilder.core.turn_context.TurnContext)
-    -> DialogContext'
+    -> ''DialogContext'''
   parameters:
   - name: turn_context
     isRequired: true
@@ -53,7 +53,7 @@ methods:
     in this this dialogset.
 
     <returns>Version will change when any of the child dialogs version changes.</returns>'
-  signature: get_version() -> str
+  signature: get_version(self) -> str
 attributes:
 - uid: botbuilder.dialogs.dialog_set.DialogSet.telemetry_client
   name: telemetry_client

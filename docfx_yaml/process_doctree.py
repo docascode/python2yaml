@@ -151,14 +151,21 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
     except Exception as e:
         print("Can't get argspec for {}: {}. Exception: {}".format(type(obj), name, e))
 
+    if name == 'botbuilder.dialogs.memory.scopes.turn_memory_scope.CaseInsensitiveDict.get':
+        print('here')
+
     if name in app.env.docfx_signature_funcs_methods:
         sig = app.env.docfx_signature_funcs_methods[name]
         try:
             signature = str(inspect.signature(obj))
         except:
             signature = None
-        if signature and signature.find(' -> None') >= 0 and sig.find(' -> None') == -1:
-            sig += ' -> None'
+        if signature:
+            signature = signature.replace('self, ', '')
+            signature = signature.replace(':', ': ')
+            signature = signature.replace('=', ' = ')
+            signature = short_name + signature
+            sig = signature
     else:
         sig = None
 
