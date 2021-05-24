@@ -165,8 +165,7 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
             signature = signature.replace('self', '')
             signature = signature.replace(':', ': ')
             signature = signature.replace('=', ' = ')
-            signature = short_name + signature
-            sig = _add_typing_tag(signature)
+            sig = short_name + _add_typing_tag(signature)
     else:
         sig = None
 
