@@ -1,0 +1,10 @@
+### YamlMime:PythonClass
+uid: botbuilder.dialogs.DialogInstance
+name: DialogInstance
+fullName: botbuilder.dialogs.DialogInstance
+module: botbuilder.dialogs
+inheritances:
+- builtins.object
+summary: Tracking information for a dialog on the stack.
+constructor:
+  syntax: 'DialogInstance(id: str = None, state: typing.Dict[str, object] = None)'

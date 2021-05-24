@@ -163,7 +163,7 @@ def translator(app, docname, doctree):
                                 exception_type = exception_type[6:-1]
                                 data['exceptions'].append({
                                     'description': exception_description,
-                                    'type': exception_type,
+                                    'type': exception_type
                                 })
                         else:
                             exception_type = exception_ret.strip(" \n\r\t")
@@ -186,11 +186,6 @@ def translator(app, docname, doctree):
                             returntype, _added_reference = resolve_type(
                                 returntype)
                             data['return'].setdefault('type', []).append(returntype)
-                            # else:
-                            #     if returntype.find('<xref:') >= 0:
-                            #         exceptiontype = returntype.strip(" \n\r\t\u2013")
-                            #         exceptiontype = exceptiontype[6:-1]
-                            #         data['exceptions'].append('type: ' + exceptiontype)
 
             if fieldtype in ['Parameters', 'Variables', 'Keyword']:
                 if _is_single_paragraph(fieldbody):
@@ -236,6 +231,8 @@ def translator(app, docname, doctree):
         summary = []
         data = {}
         uid = _get_desc_data(node.parent)
+        if uid == 'format.google.foo.Foo.attr_getter':
+            print('aaa')
         for child in node:
             if isinstance(child, remarks):
                 remarks_string = transform_node(child)

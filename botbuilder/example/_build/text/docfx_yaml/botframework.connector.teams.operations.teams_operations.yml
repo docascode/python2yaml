@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botframework.connector.teams.operations.teams_operations
-name: teams_operations
-fullName: botframework.connector.teams.operations.teams_operations
-classes:
-- botframework.connector.teams.operations.teams_operations.TeamsOperations

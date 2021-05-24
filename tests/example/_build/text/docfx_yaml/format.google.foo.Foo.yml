@@ -141,4 +141,8 @@ attributes:
   signature: attr = 1
 - uid: format.google.foo.Foo.attr_getter
   name: attr_getter
-  summary: Docstring of <xref:format.google.foo.Foo.attr_getter> @property.
+  summary: Final result returned by a dialog that just completed.
+  return:
+    description: Final result returned by a dialog that just completed.
+    types:
+    - <xref:object>

@@ -1,0 +1,10 @@
+### YamlMime:PythonClass
+uid: botbuilder.dialogs.choices.Token
+name: Token
+fullName: botbuilder.dialogs.choices.Token
+module: botbuilder.dialogs.choices
+inheritances:
+- builtins.object
+summary: Represents an individual token, such as a word in an input string.
+constructor:
+  syntax: 'Token(start: int, end: int, text: str, normalized: str)'

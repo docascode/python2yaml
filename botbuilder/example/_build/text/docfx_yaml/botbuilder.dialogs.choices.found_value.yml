@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.choices.found_value
+name: found_value
+fullName: botbuilder.dialogs.choices.found_value
+classes:
+- botbuilder.dialogs.choices.found_value.FoundValue

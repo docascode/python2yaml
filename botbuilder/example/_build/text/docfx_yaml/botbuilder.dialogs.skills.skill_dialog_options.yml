@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.skills.skill_dialog_options
+name: skill_dialog_options
+fullName: botbuilder.dialogs.skills.skill_dialog_options
+classes:
+- botbuilder.dialogs.skills.skill_dialog_options.SkillDialogOptions

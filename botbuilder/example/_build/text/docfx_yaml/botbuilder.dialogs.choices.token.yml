@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.choices.token
+name: token
+fullName: botbuilder.dialogs.choices.token
+classes:
+- botbuilder.dialogs.choices.token.Token

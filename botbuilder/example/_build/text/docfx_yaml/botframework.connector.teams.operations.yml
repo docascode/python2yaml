@@ -1,9 +1,0 @@
-### YamlMime:PythonPackage
-uid: botframework.connector.teams.operations
-name: operations
-fullName: botframework.connector.teams.operations
-type: import
-classes:
-- botframework.connector.teams.operations.TeamsOperations
-modules:
-- botframework.connector.teams.operations.teams_operations

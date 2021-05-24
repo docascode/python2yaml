@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botframework.connector.channels
-name: channels
-fullName: botframework.connector.channels
-enums:
-- botframework.connector.channels.Channels

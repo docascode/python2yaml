@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.prompts.confirm_prompt
+name: confirm_prompt
+fullName: botbuilder.dialogs.prompts.confirm_prompt
+classes:
+- botbuilder.dialogs.prompts.confirm_prompt.ConfirmPrompt

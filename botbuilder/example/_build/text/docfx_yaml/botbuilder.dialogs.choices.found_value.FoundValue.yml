@@ -1,0 +1,10 @@
+### YamlMime:PythonClass
+uid: botbuilder.dialogs.choices.found_value.FoundValue
+name: FoundValue
+fullName: botbuilder.dialogs.choices.found_value.FoundValue
+module: botbuilder.dialogs.choices.found_value
+inheritances:
+- builtins.object
+summary: Represents a result from matching user input against a list of choices
+constructor:
+  syntax: 'FoundValue(value: str, index: int, score: float)'

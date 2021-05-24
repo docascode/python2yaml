@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.waterfall_step_context
+name: waterfall_step_context
+fullName: botbuilder.dialogs.waterfall_step_context
+classes:
+- botbuilder.dialogs.waterfall_step_context.WaterfallStepContext

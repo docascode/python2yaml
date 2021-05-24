@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.prompts.activity_prompt
+name: activity_prompt
+fullName: botbuilder.dialogs.prompts.activity_prompt
+classes:
+- botbuilder.dialogs.prompts.activity_prompt.ActivityPrompt

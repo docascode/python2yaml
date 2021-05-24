@@ -1,8 +1,0 @@
-### YamlMime:PythonPackage
-uid: botframework.connector.aio.operations_async
-name: operations_async
-fullName: botframework.connector.aio.operations_async
-type: import
-classes:
-- botframework.connector.aio.operations_async.AttachmentsOperations
-- botframework.connector.aio.operations_async.ConversationsOperations

@@ -1,0 +1,262 @@
+### YamlMime:PythonClass
+uid: botbuilder.dialogs.Prompt
+name: Prompt
+fullName: botbuilder.dialogs.Prompt
+module: botbuilder.dialogs
+inheritances:
+- botbuilder.dialogs.dialog.Dialog
+summary: Defines the core behavior of prompt dialogs. Extends the <xref:botbuilder.dialogs.Dialog>
+  base class.
+constructor:
+  syntax: 'Prompt(dialog_id: str, validator: object = None)'
+remarks: 'When the prompt ends, it returns an object that represents the value it
+  was prompted for.
+
+  Use <xref:botbuilder.dialogs.DialogSet.add> or <xref:botbuilder.dialogs.ComponentDialog.add_dialog>
+  to add a prompt to
+
+  a dialog set or component dialog, respectively.
+
+
+  Use <xref:botbuilder.dialogs.DialogContext.prompt> or <xref:botbuilder.dialogs.DialogContext.begin_dialog>
+  to start the prompt.
+
+  If you start a prompt from a <xref:botbuilder.dialogs.WaterfallStep> in a <xref:botbuilder.dialogs.WaterfallDialog>,
+  then the
+
+  prompt result will be available in the next step of the waterfall.
+
+  '
+methods:
+- uid: botbuilder.dialogs.Prompt.append_choices
+  name: append_choices
+  summary: Composes an output activity containing a set of choices.
+  signature: 'append_choices(prompt: botbuilder.schema._models_py3.Activity, channel_id:
+    str, choices: typing.List[botbuilder.dialogs.choices.choice.Choice], style: botbuilder.dialogs.choices.list_style.typing.ListStyle,
+    options: botbuilder.dialogs.choices.choice_factory_options.ChoiceFactoryOptions
+    = None) -> botbuilder.schema._models_py3.Activity'
+  parameters:
+  - name: prompt
+    description: The prompt to append the user's choice to
+    isRequired: true
+  - name: channel_id
+    description: Id of the channel the prompt is being sent to
+    isRequired: true
+    types:
+    - <xref:str>
+  - name: choices
+    isRequired: true
+  - name: style
+    isRequired: true
+  - name: options
+    defaultValue: None
+  return:
+    description: A task representing the asynchronous operation
+  remarks: 'If the task is successful, the result contains the updated activity.
+
+    When overridden in a derived class, appends choices to the activity when the user
+
+    is prompted for input. This is an helper function to compose an output activity
+
+    containing a set of choices.
+
+    '
+- uid: botbuilder.dialogs.Prompt.begin_dialog
+  name: begin_dialog
+  summary: 'Starts a prompt dialog. Called when a prompt dialog is pushed onto the
+    dialog stack and is being activated.
+
+
+
+    > [!NOTE]
+
+    > The result indicates whether the prompt is still active after the turn has been
+    processed.
+
+    >'
+  signature: 'begin_dialog(dialog_context: botbuilder.dialogs.dialog_context.DialogContext,
+    options: object = None) -> botbuilder.dialogs.dialog_turn_result.DialogTurnResult'
+  parameters:
+  - name: dialog_context
+    description: The dialog context for the current turn of the conversation
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.DialogContext>
+  - name: options
+    description: Optional, additional information to pass to the prompt being started
+    defaultValue: None
+    types:
+    - <xref:Object>
+  return:
+    description: The dialog turn result
+    types:
+    - <xref:botbuilder.dialogs.DialogTurnResult>
+- uid: botbuilder.dialogs.Prompt.continue_dialog
+  name: continue_dialog
+  summary: Continues a dialog.
+  signature: 'continue_dialog(dialog_context: botbuilder.dialogs.dialog_context.DialogContext)'
+  parameters:
+  - name: dialog_context
+    description: The dialog context for the current turn of the conversation
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.DialogContext>
+  return:
+    description: The dialog turn result
+    types:
+    - <xref:botbuilder.dialogs.DialogTurnResult>
+  remarks: 'Called when a prompt dialog is the active dialog and the user replied
+    with a new activity.
+
+
+    If the task is successful, the result indicates whether the dialog is still active
+    after
+
+    the turn has been processed by the dialog.
+
+
+    The prompt generally continues to receive the user''s replies until it accepts
+    the
+
+    user''s reply as valid input for the prompt.
+
+    '
+- uid: botbuilder.dialogs.Prompt.on_prompt
+  name: on_prompt
+  summary: Prompts user for input. When overridden in a derived class, prompts the
+    user for input.
+  signature: 'on_prompt(turn_context: botbuilder.core.turn_context.TurnContext, state:
+    typing.Dict[str, object], options: botbuilder.dialogs.prompts.prompt_options.PromptOptions,
+    is_retry: bool)'
+  parameters:
+  - name: turn_context
+    description: Context for the current turn of conversation with the user
+    isRequired: true
+    types:
+    - <xref:botbuilder.core.TurnContext>
+  - name: state
+    description: Contains state for the current instance of the prompt on the dialog
+      stack
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.Dict>
+  - name: options
+    description: A prompt options object constructed from:meth:*DialogContext.prompt()*
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.PromptOptions>
+  - name: is_retry
+    description: Determines whether *prompt* or *retry_prompt* should be used
+    isRequired: true
+    types:
+    - <xref:bool>
+  return:
+    description: A task representing the asynchronous operation.
+- uid: botbuilder.dialogs.Prompt.on_recognize
+  name: on_recognize
+  summary: 'Recognizes the user''s input.
+
+
+
+    > [!NOTE]
+
+    > When overridden in a derived class, attempts to recognize the user''s input.
+
+    >'
+  signature: 'on_recognize(turn_context: botbuilder.core.turn_context.TurnContext,
+    state: typing.Dict[str, object], options: botbuilder.dialogs.prompts.prompt_options.PromptOptions)'
+  parameters:
+  - name: turn_context
+    description: Context for the current turn of conversation with the user
+    isRequired: true
+    types:
+    - <xref:botbuilder.core.TurnContext>
+  - name: state
+    description: Contains state for the current instance of the prompt on the dialog
+      stack
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.Dict>
+  - name: options
+    description: A prompt options object constructed from <xref:botbuilder.dialogs.DialogContext.prompt>
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.PromptOptions>
+  return:
+    description: A task representing the asynchronous operation.
+- uid: botbuilder.dialogs.Prompt.reprompt_dialog
+  name: reprompt_dialog
+  summary: Reprompts user for input.
+  signature: 'reprompt_dialog(context: botbuilder.core.turn_context.TurnContext, instance:
+    botbuilder.dialogs.dialog_instance.DialogInstance)'
+  parameters:
+  - name: context
+    description: Context for the current turn of conversation with the user
+    isRequired: true
+    types:
+    - <xref:botbuilder.core.TurnContext>
+  - name: instance
+    description: The instance of the dialog on the stack
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.DialogInstance>
+  return:
+    description: A task representing the asynchronous operation
+- uid: botbuilder.dialogs.Prompt.resume_dialog
+  name: resume_dialog
+  summary: Resumes a dialog.
+  signature: 'resume_dialog(dialog_context: botbuilder.dialogs.dialog_context.DialogContext,
+    reason: botbuilder.dialogs.dialog_reason.DialogReason, result: object) -> botbuilder.dialogs.dialog_turn_result.DialogTurnResult'
+  parameters:
+  - name: dialog_context
+    description: The dialog context for the current turn of the conversation.
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.DialogContext>
+  - name: reason
+    description: An enum indicating why the dialog resumed.
+    isRequired: true
+    types:
+    - <xref:botbuilder.dialogs.DialogReason>
+  - name: result
+    description: Optional, value returned from the previous dialog on the stack.
+    isRequired: true
+    types:
+    - <xref:object>
+  return:
+    description: The dialog turn result
+    types:
+    - <xref:botbuilder.dialogs.DialogTurnResult>
+  remarks: 'Called when a prompt dialog resumes being the active dialog on the dialog
+    stack,
+
+    such as when the previous active dialog on the stack completes.
+
+
+    If the task is successful, the result indicates whether the dialog is still
+
+    active after the turn has been processed by the dialog.
+
+
+    Prompts are typically leaf nodes on the stack but the dev is free to push other
+    dialogs
+
+    on top of the stack which will result in the prompt receiving an unexpected call
+    to
+
+    :meth:resume_dialog() when the pushed on dialog ends.
+
+
+    Simply re-prompt the user to avoid that the prompt ends prematurely.
+
+    '
+attributes:
+- uid: botbuilder.dialogs.Prompt.ATTEMPT_COUNT_KEY
+  name: ATTEMPT_COUNT_KEY
+  signature: ATTEMPT_COUNT_KEY = 'AttemptCount'
+- uid: botbuilder.dialogs.Prompt.persisted_options
+  name: persisted_options
+  signature: persisted_options = 'options'
+- uid: botbuilder.dialogs.Prompt.persisted_state
+  name: persisted_state
+  signature: persisted_state = 'state'

@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.dialog_events
+name: dialog_events
+fullName: botbuilder.dialogs.dialog_events
+enums:
+- botbuilder.dialogs.dialog_events.DialogEvents

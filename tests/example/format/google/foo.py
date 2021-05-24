@@ -47,7 +47,12 @@ class Foo(object):
 
     @property
     def attr_getter(self):
-        """ Docstring of :meth:`format.google.foo.Foo.attr_getter` @property.
+        """
+        Final result returned by a dialog that just completed.
+
+        :return: Final result returned by a dialog that just completed.
+        :rtype: object
+
         """
         return self.attr
 

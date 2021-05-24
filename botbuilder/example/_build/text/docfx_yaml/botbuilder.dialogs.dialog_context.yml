@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botbuilder.dialogs.dialog_context
+name: dialog_context
+fullName: botbuilder.dialogs.dialog_context
+classes:
+- botbuilder.dialogs.dialog_context.DialogContext

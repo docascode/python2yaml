@@ -1,0 +1,9 @@
+### YamlMime:PythonClass
+uid: botbuilder.dialogs.prompts.prompt_recognizer_result.PromptRecognizerResult
+name: PromptRecognizerResult
+fullName: botbuilder.dialogs.prompts.prompt_recognizer_result.PromptRecognizerResult
+module: botbuilder.dialogs.prompts.prompt_recognizer_result
+inheritances:
+- builtins.object
+constructor:
+  syntax: 'PromptRecognizerResult(succeeded: bool = False, value: object = None)'
