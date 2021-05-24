@@ -161,17 +161,17 @@ def translator(app, docname, doctree):
                             exception_type = exception_ret[:description_index-1].strip(" \n\r\t")
                             if exception_type.find('<xref:') >= 0:
                                 exception_type = exception_type[6:-1]
-                            data['exceptions'].append({
-                                'type': exception_type,
-                                'description': exception_description
-                            })
+                                data['exceptions'].append({
+                                    'description': exception_description,
+                                    'type': exception_type,
+                                })
                         else:
                             exception_type = exception_ret.strip(" \n\r\t")
                             if exception_type.find('<xref:') >= 0:
                                 exception_type = exception_type[6:-1]
-                            data['exceptions'].append({
-                                'type': exception_type
-                            })              
+                                data['exceptions'].append({
+                                    'type': exception_type
+                                })              
             
             if fieldtype == 'Returns':
                 returnvalue_ret = transform_node(content[0])

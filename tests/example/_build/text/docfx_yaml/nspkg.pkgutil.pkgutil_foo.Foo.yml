@@ -22,12 +22,12 @@ methods:
     description: Class object of <xref:format.rst.foo.Foo>.
     isRequired: true
     types:
-    - <xref:nspkg.pkgutil.pkgutil_foo.class>
+    - <xref:class>
   - name: arg1
     description: Parameter arg1 of <xref:format.rst.foo.Foo.class_method>.
     isRequired: true
     types:
-    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
+    - <xref:str>
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method
   name: method
   summary: Docstring of normal class method <xref:format.rst.foo.Foo.method>.
@@ -54,13 +54,13 @@ methods:
       default value is 'default string'.
     defaultValue: default string
     types:
-    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
+    - <xref:str>
   - name: arg2
     description: Paremeter arg2 of <xref:format.rst.foo.Foo.method_default_value>
       default value is None.
     defaultValue: None
     types:
-    - '[object](https://docs.python.org/3.6/library/functions.html#object)'
+    - <xref:object>
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method_default_value_comma
   name: method_default_value_comma
   summary: 'Docstring of <xref:format.rst.foo.Foo.method_default_value_comma>.
@@ -73,7 +73,7 @@ methods:
       default value is (1,2,3).
     defaultValue: (1, 2, 3)
     types:
-    - '[tuple](https://docs.python.org/3.6/library/stdtypes.html#tuple)'
+    - <xref:tuple>
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method_example
   name: method_example
   summary: Docstring of <xref:format.rst.foo.Foo.method_example>.
@@ -135,7 +135,7 @@ methods:
   return:
     description: This method returns a value.
     types:
-    - <xref:nspkg.pkgutil.pkgutil_foo.boolean>
+    - <xref:boolean>
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method_seealso
   name: method_seealso
   summary: Docstring of <xref:format.rst.foo.Foo.method_seealso>.

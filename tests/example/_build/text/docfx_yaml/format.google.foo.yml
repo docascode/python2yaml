@@ -13,23 +13,23 @@ functions:
     description: Parameter arg1 of <xref:format.google.foo.function>.
     isRequired: true
     types:
-    - '[int](https://docs.python.org/3.6/library/functions.html#int)'
-    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
+    - <xref:int>
+    - <xref:str>
   - name: arg2
     description: Parameter arg2 of <xref:format.google.foo.function>.
     isRequired: true
     types:
-    - '[float](https://docs.python.org/3.6/library/functions.html#float)'
+    - <xref:float>
   - name: arg3
     description: Parameter arg3 of <xref:format.google.foo.function>.
     isRequired: true
     types:
-    - <xref:format.google.foo.boolean>
+    - <xref:boolean>
   - name: arg4
     description: Parameter arg4 of <xref:format.google.foo.function>.
     isRequired: true
     types:
-    - '[str](https://docs.python.org/3.6/library/stdtypes.html#str)'
+    - <xref:str>
 classes:
 - format.google.foo.Foo
 - format.google.foo.FooException
