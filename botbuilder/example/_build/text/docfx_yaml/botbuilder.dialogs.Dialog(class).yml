@@ -56,7 +56,7 @@ methods:
     isRequired: true
 - uid: botbuilder.dialogs.Dialog.get_version
   name: get_version
-  signature: get_version(self) -> str
+  signature: get_version() -> str
 - uid: botbuilder.dialogs.Dialog.on_dialog_event
   name: on_dialog_event
   summary: "Called when an event has been raised, using *DialogContext.emitEvent()*,\
