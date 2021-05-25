@@ -25,7 +25,7 @@ def translator(app, docname, doctree):
     def make_param(_id, _description, _type=None, _required=None):
         ret = {}
         if _id:
-            ret['id'] = _id
+            ret['id'] = _id.strip(" \n\r\r")
         if _description:
             ret['description'] = _description.strip(" \n\r\r")
         if _type:
@@ -107,24 +107,63 @@ def translator(app, docname, doctree):
 
         return data_type, _added_reference
 
+    def resolve_xref_type(reference):
+        ''' Convert an aggregated type into markdown string with xref tag.
+            e.g. input: 'list[azure.core.Model]' -> output: '<xref:list>[<xref:azure.core.Model>]'
+        '''
+        xref = ''
+        http_pattern = re.compile(
+            r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+
+        if reference.get('spec.python', None):
+            specList = reference['spec.python']
+            filterList = list(filter(lambda x: x.get('uid', None), specList))
+            d = {}
+            for i, item in enumerate(filterList):
+                if re.match(http_pattern, item.get('uid')):
+                    d[item.get('uid')] = True
+                    d[filterList[i-1].get('uid')] = True
+                else:
+                    d[item.get('uid')] = False
+
+            for i, item in enumerate(specList):
+                if item.get('uid', None) and d[item.get('uid')]:
+                    xref += item["uid"]
+                elif item.get('uid', None):
+                    xref += f'<xref:{item["uid"]}>'
+                else:
+                    xref += item['name']
+        else:
+            xref += f'<xref:{reference["uid"]}>'
+
+        return xref
+
     def parse_parameter(ret_data, fieldtype):
-        _id_pattern = re.compile(PARAMETER_NAME)
-        _type_pattern = re.compile(PARAMETER_TYPE, re.DOTALL)
-        _des_index = ret_data.find('–')
-        _first_part_ret_data = ret_data[:_des_index]
-        if len(re.findall(_id_pattern, _first_part_ret_data)) > 0:
-            _id = re.findall(_id_pattern, _first_part_ret_data)[0]
+        _id = None
+        _description = None
+        _type = None
+        _type_list = []
+        
+        hyphen_index = ret_data.astext().find('–')
+        parameter_definition_part = ret_data.astext()[:hyphen_index]
+        description_part_index = transform_node(ret_data).find('–')
+        _description = transform_node(ret_data)[description_part_index+1 : ]
+
+        if parameter_definition_part.find('(') >= 0:
+            _id = parameter_definition_part[: parameter_definition_part.find('(')]
+            _type_pattern = re.compile(PARAMETER_TYPE, re.DOTALL)
+            if len(_type_pattern.findall(parameter_definition_part)) > 0:
+                _types = _type_pattern.findall(parameter_definition_part)[0].replace('*', '')
+                if _types:
+                    for _type in re.split('[ \n]or[ \n]', _types):
+                        _type, _added_reference = resolve_type( _type)
+                        if _added_reference:
+                            _type = resolve_xref_type(_added_reference)
+                        _type_list.append(_type)
         else:
-            _id = None
-        _type = []
-        if len(_type_pattern.findall(_first_part_ret_data)) > 0:
-            _types = _type_pattern.findall(_first_part_ret_data)[0].replace('*', '')
-            _type = list(map(lambda x: x.strip(" \n"), _types.split(' or')))
-        if _des_index >= 0:
-            _description = ret_data[_des_index+1:]
-        else:
-            _description = None
-        _data = make_param(_id, _description, _type, _required=False if fieldtype == 'Keyword' else True)
+            _id = parameter_definition_part
+        
+        _data = make_param(_id, _description, _type_list, _required=False if fieldtype == 'Keyword' else True)
         return _data
 
     def _get_full_data(node):
@@ -190,7 +229,8 @@ def translator(app, docname, doctree):
             if fieldtype in ['Parameters', 'Variables', 'Keyword']:
                 if _is_single_paragraph(fieldbody):
                     ret_data = transform_para(content[0])
-                    _data = parse_parameter(ret_data, fieldtype)
+                    #_data = parse_parameter(ret_data, fieldtype)
+                    _data = parse_parameter(content[0], fieldtype)
                     if fieldtype in ['Parameters', 'Keyword']:
                         data['parameters'].append(_data)
                     else:
@@ -199,14 +239,10 @@ def translator(app, docname, doctree):
                 else:
                     for child in content[0]:
                         ret_data = transform_para(child[0])
-                        _data = parse_parameter(ret_data, fieldtype)
+                        _data = parse_parameter(child[0], fieldtype)
                         if fieldtype in ['Parameters', 'Keyword']:
                             data['parameters'].append(_data)
                         else:
-                            # if child.astext().find('(') >= 0:
-                            #     _data['id'] = child.astext()[:child.astext().find('(')].strip(' ')
-                            # else:
-                            #     _data['id'] = child.astext()[:child.astext().find('–')].strip(' ')
                             _data['id'] = _parse_variable_id(child.astext())
                             data['variables'].append(_data)
 
@@ -238,7 +274,7 @@ def translator(app, docname, doctree):
         summary = []
         data = {}
         uid = _get_desc_data(node.parent)
-        if uid == 'botbuilder.dialogs.dialog_reason.DialogReason':
+        if uid == 'format.google.foo.function':
             print('aaa')
         for child in node:
             if isinstance(child, remarks):

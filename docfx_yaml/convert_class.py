@@ -42,14 +42,11 @@ def convert_class(obj):
 
     children = old_class_object.get('children', [])
     children_objects = list(map(lambda x: record.get(x), children))
-    methods = list(filter(lambda x: x.get('type')
-                   == 'method', children_objects))
-    attributes = list(filter(lambda x: x.get('type') ==
-                      'attribute', children_objects))
+    methods = list(filter(lambda x: x.get('type') == 'method', children_objects))
+    attributes = list(filter(lambda x: x.get('type') =='attribute', children_objects))
 
     new_class_object['methods'] = list(map(convert_member_partial, methods))
-    new_class_object['attributes'] = list(
-        map(convert_member_partial, attributes))
+    new_class_object['attributes'] = list(map(convert_member_partial, attributes))
 
     print("class: " + new_class_object['uid'])
     return remove_empty_values(new_class_object)

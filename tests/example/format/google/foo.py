@@ -70,37 +70,9 @@ class Foo(object):
         See fields found on a receipt here:
         https://aka.ms/formrecognizer/receiptfields
 
-        :param receipt: JPEG, PNG, PDF, TIFF, or BMP type file stream or bytes.
-        :type receipt: bytes or IO[bytes]
-        :keyword bool include_field_elements:
-            Whether or not to include all lines per page and field elements such as lines, words,
-            and selection marks for each form field.
-        :keyword content_type: Content-type of the body sent to the API. Content-type is
-            auto-detected, but can be overridden by passing this keyword argument. For options,
-            see :class:`~azure.ai.formrecognizer.FormContentType`.
-        :paramtype content_type: str or ~azure.ai.formrecognizer.FormContentType
-        :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword str locale: Locale of the receipt. Supported locales include: en-US, en-AU, en-CA, en-GB,
-            and en-IN.
-        :keyword list[str] pages: Custom page numbers for multi-page documents(PDF/TIFF). Input the page numbers
-            and/or ranges of pages you want to get in the result. For a range of pages, use a hyphen, like
-            `pages=["1-3", "5-6"]`. Separate each page number or range with a comma.
-        :return: An instance of an LROPoller. Call `result()` on the poller
-            object to return a list[:class:`~azure.ai.formrecognizer.RecognizedForm`].
-        :rtype: ~azure.core.polling.LROPoller[list[~azure.ai.formrecognizer.RecognizedForm]]
-        :raises ~azure.core.exceptions.HttpResponseError:
-
-        .. versionadded:: v2.1
-            The *locale* and *pages* keyword arguments and support for image/bmp content
-
-        .. admonition:: Example:
-        
-            .. literalinclude:: ../samples/sample_recognize_receipts.py
-                :start-after: [START recognize_receipts]
-                :end-before: [END recognize_receipts]
-                :language: python
-                :dedent: 8
-                :caption: Recognize sales receipt fields.
+        :param telemetry_properties: Additional properties to be logged to telemetry with the LuisResult event, defaults
+         to None.
+        :type telemetry_properties: :class:`typing.Dict[str, str]`, optional
         """
         pass
 

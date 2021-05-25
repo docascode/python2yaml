@@ -206,18 +206,6 @@ def build_finished(app, exception):
                 if obj.get('type', '') == 'package' and obj.get('kind', '') != 'distribution':
                     obj['kind'] = 'import'
 
-                try:
-                    if remove_inheritance_for_notfound_class:
-                        if 'inheritance' in obj:
-                            python_sdk_name = obj['uid'].split('.')[0]
-                            obj['inheritance'] = [n for n in obj['inheritance'] if not n['type'].startswith(python_sdk_name) or
-                                                  n['type'] in app.env.docfx_info_uid_types]
-                            if not obj['inheritance']:
-                                obj.pop('inheritance')
-
-                except NameError:
-                    pass
-
                 if 'source' in obj and (not obj['source']['remote']['repo'] or
                                         obj['source']['remote']['repo'] == 'https://apidrop.visualstudio.com/Content%20CI/_git/ReferenceAutomation'):
                     del(obj['source'])

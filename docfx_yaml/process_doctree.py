@@ -437,8 +437,9 @@ def process_signature(app, _type, name, obj, options, signature, return_annotati
     if signature:
         signature = _remove_optional_tag(signature)
         short_name = name.split('.')[-1]
-        signature = short_name + signature
         if (return_annotation):
             signature = signature + ' -> ' + return_annotation
         signature = _add_typing_tag(signature)
-        app.env.docfx_signature_funcs_methods[name] = signature
+        if signature != '(value)':
+            signature = short_name + signature
+            app.env.docfx_signature_funcs_methods[name] = signature
