@@ -22,8 +22,6 @@ def translator(app, docname, doctree):
 
     transform_node = app.docfx_transform_node
 
-    xref_pattern = re.compile(r'<\s*xref\s*:\s*[\w\.]+\s*>')
-
     def make_param(_id, _description, _type=None, _required=None):
         ret = {}
         if _id:
@@ -132,10 +130,7 @@ def translator(app, docname, doctree):
                 if item.get('uid', None) and d[item.get('uid')]:
                     xref += item["uid"]
                 elif item.get('uid', None):
-                    if item['uid'].find('<xref:') >= 0 or item['uid'] == '>':
-                        xref += item["uid"]
-                    else:
-                        xref += f'<xref:{item["uid"]}>'
+                    xref += f'<xref:{item["uid"]}>'
                 else:
                     xref += item['name']
         else:
@@ -163,6 +158,8 @@ def translator(app, docname, doctree):
                 _types = _type_pattern.findall(type_definition_part)[0].replace('*', '')
                 if _types:
                     for _type in re.split('[ \n]or[ \n]', _types):
+                        _type = _type.replace('<xref:', '')
+                        _type = _type.replace('>', '')
                         _type, _added_reference = resolve_type( _type)
                         if _added_reference:
                             _type = resolve_xref_type(_added_reference)

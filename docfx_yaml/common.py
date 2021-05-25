@@ -128,7 +128,7 @@ def convert_type(type_string):
     if type_string and xref_pattern.search(type_string):
         return type_string
     else:
-        return f'<xref:{type_string}>'
+        return type_string
 
 
 def convert_types(obj, reference_mapping):
