@@ -68,7 +68,7 @@ methods:
       to None.'
     isRequired: true
     types:
-    - <xref:typing.Dict>[<xref:str>, <xref:str>], <xref:optional>
+    - <xref:typing.Dict[<xref:str>, <xref:str>]>, <xref:optional>
 - uid: format.google.foo.Foo.method
   name: method
   summary: Docstring of normal class method <xref:format.google.foo.Foo.method>.
