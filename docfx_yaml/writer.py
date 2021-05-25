@@ -941,7 +941,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
         if 'refid' in node.attributes:
             ref_string = cls.xref_template.format(node.attributes['reftitle'])
         elif 'refuri' in node.attributes:
-            if 'http' in node.attributes['refuri'] or node.attributes['refuri'][0] == '/':
+            if 'http' in node.attributes['refuri']:
                 ref_string = '[{}]({})'.format(node.astext(), node.attributes['refuri'])
             else:
                 # only use id in class and func refuri if its id exists

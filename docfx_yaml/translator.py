@@ -194,10 +194,7 @@ def translator(app, docname, doctree):
                     if fieldtype in ['Parameters', 'Keyword']:
                         data['parameters'].append(_data)
                     else:
-                        if content[0].astext().find('(') >= 0:
-                            _data['id'] = content[0].astext()[:content[0].astext().find('(')].strip(' ')
-                        else:
-                            _data['id'] = content[0].astext()[:content[0].astext().find('–')].strip(' ')
+                        _data['id'] = _parse_variable_id(content[0].astext())
                         data['variables'].append(_data)
                 else:
                     for child in content[0]:
@@ -206,13 +203,25 @@ def translator(app, docname, doctree):
                         if fieldtype in ['Parameters', 'Keyword']:
                             data['parameters'].append(_data)
                         else:
-                            if child.astext().find('(') >= 0:
-                                _data['id'] = child.astext()[:child.astext().find('(')].strip(' ')
-                            else:
-                                _data['id'] = child.astext()[:child.astext().find('–')].strip(' ')
+                            # if child.astext().find('(') >= 0:
+                            #     _data['id'] = child.astext()[:child.astext().find('(')].strip(' ')
+                            # else:
+                            #     _data['id'] = child.astext()[:child.astext().find('–')].strip(' ')
+                            _data['id'] = _parse_variable_id(child.astext())
                             data['variables'].append(_data)
 
         return data
+
+    def _parse_variable_id(variable_content):
+        if variable_content.find('–') >= 0:
+            id_part = variable_content[:variable_content.find('–') - 1]
+        else:
+            id_part = variable_content
+        if id_part.find('(') >= 0:
+            variable_id = id_part[:id_part.find('(')].strip(' ')
+        else:
+            variable_id = id_part.strip(' ')
+        return variable_id
 
     def _is_property_node(node):
         try:
@@ -229,7 +238,7 @@ def translator(app, docname, doctree):
         summary = []
         data = {}
         uid = _get_desc_data(node.parent)
-        if uid == 'format.google.foo.Foo.attr_getter':
+        if uid == 'botbuilder.dialogs.dialog_reason.DialogReason':
             print('aaa')
         for child in node:
             if isinstance(child, remarks):

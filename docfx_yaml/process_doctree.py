@@ -160,12 +160,8 @@ def _create_datam(app, cls, module, name, _type, obj, lines=None):
             signature = str(inspect.signature(obj))
         except:
             signature = None
-        if signature:
-            signature = signature.replace('self, ', '')
-            signature = signature.replace('self', '')
-            signature = signature.replace(':', ': ')
-            signature = signature.replace('=', ' = ')
-            sig = short_name + _add_typing_tag(signature)
+        if signature and signature.find(' -> None') >= 0 and sig.find(' -> None') == -1:
+            sig += ' -> None'
     else:
         sig = None
 

@@ -5,8 +5,7 @@ fullName: format.rst.enum.EnumFoo
 summary: Docstring of <xref:format.rst.enum.EnumFoo> class.
 module: format.rst.enum
 constructor:
-  syntax: EnumFoo(value, names = None, *, module = None, qualname = None, type = None,
-    start = 1)
+  syntax: EnumFoo(value)
 inheritances:
 - enum.Enum
 fields:
