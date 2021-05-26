@@ -158,12 +158,15 @@ def translator(app, docname, doctree):
                 _types = _type_pattern.findall(type_definition_part)[0].replace('*', '')
                 if _types:
                     for _type in re.split('[ \n]or[ \n]', _types):
-                        _type = _type.replace('<xref:', '')
-                        _type = _type.replace('>', '')
-                        _type, _added_reference = resolve_type( _type)
+                        _type_without_xref = _type.replace('<xref:', '')
+                        _type_without_xref = _type_without_xref.replace('>', '')
+                        _type_without_xref, _added_reference = resolve_type( _type_without_xref)
                         if _added_reference:
                             _type = resolve_xref_type(_added_reference)
-                        _type_list.append(_type)
+                        if _type.find('<xref:') >= 0:
+                            _type_list.append(_type)
+                        else:
+                            _type_list.append('<xref:' + _type + '>')
         else:
             _id = parameter_definition_part
         
@@ -226,8 +229,14 @@ def translator(app, docname, doctree):
                     returntype_ret = transform_node(returntype_node)
                     if returntype_ret:
                         for returntype in re.split('[ \n]or[ \n]', returntype_ret):
-                            returntype, _added_reference = resolve_type(
-                                returntype)
+                            returntype = returntype.strip(" \n\r\t")
+                            _type_without_xref = returntype.replace('<xref:', '')
+                            _type_without_xref = _type_without_xref.replace('>', '')
+                            _type_without_xref, _added_reference = resolve_type(_type_without_xref)
+                            if _added_reference:
+                                returntype = resolve_xref_type(_added_reference)
+                            if returntype.find('<xref:') == -1:
+                                returntype = '<xref:' + returntype + '>'
                             data['return'].setdefault('type', []).append(returntype)
 
             if fieldtype in ['Parameters', 'Variables', 'Keyword']:

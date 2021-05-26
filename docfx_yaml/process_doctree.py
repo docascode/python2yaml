@@ -426,7 +426,7 @@ def _remove_optional_tag(signature):
 
 
 def _add_typing_tag(signature):
-    _typing_obj = ['List', 'Union', 'Callable', 'Awaitable',
+    _typing_obj = ['List', 'Union', 'Callable', 'Awaitable', 'IO',
                    'Dict', 'Coroutine', 'Tuple', 'Type', 'Iterable', 'Any']
     for obj in _typing_obj:
         signature = signature.replace(obj, 'typing.' + obj)
@@ -440,6 +440,5 @@ def process_signature(app, _type, name, obj, options, signature, return_annotati
         if (return_annotation):
             signature = signature + ' -> ' + return_annotation
         signature = _add_typing_tag(signature)
-        if signature != '(value)':
-            signature = short_name + signature
-            app.env.docfx_signature_funcs_methods[name] = signature
+        signature = short_name + signature
+        app.env.docfx_signature_funcs_methods[name] = signature
