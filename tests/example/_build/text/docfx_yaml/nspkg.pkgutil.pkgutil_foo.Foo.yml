@@ -93,9 +93,9 @@ methods:
   summary: Docstring of <xref:format.rst.foo.Foo.method_exception>.
   signature: method_exception()
   exceptions:
-  - type: 'format.rst.foo.FooException> This function raises
+  - type: 'format.rst.foo.FooException This function raises
 
-      exception'
+      exception.'
 - uid: nspkg.pkgutil.pkgutil_foo.Foo.method_external_link
   name: method_external_link
   summary: 'Docstring of <xref:format.rst.foo.Foo.method_external_link>.

@@ -105,8 +105,13 @@ methods:
   summary: Docstring of <xref:format.google.foo.Foo.method_exception>.
   signature: method_exception()
   exceptions:
-  - description: "This function raises \n\n* <xref:exception.> \u2013"
-    type: f:format.rst.foo.FooException
+  - type: format.google.foo.HttpResponseError
+  - type: format.google.foo.ClientAuthenticationError
+  - type: format.google.foo.ResourceReadOnlyError
+  - type: format.google.foo.ResourceModifiedError
+  - type: format.google.foo.ResourceNotModifiedError
+  - type: format.google.foo.ResourceNotFoundError
+  - type: format.google.foo.ResourceExistsError
 - uid: format.google.foo.Foo.method_external_link
   name: method_external_link
   summary: 'Docstring of <xref:format.google.foo.Foo.method_external_link>.

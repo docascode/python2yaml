@@ -199,22 +199,22 @@ def translator(app, docname, doctree):
 
             if fieldtype == 'Raises':
                 for exception_node in content:
-                    exception_ret = transform_node(exception_node)
-                    if exception_ret:
-                        description_index = exception_ret.find('–')
-                        if description_index >= 0:
-                            exception_description = exception_ret[description_index+1:].strip(" \n\r\t")
-                            exception_type = exception_ret[:description_index-1].strip(" \n\r\t")
-                            if exception_type.find('<xref:') >= 0:
-                                exception_type = exception_type[6:-1]
+                    exception_node_ret = transform_node(exception_node)
+                    if exception_node_ret:
+                        for exception_ret in re.split(', ', exception_node_ret):
+                            exception_ret = exception_ret.strip(" \n\r\t")
+                            description_index = exception_ret.find('–')
+                            if description_index >= 0:
+                                exception_description = exception_ret[description_index+1:].strip(" \n\r\t")
+                                exception_type = exception_ret[:description_index-1].strip(" \n\r\t")
+                                exception_type = _remove_exception_xref_tag(exception_type)
                                 data['exceptions'].append({
                                     'description': exception_description,
                                     'type': exception_type
                                 })
-                        else:
-                            exception_type = exception_ret.strip(" \n\r\t")
-                            if exception_type.find('<xref:') >= 0:
-                                exception_type = exception_type[6:-1]
+                            else:
+                                exception_type = exception_ret.strip(" \n\r\t")
+                                exception_type = _remove_exception_xref_tag(exception_type)
                                 data['exceptions'].append({
                                     'type': exception_type
                                 })              
@@ -260,6 +260,12 @@ def translator(app, docname, doctree):
                             data['variables'].append(_data)
 
         return data
+
+    def _remove_exception_xref_tag(exception_type):
+        exception_type = exception_type.replace('<xref:', '')
+        exception_type = exception_type.replace('>', '')
+        exception_type = exception_type.replace('*', '')
+        return exception_type
 
     def _parse_variable_id(variable_content):
         if variable_content.find('–') >= 0:
