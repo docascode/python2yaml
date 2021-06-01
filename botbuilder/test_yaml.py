@@ -18,8 +18,8 @@ def sphinx_build(test_dir):
 
     try:
         app = Sphinx(
-            srcdir='./docc',
-            confdir='./docc',
+            srcdir='./docConnector',
+            confdir='./docConnector',
             outdir='_build/text',
             doctreedir='_build/.doctrees',
             buildername='yaml'

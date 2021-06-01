@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.emulator_validation
+name: emulator_validation
+fullName: botframework.connector.auth.emulator_validation
+classes:
+- botframework.connector.auth.emulator_validation.EmulatorValidation

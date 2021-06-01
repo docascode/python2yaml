@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.channel_provider
+name: channel_provider
+fullName: botframework.connector.auth.channel_provider
+classes:
+- botframework.connector.auth.channel_provider.ChannelProvider

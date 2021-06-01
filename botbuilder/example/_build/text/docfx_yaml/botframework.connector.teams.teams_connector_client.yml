@@ -1,0 +1,7 @@
+### YamlMime:PythonModule
+uid: botframework.connector.teams.teams_connector_client
+name: teams_connector_client
+fullName: botframework.connector.teams.teams_connector_client
+classes:
+- botframework.connector.teams.teams_connector_client.TeamsConnectorClient
+- botframework.connector.teams.teams_connector_client.TeamsConnectorClientConfiguration

@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.choices.choice
-name: choice
-fullName: botbuilder.dialogs.choices.choice
-classes:
-- botbuilder.dialogs.choices.choice.Choice

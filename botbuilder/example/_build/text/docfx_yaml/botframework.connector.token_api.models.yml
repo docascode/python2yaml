@@ -1,0 +1,16 @@
+### YamlMime:PythonPackage
+uid: botframework.connector.token_api.models
+name: models
+fullName: botframework.connector.token_api.models
+type: import
+classes:
+- botframework.connector.token_api.models.AadResourceUrls
+- botframework.connector.token_api.models.Error
+- botframework.connector.token_api.models.ErrorResponse
+- botframework.connector.token_api.models.ErrorResponseException
+- botframework.connector.token_api.models.InnerHttpError
+- botframework.connector.token_api.models.SignInUrlResponse
+- botframework.connector.token_api.models.TokenExchangeRequest
+- botframework.connector.token_api.models.TokenExchangeResource
+- botframework.connector.token_api.models.TokenResponse
+- botframework.connector.token_api.models.TokenStatus

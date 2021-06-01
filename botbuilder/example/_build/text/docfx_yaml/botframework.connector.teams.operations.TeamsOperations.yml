@@ -1,0 +1,147 @@
+### YamlMime:PythonClass
+uid: botframework.connector.teams.operations.TeamsOperations
+name: TeamsOperations
+fullName: botframework.connector.teams.operations.TeamsOperations
+module: botframework.connector.teams.operations
+inheritances:
+- builtins.object
+summary: TeamsOperations operations.
+constructor:
+  syntax: TeamsOperations(client, config, serializer, deserializer)
+  parameters:
+  - name: client
+    description: Client for service requests.
+    isRequired: true
+  - name: config
+    description: Configuration of service client.
+    isRequired: true
+  - name: serializer
+    description: An object model serializer.
+    isRequired: true
+  - name: deserializer
+    description: An object model deserializer.
+    isRequired: true
+methods:
+- uid: botframework.connector.teams.operations.TeamsOperations.fetch_participant
+  name: fetch_participant
+  summary: Fetches Teams meeting participant details.
+  signature: 'fetch_participant(meeting_id: str, participant_id: str, tenant_id: str,
+    custom_headers=None, raw=False, **operation_config)'
+  parameters:
+  - name: meeting_id
+    description: Teams meeting id
+    isRequired: true
+    types:
+    - <xref:str>
+  - name: participant_id
+    description: Teams meeting participant id
+    isRequired: true
+    types:
+    - <xref:str>
+  - name: tenant_id
+    description: Teams meeting tenant id
+    isRequired: true
+    types:
+    - <xref:str>
+  - name: custom_headers
+    description: headers that will be added to the request
+    defaultValue: None
+    types:
+    - <xref:dict>
+  - name: raw
+    description: 'returns the direct response alongside the
+
+      deserialized response'
+    defaultValue: 'False'
+    types:
+    - <xref:bool>
+  - name: operation_config
+    description: '*Operation configuration
+
+      overrides*.'
+    isRequired: true
+  return:
+    description: TeamsMeetingParticipant or ClientRawResponse if raw=true
+    types:
+    - <xref:botframework.connector.teams.models.TeamsParticipantChannelAccount>
+    - <xref:msrest.pipeline.ClientRawResponse>
+  exceptions:
+  - type: msrest.exceptions.HttpOperationError
+- uid: botframework.connector.teams.operations.TeamsOperations.get_team_details
+  name: get_team_details
+  summary: 'Fetches details related to a team.
+
+
+    Fetch details for a team.'
+  signature: get_team_details(team_id, custom_headers=None, raw=False, **operation_config)
+  parameters:
+  - name: team_id
+    description: Team Id
+    isRequired: true
+    types:
+    - <xref:str>
+  - name: custom_headers
+    description: headers that will be added to the request
+    defaultValue: None
+    types:
+    - <xref:dict>
+  - name: raw
+    description: 'returns the direct response alongside the
+
+      deserialized response'
+    defaultValue: 'False'
+    types:
+    - <xref:bool>
+  - name: operation_config
+    description: '*Operation configuration
+
+      overrides*.'
+    isRequired: true
+  return:
+    description: TeamDetails or ClientRawResponse if raw=true
+    types:
+    - <xref:botframework.connector.teams.models.TeamDetails>
+    - <xref:msrest.pipeline.ClientRawResponse>
+  exceptions:
+  - type: msrest.exceptions.HttpOperationError
+- uid: botframework.connector.teams.operations.TeamsOperations.get_teams_channels
+  name: get_teams_channels
+  summary: 'Fetches channel list for a given team.
+
+
+    Fetch the channel list.'
+  signature: get_teams_channels(team_id, custom_headers=None, raw=False, **operation_config)
+  parameters:
+  - name: team_id
+    description: Team Id
+    isRequired: true
+    types:
+    - <xref:str>
+  - name: custom_headers
+    description: headers that will be added to the request
+    defaultValue: None
+    types:
+    - <xref:dict>
+  - name: raw
+    description: 'returns the direct response alongside the
+
+      deserialized response'
+    defaultValue: 'False'
+    types:
+    - <xref:bool>
+  - name: operation_config
+    description: '*Operation configuration
+
+      overrides*.'
+    isRequired: true
+  return:
+    description: ConversationList or ClientRawResponse if raw=true
+    types:
+    - <xref:botframework.connector.teams.models.ConversationList>
+    - <xref:msrest.pipeline.ClientRawResponse>
+  exceptions:
+  - type: msrest.exceptions.HttpOperationError
+attributes:
+- uid: botframework.connector.teams.operations.TeamsOperations.models
+  name: models
+  signature: models = <module 'botframework.connector.models' from 'D:\\Github\\python2yaml\\botbuilder\\example\\botframework\\connector\\models\\__init__.py'>

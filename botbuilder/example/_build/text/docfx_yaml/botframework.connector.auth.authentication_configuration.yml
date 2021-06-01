@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.authentication_configuration
+name: authentication_configuration
+fullName: botframework.connector.auth.authentication_configuration
+classes:
+- botframework.connector.auth.authentication_configuration.AuthenticationConfiguration

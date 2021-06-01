@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.prompts.datetime_prompt
-name: datetime_prompt
-fullName: botbuilder.dialogs.prompts.datetime_prompt
-classes:
-- botbuilder.dialogs.prompts.datetime_prompt.DateTimePrompt

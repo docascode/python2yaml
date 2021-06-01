@@ -49,7 +49,7 @@ class ChannelValidation:
         :type service_url: str
 
         :return: A valid ClaimsIdentity.
-        :raises Exception:
+        :raises Exception: tttttt
         """
         identity = await ChannelValidation.authenticate_channel_token(
             auth_header, credentials, channel_id, auth_configuration

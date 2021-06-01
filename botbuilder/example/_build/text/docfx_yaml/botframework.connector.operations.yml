@@ -1,0 +1,8 @@
+### YamlMime:PythonPackage
+uid: botframework.connector.operations
+name: operations
+fullName: botframework.connector.operations
+type: import
+classes:
+- botframework.connector.operations.AttachmentsOperations
+- botframework.connector.operations.ConversationsOperations

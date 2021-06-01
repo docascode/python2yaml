@@ -1,0 +1,8 @@
+### YamlMime:PythonPackage
+uid: botframework.connector.token_api.operations
+name: operations
+fullName: botframework.connector.token_api.operations
+type: import
+classes:
+- botframework.connector.token_api.operations.BotSignInOperations
+- botframework.connector.token_api.operations.UserTokenOperations

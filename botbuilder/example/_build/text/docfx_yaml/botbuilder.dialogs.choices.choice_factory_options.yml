@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.choices.choice_factory_options
-name: choice_factory_options
-fullName: botbuilder.dialogs.choices.choice_factory_options
-classes:
-- botbuilder.dialogs.choices.choice_factory_options.ChoiceFactoryOptions

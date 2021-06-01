@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.prompts.datetime_resolution
-name: datetime_resolution
-fullName: botbuilder.dialogs.prompts.datetime_resolution
-classes:
-- botbuilder.dialogs.prompts.datetime_resolution.DateTimeResolution

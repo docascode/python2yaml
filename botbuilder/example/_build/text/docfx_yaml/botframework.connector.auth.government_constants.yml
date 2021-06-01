@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.auth.government_constants
+name: government_constants
+fullName: botframework.connector.auth.government_constants
+classes:
+- botframework.connector.auth.government_constants.GovernmentConstants

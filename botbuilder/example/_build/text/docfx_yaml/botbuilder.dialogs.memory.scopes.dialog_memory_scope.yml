@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.memory.scopes.dialog_memory_scope
-name: dialog_memory_scope
-fullName: botbuilder.dialogs.memory.scopes.dialog_memory_scope
-classes:
-- botbuilder.dialogs.memory.scopes.dialog_memory_scope.DialogMemoryScope

@@ -1,0 +1,65 @@
+### YamlMime:PythonClass
+uid: botframework.connector.async_mixin.async_mixin.AsyncServiceClientMixin
+name: AsyncServiceClientMixin
+fullName: botframework.connector.async_mixin.async_mixin.AsyncServiceClientMixin
+module: botframework.connector.async_mixin.async_mixin
+inheritances:
+- builtins.object
+constructor:
+  syntax: AsyncServiceClientMixin()
+methods:
+- uid: botframework.connector.async_mixin.async_mixin.AsyncServiceClientMixin.async_send
+  name: async_send
+  summary: 'Prepare and send request object according to configuration.
+
+    :param ClientRequest request: The request object to be sent.
+
+    :param dict headers: Any headers to add to the request.
+
+    :param content: Any body data to add to the request.
+
+    :param config: Any specific config overrides'
+  signature: async_send(request, headers=None, content=None, **config)
+  parameters:
+  - name: request
+    isRequired: true
+  - name: headers
+    defaultValue: None
+  - name: content
+    defaultValue: None
+- uid: botframework.connector.async_mixin.async_mixin.AsyncServiceClientMixin.async_send_formdata
+  name: async_send_formdata
+  summary: 'Send data as a multipart form-data request.
+
+    We only deal with file-like objects or strings at this point.
+
+    The requests is not yet streamed.
+
+    :param ClientRequest request: The request object to be sent.
+
+    :param dict headers: Any headers to add to the request.
+
+    :param dict content: Dictionary of the fields of the formdata.
+
+    :param config: Any specific config overrides.'
+  signature: async_send_formdata(request, headers=None, content=None, **config)
+  parameters:
+  - name: request
+    isRequired: true
+  - name: headers
+    defaultValue: None
+  - name: content
+    defaultValue: None
+- uid: botframework.connector.async_mixin.async_mixin.AsyncServiceClientMixin.stream_download_async
+  name: stream_download_async
+  summary: 'Async Generator for streaming request body data.
+
+    :param response: The initial response
+
+    :param user_callback: Custom callback for monitoring progress.'
+  signature: stream_download_async(response, user_callback)
+  parameters:
+  - name: response
+    isRequired: true
+  - name: user_callback
+    isRequired: true

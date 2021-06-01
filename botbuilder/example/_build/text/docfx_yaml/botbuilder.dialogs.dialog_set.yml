@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.dialog_set
-name: dialog_set
-fullName: botbuilder.dialogs.dialog_set
-classes:
-- botbuilder.dialogs.dialog_set.DialogSet

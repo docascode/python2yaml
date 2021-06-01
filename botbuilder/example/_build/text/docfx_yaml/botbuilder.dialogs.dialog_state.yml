@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.dialog_state
-name: dialog_state
-fullName: botbuilder.dialogs.dialog_state
-classes:
-- botbuilder.dialogs.dialog_state.DialogState

@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: botbuilder.dialogs.prompts.choice_prompt
-name: choice_prompt
-fullName: botbuilder.dialogs.prompts.choice_prompt
-classes:
-- botbuilder.dialogs.prompts.choice_prompt.ChoicePrompt

@@ -1,0 +1,6 @@
+### YamlMime:PythonModule
+uid: botframework.connector.emulator_api_client
+name: emulator_api_client
+fullName: botframework.connector.emulator_api_client
+classes:
+- botframework.connector.emulator_api_client.EmulatorApiClient
