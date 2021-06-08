@@ -105,9 +105,8 @@ class Foo(object):
     def method_exception(self):
         """ Docstring of :meth:`format.google.foo.Foo.method_exception`.
 
-        :raises: :class:`HttpResponseError`, :class:`ClientAuthenticationError`, \
-        :class:`ResourceReadOnlyError`, :class:`ResourceModifiedError`, :class:`ResourceNotModifiedError`, \
-        :class:`ResourceNotFoundError`, :class:`ResourceExistsError`
+        :raises Exception: tttttt
+        :raises Exception1: ssssss
         """
         raise FooException()
 

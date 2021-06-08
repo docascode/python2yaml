@@ -201,8 +201,8 @@ def translator(app, docname, doctree):
                 for exception_node in content:
                     exception_node_ret = transform_node(exception_node)
                     if exception_node_ret:
-                        for exception_ret in re.split(', ', exception_node_ret):
-                            exception_ret = exception_ret.strip(" \n\r\t")
+                        for exception_ret in re.split('\\n\\n\*', exception_node_ret):
+                            exception_ret = exception_ret.strip(" \n\r\t\*")
                             description_index = exception_ret.find('–')
                             if description_index >= 0:
                                 exception_description = exception_ret[description_index+1:].strip(" \n\r\t")
@@ -213,7 +213,7 @@ def translator(app, docname, doctree):
                                     'type': exception_type
                                 })
                             else:
-                                exception_type = exception_ret.strip(" \n\r\t")
+                                exception_type = exception_ret.strip(" \n\r\t\*")
                                 exception_type = _remove_exception_xref_tag(exception_type)
                                 data['exceptions'].append({
                                     'type': exception_type
