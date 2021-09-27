@@ -1,8 +1,8 @@
 # python2yaml
 
-1. First you need to install the latest version of Sphinx
+1. First you need to install the Sphinx 3.5.4
 ```
-pip install -U sphinx
+pip install Sphinx==3.5.4
 ```
 2. Run debug file
 ```
