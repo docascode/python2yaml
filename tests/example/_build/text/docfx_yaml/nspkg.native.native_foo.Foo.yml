@@ -52,12 +52,14 @@ methods:
   - name: arg1
     description: Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value>,
       default value is 'default string'.
+    isRequired: true
     defaultValue: default string
     types:
     - <xref:str>
   - name: arg2
     description: Paremeter arg2 of <xref:format.rst.foo.Foo.method_default_value>
       default value is None.
+    isRequired: true
     defaultValue: None
     types:
     - <xref:object>
@@ -71,6 +73,7 @@ methods:
   - name: arg1
     description: Parameter arg1 of <xref:format.rst.foo.Foo.method_default_value_comma>,
       default value is (1,2,3).
+    isRequired: true
     defaultValue: (1, 2, 3)
     types:
     - <xref:tuple>
@@ -81,7 +84,7 @@ methods:
   examples:
   - "<!--[!code-default[Main](at\\rst\\enum.py )]-->\n\n<!-- literal_block {\"ids\"\
     : [], \"classes\": [], \"names\": [], \"dupnames\": [], \"backrefs\": [], \"source\"\
-    : \"D:\\\\Github\\\\python2yaml\\\\tests\\\\example\\\\format\\\\rst\\\\enum.py\"\
+    : \"d:\\\\Github\\\\python2yaml\\\\tests\\\\example\\\\format\\\\rst\\\\enum.py\"\
     , \"xml:space\": \"preserve\", \"force\": false, \"highlight_args\": {\"linenostart\"\
     : 1}, \"language\": \"default\", \"linenos\": false} -->\n\n````default\n\n  \
     \ # coding: utf-8\n\n   from enum import Enum\n\n   class EnumFoo(Enum):\n   \

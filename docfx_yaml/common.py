@@ -153,7 +153,7 @@ def convert_parameter(obj, reference_mapping):
         parameter_object = {
             'name': obj.get('id', None),
             'description': obj.get('description', None),
-            'isRequired': obj.get('isRequired', '').lower() == 'true',
+            'isRequired': str(obj.get('isRequired', '')).lower() == 'true',
             'defaultValue': obj.get('defaultValue', None),
             'types': convert_types(obj.get('type', []), reference_mapping)
         }

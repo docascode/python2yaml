@@ -92,7 +92,7 @@ methods:
   examples:
   - "This is example content.\nShould support multi-line.\nCan also include file:<!--[!code-default[Main](at\\\
     rst\\enum.py )]-->\n\n<!-- literal_block {\"ids\": [], \"classes\": [], \"names\"\
-    : [], \"dupnames\": [], \"backrefs\": [], \"source\": \"D:\\\\Github\\\\python2yaml\\\
+    : [], \"dupnames\": [], \"backrefs\": [], \"source\": \"d:\\\\Github\\\\python2yaml\\\
     \\tests\\\\example\\\\format\\\\rst\\\\enum.py\", \"xml:space\": \"preserve\"\
     , \"force\": false, \"highlight_args\": {\"linenostart\": 1}, \"language\": \"\
     default\", \"linenos\": false} -->\n\n````default\n\n   # coding: utf-8\n\n  \
@@ -105,13 +105,10 @@ methods:
   summary: Docstring of <xref:format.google.foo.Foo.method_exception>.
   signature: method_exception()
   exceptions:
-  - type: format.google.foo.HttpResponseError
-  - type: format.google.foo.ClientAuthenticationError
-  - type: format.google.foo.ResourceReadOnlyError
-  - type: format.google.foo.ResourceModifiedError
-  - type: format.google.foo.ResourceNotModifiedError
-  - type: format.google.foo.ResourceNotFoundError
-  - type: format.google.foo.ResourceExistsError
+  - description: tttttt
+    type: Exception
+  - description: ssssss
+    type: Exception1
 - uid: format.google.foo.Foo.method_external_link
   name: method_external_link
   summary: 'Docstring of <xref:format.google.foo.Foo.method_external_link>.
