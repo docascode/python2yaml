@@ -16,6 +16,12 @@ Submodules
    :show-inheritance:
 
 
+.. automodule:: botframework.connector.auth.authenticate_request_result
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 .. automodule:: botframework.connector.auth.authentication_configuration
    :members:
    :undoc-members:
@@ -23,6 +29,18 @@ Submodules
 
 
 .. automodule:: botframework.connector.auth.authentication_constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: botframework.connector.auth.bot_framework_authentication
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: botframework.connector.auth.bot_framework_authentication_factory
    :members:
    :undoc-members:
    :show-inheritance:
@@ -47,6 +65,12 @@ Submodules
 
 
 .. automodule:: botframework.connector.auth.claims_identity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: botframework.connector.auth.connector_factory
    :members:
    :undoc-members:
    :show-inheritance:
@@ -112,6 +136,18 @@ Submodules
    :show-inheritance:
 
 
+.. automodule:: botframework.connector.auth.password_service_client_credential_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: botframework.connector.auth.service_client_credentials_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
 .. automodule:: botframework.connector.auth.simple_channel_provider
    :members:
    :undoc-members:
@@ -119,6 +155,12 @@ Submodules
 
 
 .. automodule:: botframework.connector.auth.skill_validation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: botframework.connector.auth.user_token_client
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,0 @@
-### YamlMime:PythonPackage
-uid: nspkg.pkgutil
-name: pkgutil
-fullName: nspkg.pkgutil
-type: import
-packages:
-- nspkg.pkgutil.pkgutil_foo

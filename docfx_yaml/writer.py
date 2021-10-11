@@ -917,7 +917,10 @@ class MarkdownTranslator(nodes.NodeVisitor):
         raise nodes.SkipNode
 
     def visit_index(self, node):
-        raise nodes.SkipNode
+        pass
+
+    def depart_index(self, node):
+        pass
 
     def visit_toctree(self, node):
         raise nodes.SkipNode
@@ -973,7 +976,7 @@ class MarkdownTranslator(nodes.NodeVisitor):
     def visit_reference(self, node):
         ref_string = MarkdownTranslator._resolve_reference(node)
         self.add_text(ref_string)
-        raise nodes.SkipNode
+        # raise nodes.SkipNode
 
     def depart_reference(self, node):
         pass

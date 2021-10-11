@@ -1,9 +1,0 @@
-### YamlMime:PythonPackage
-uid: project-example
-name: example
-fullName: example
-type: distribution
-packages:
-- format
-- nspkg
-- nspkg.native.native_foo

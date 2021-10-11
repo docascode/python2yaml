@@ -1,7 +1,0 @@
-### YamlMime:PythonPackage
-uid: nspkg.native.native_foo
-name: native_foo
-fullName: nspkg.native.native_foo
-type: import
-classes:
-- nspkg.native.native_foo.Foo

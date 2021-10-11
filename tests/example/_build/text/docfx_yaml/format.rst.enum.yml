@@ -1,6 +1,0 @@
-### YamlMime:PythonModule
-uid: format.rst.enum
-name: enum
-fullName: format.rst.enum
-enums:
-- format.rst.enum.EnumFoo

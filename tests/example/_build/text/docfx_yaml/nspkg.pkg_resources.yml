@@ -1,7 +1,0 @@
-### YamlMime:PythonPackage
-uid: nspkg.pkg_resources
-name: pkg_resources
-fullName: nspkg.pkg_resources
-type: import
-packages:
-- nspkg.pkg_resources.pkg_resources_foo

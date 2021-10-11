@@ -1,7 +1,0 @@
-### YamlMime:PythonPackage
-uid: format.google
-name: google
-fullName: format.google
-type: import
-modules:
-- format.google.foo

@@ -1,7 +1,0 @@
-### YamlMime:PythonPackage
-uid: format.numpy
-name: numpy
-fullName: format.numpy
-type: import
-modules:
-- format.numpy.foo

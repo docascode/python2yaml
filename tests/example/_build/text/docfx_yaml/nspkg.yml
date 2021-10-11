@@ -1,9 +1,0 @@
-### YamlMime:PythonPackage
-uid: nspkg
-name: nspkg
-fullName: nspkg
-summary: Package used for namespace package test.
-type: import
-packages:
-- nspkg.pkg_resources
-- nspkg.pkgutil
